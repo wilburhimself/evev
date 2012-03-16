@@ -1,0 +1,1 @@
+<?php node_display($node); ?>
