@@ -5,6 +5,7 @@
             <li><?= anchor('nodes/manage/event', 'Eventos'); ?></li>
             <li><?= anchor('nodes/manage/location', 'Locations');  ?></li>
             <li><?= anchor('nodes/manage/business', 'Negocios'); ?></li>
+            <li><?= anchor('nodes/manage/special', 'Especiales') ?></li>
         </ul>
     </nav>
 </div>

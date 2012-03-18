@@ -64,7 +64,7 @@ $autoload['libraries'] = array('node', 'database', 'session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form', 'node', 'url', 'html', 'language', 'dates', 'component', 'messages', 'redirect', 'picture', 'thumbnail', 'user', 'events');
+$autoload['helper'] = array('form', 'node', 'url', 'html', 'languages', 'dates', 'component', 'messages', 'redirect', 'picture', 'thumbnail', 'user', 'events', 'likes', 'comments', 'language');
 
 
 /*

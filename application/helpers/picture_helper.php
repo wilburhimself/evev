@@ -145,7 +145,7 @@ function form_for_counted_pictures($type, $id, $count) {
     for ($i=1; $i<=$num_fields; $i++) {
         $output .= '<p>'.form_upload('picture-'.$i, '').'</p>';
     }
-    $output .= form_submit('', '', 'class="subir_imgs"');
+    $output .= form_submit('', 'Subir imágenes', 'class="subir_imgs"');
     $output .= form_close();
     return $output;
 }

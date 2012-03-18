@@ -38,13 +38,22 @@
 |
 */
 
+
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
 // ------------ > Common to all nodes
-$route['node/(:num)/delete'] = 'nodes/delete/$1';
+$route['^(en|es)/node/(:num)/delete'] = 'nodes/delete/$2';
 $route['node/(:num)'] = 'nodes/show/$1';
+$route['^(en|es)/node/(:num)'] = "nodes/show/$2";
+
 
 $route['login'] = 'sessions';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+
+// URI like '/en/about' -> use controller 'about'
+$route['^(en|es)/(.+)$'] = "$2";
+
+// '/en', '/de', '/fr' and '/nl' URIs -> use default controller
+$route['^(en|es)$'] = $route['default_controller'];

@@ -11,7 +11,7 @@
     <body>
         <nav class="main-nav">
             <div class="container">
-                <?= anchor('', 'TODO', 'class="brand"'); ?>
+                <?= anchor('welcome', 'TODO', 'class="brand"'); ?>
                 <div class="user-control">
                     <?php if (is_logged_in()): ?>
                         <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>

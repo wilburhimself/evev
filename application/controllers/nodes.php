@@ -5,6 +5,8 @@ class Nodes extends CI_Controller {
 	}
 	
 	public function save() {
+        login_required();
+
 		$params = $this->input->post('node');
 		$id = $this->input->post('id');
 		$this->node->node_save($params, $id);
@@ -13,11 +15,15 @@ class Nodes extends CI_Controller {
 	}
 
     public function delete($id) {
+        login_required();
+
         $this->node->delete($id);
         redirect();
     }
 
     public function add($type) {
+        login_required();
+
         $data['page_title'] = 'Agregar nodo tipo: '.$type;
         $data['node_type'] = $type;
         $data['yield'] = 'nodes/add';
@@ -26,18 +32,22 @@ class Nodes extends CI_Controller {
     }
 
     public function edit($id) {
+        login_required();
+
         $node = node_load($id);
         $data['node'] = $node;
         $data['node_type'] = $node->type;
         $data['node_id'] = $node->id;
         $data['page_title'] = 'Editando '.$node->type.': '.$node->title;
-        $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
+        $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'MY_Lang.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
         $data['yield'] = 'nodes/edit';
         $this->load->vars($data);
         $this->load->view('base');
     }
 
     public function manage($type=null) {
+        login_required();
+
         $type_options = !empty($type) ? array($type) : null;
         $data['nodes'] = get_nodes(array('type' => $type_options));
         if (!empty($type)) $data['node_type'] = $type;

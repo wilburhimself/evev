@@ -7,7 +7,7 @@ class node {
     }
 
     protected function pre_query() {
-        $this->db->where('language', 'es');
+        $this->db->where('language', $this->ci->lang->lang());
     }
 
     public function load_node($id) {
@@ -62,6 +62,7 @@ class node {
     			if (in_array($k, $node_fields)) $node_params[$k] = $params[$k];
     		}
     		unset($node_params['id']);
+            $node_params['updated'] = time();
     		$this->db->update($this->tablename, $node_params);
     		
     		$field_params = array();
@@ -75,6 +76,10 @@ class node {
     		foreach (array_keys($params) as $k) {
     			if (in_array($k, $node_fields)) $node_params[$k] = $params[$k];
     		}
+            $node_params['created'] = time();
+            $node_params['updated'] = time();
+            $node_params['status'] = 1;
+            $node_params['user_id'] = get_logged_user()->id;
     		$this->db->insert($this->tablename, $node_params);
     		$node_id = $this->db->insert_id();
     		$field_params = array();

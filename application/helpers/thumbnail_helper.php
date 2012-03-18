@@ -106,15 +106,13 @@ function loose_image_thumb($image_path, $height, $width) {
 		$CI->image_lib->clear();
 	}
 
-        return img(array(
-            'src' => $image_thumb,
-            'alt' => ''
-        ));
-    
-
+    return img(array(
+        'src' => $image_thumb,
+        'alt' => ''
+    ));
 }
 
-function thumbnail($picture, $width, $height, $type='strict', $default_picture="images/icon_house.png") {
+function thumbnail($picture, $width, $height, $type='strict', $default_picture="assets/images/default.png") {
     if (is_object($picture)) {
         $path = picture_path($picture);
         if (!file_exists($path)) {

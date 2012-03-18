@@ -164,7 +164,7 @@ if (defined('ENVIRONMENT'))
 
 	// The PHP file extension
 	// this global constant is deprecated.
-	define('EXT', '.php');
+	define('EXT', 'MY_Lang.php');
 
 	// Path to the system folder
 	define('BASEPATH', str_replace("\\", "/", $system_path));

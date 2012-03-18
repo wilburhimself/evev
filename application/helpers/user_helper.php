@@ -30,5 +30,9 @@ function login_required() {
         $ci->load->vars($data);
         return $data['user'];
     }
+}
 
+function get_user($id) {
+    $ci =& get_instance();
+    return $ci->User->get_user($id);
 }

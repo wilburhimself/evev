@@ -15,5 +15,8 @@
         ?>
         <?= !empty($node) ? anchor('node/'.$node->id.'/delete', 'Borrar', 'class="btn btn-danger"') : null; ?>
     </fieldset>
-
 <?php print form_close(); ?>
+
+<?php
+    if (file_exists(APPPATH.'/views/metaboxes/'.$node_type.'.php')) $this->load->view("metaboxes/{$node_type}", array('node' => $node));
+?>
