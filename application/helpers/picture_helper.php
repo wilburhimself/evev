@@ -112,7 +112,7 @@ function form_for_picture($type, $id, $profile=null) {
       $data['profile'] = 1;
    }
    $output =  form_open_multipart('pictures/save', $form , $data);
-   $output .= '<p><label for="">A&ntilde;adir Imagen</label> '.form_upload('picture', '').'</p>';
+   $output .= '<p>'.form_upload('picture', '').'</p>';
    $output .= form_submit('', 'Subir imagen', 'class="subir_imgs"');
    $output .= form_close();
    return $output;

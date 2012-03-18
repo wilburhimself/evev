@@ -39,7 +39,7 @@ class Nodes extends CI_Controller {
         $data['node_type'] = $node->type;
         $data['node_id'] = $node->id;
         $data['page_title'] = 'Editando '.$node->type.': '.$node->title;
-        $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'MY_Lang.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
+        $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
         $data['yield'] = 'nodes/edit';
         $this->load->vars($data);
         $this->load->view('base');
