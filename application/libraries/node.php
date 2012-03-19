@@ -93,9 +93,10 @@ class node {
     		}
     		$field_params['node_id'] = $node_id;
     		$this->db->insert($fields_table, $field_params);
-            $id = $this->db->insert_id();
+            $id = $node_id;
         }
-        return node_load($id);
+        $node = node_load($id);
+        return $node;
     }
 
     public function search($options) {
@@ -113,9 +114,6 @@ class node {
         foreach($order as $k => $v) {
             $this->db->order_by($k, $k, FALSE);
         }
-        $num = !empty($options['num']) ? $options['num'] : null;
-        $offset = !empty($options['offset']) ? $options['offset'] : null;
-        $this->db->limit($num, $offset);
         $r = $this->db->get()->result();
         $output = array();
 

@@ -8,7 +8,8 @@ class Nodes extends CI_Controller {
         login_required();
 
 		$params = $this->input->post('node');
-		$id = $this->input->post('id');
+		$post_id = $this->input->post('id');
+        $id = !empty($post_id) ? $post_id : null;
 		$node = $this->node->node_save($params, $id);
 
         $categories = $this->input->post('category');
@@ -23,7 +24,6 @@ class Nodes extends CI_Controller {
                 }
             }
         }
-
         message('Los cambios fueron guardados');
         redirect_back_or_default();
 	}

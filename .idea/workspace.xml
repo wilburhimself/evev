@@ -23,10 +23,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="event.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="event.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="55" selection-start="1617" selection-end="1617" vertical-scroll-proportion="0.49120602">
+            <state line="38" column="38" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-21.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="business.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/nodes/display/business.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="33" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="business.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="71" selection-start="417" selection-end="417" vertical-scroll-proportion="-4.375">
+              <folding>
+                <marker date="1332192717000" expanded="true" signature="527:574" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="783:830" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="1030:1077" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="1328:1375" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="1572:1619" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="1816:1863" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="2093:2140" placeholder="..." />
+                <marker date="1332192717000" expanded="true" signature="2356:2403" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nodes.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/nodes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="49" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -41,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="node.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="node.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="40" selection-start="4102" selection-end="4102" vertical-scroll-proportion="0.0">
+            <state line="97" column="31" selection-start="3290" selection-end="3290" vertical-scroll-proportion="0.9">
               <folding />
             </state>
           </provider>
@@ -71,7 +107,16 @@
       <file leaf-file-name="welcome.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="30" selection-start="849" selection-end="849" vertical-scroll-proportion="0.0">
+            <state line="30" column="25" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homepage.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="84" selection-start="103" selection-end="103" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
@@ -87,22 +132,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/assets/js/events.js" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/views/forms/node.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
-        <option value="$PROJECT_DIR$/application/controllers/nodes.php" />
         <option value="$PROJECT_DIR$/application/views/forms/event.php" />
         <option value="$PROJECT_DIR$/application/helpers/category_helper.php" />
         <option value="$PROJECT_DIR$/application/models/category.php" />
         <option value="$PROJECT_DIR$/application/helpers/events_helper.php" />
         <option value="$PROJECT_DIR$/application/helpers/comments_helper.php" />
         <option value="$PROJECT_DIR$/assets/css/todo.less" />
-        <option value="$PROJECT_DIR$/application/controllers/welcome.php" />
         <option value="$PROJECT_DIR$/application/views/events/_item.php" />
-        <option value="$PROJECT_DIR$/application/libraries/node.php" />
         <option value="$PROJECT_DIR$/application/views/nodes/display/event.php" />
+        <option value="$PROJECT_DIR$/application/views/homepage.php" />
+        <option value="$PROJECT_DIR$/application/controllers/welcome.php" />
+        <option value="$PROJECT_DIR$/application/views/nodes/display/business.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
+        <option value="$PROJECT_DIR$/application/controllers/nodes.php" />
+        <option value="$PROJECT_DIR$/application/libraries/node.php" />
       </list>
     </option>
   </component>
@@ -180,7 +225,65 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,27 +414,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="59" selection-start="2276" selection-end="2276" vertical-scroll-proportion="0.65954775">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/forms/node.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="80" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.41457286">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/nodes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="8" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/helpers/category_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="23" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
@@ -362,13 +444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/helpers/comments_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="1" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
@@ -383,16 +458,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
+    <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="30" selection-start="849" selection-end="849" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="40" selection-start="4102" selection-end="4102" vertical-scroll-proportion="0.0">
+        <state line="38" column="38" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-21.25">
           <folding />
         </state>
       </provider>
@@ -400,6 +468,13 @@
     <entry file="file://$PROJECT_DIR$/application/helpers/component_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="9" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="84" selection-start="103" selection-end="103" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -418,9 +493,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="55" selection-start="1617" selection-end="1617" vertical-scroll-proportion="0.49120602">
+        <state line="30" column="25" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/nodes/display/business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="71" selection-start="417" selection-end="417" vertical-scroll-proportion="-4.375">
+          <folding>
+            <marker date="1332192717000" expanded="true" signature="527:574" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="783:830" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="1030:1077" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="1328:1375" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="1572:1619" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="1816:1863" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="2093:2140" placeholder="..." />
+            <marker date="1332192717000" expanded="true" signature="2356:2403" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/nodes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="49" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="31" selection-start="3290" selection-end="3290" vertical-scroll-proportion="0.9">
           <folding />
         </state>
       </provider>

@@ -1,4 +1,14 @@
 <div class="control-group">
+    <div class="control-label"><?= form_label('Tipo de negocio', 'business-type'); ?></div>
+    <div class="controls"><?php category_dropdown('business-type'); ?></div>
+</div>
+<div class="control-group">
+    <div class="control-label"><?= form_label('Ubicación', 'event-location'); ?></div>
+    <div class="controls">
+        <?= form_dropdown('node[location]', node_dropdown('location'), !empty($node) ? $node->location : null, 'id="event-location'); ?>
+    </div>
+</div>
+<div class="control-group">
     <div class="control-label"><?= form_label('Dirección', 'business-address'); ?></div>
     <div class="controls"><?= form_input('node[address]', !empty($node) ? $node->address : null, 'id="business-address"'); ?></div>
 </div>
@@ -31,10 +41,6 @@
     <div class="controls"><?= form_input('node[facebook]', !empty($node) ? $node->facebook : null, 'id="business-facebook"'); ?></div>
 </div>
 
-<div class="control-group">
-    <div class="control-label"><?= form_label('Tipo de negocio', 'business-type'); ?></div>
-    <div class="controls"><?php category_dropdown('business-type'); ?></div>
-</div>
 <?= form_hidden('node[type]', 'business'); ?>
 <?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Negocio', 'class="btn btn-primary"');  ?>
