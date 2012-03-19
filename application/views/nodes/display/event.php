@@ -2,7 +2,6 @@
 <?php if ($op == 'full'): ?>
         
     <div class="vevent full">
-        <?php print $this->lang->lang(); ?>
         <header>
             <?php $logo = get_cover('business-logo', $business->id); print !empty($logo) ? thumbnail($logo, 60, 60) : null; ?>
             <h1><?= anchor('node/'.$business->id, $business->title) ?></h1>
@@ -12,7 +11,7 @@
             <h1><?= $node->title; ?></h1>
             <?php $pic = get_cover('event-logo', $node->id); print thumbnail($pic, 780, 350); ?>
         </div>
-
+        
         <?php if (is_logged_in() and user_going($node, get_logged_user())): ?>
             I'm Going <?= anchor('events/going/'.$node->id, 'not going?'); ?>
         <?php else: ?>
@@ -41,9 +40,16 @@
 <?php else: ?>
     <a class="vevent item" href="<?= site_url('node/'.$node->id) ?>">
         <?php $pic = get_cover('event-logo', $node->id); print thumbnail($pic, 200, 200); ?>
+
+        <p class="date startdate">
+            <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
+            <span class="weekday"><?= strftime('%A, %l%p', strtotime($node->startdate)) ?><br />
+                <?= strftime('%B', strtotime($node->startdate)); ?></span>
+        </p>
         <h3><?= $node->title ?></h3>
         <p class="metadata">
-            <span class="dtstart"><abbr class="value" title="<?= timeformat('date', $node->startdate); ?>"><?= timeformat('long', $node->startdate); ?></abbr></span>
+            <?= count_users_going($node); ?> Going
         </p>
+        
     </a>
 <?php endif; ?>

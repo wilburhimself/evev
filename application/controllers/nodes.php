@@ -9,7 +9,21 @@ class Nodes extends CI_Controller {
 
 		$params = $this->input->post('node');
 		$id = $this->input->post('id');
-		$this->node->node_save($params, $id);
+		$node = $this->node->node_save($params, $id);
+
+        $categories = $this->input->post('category');
+
+        if (!empty($categories)) {
+            foreach ($categories as $key => $vocabulary) {
+                if (!empty($vocabulary)) {
+                    $this->Category->remove_from_vocabulary($key, $node->id);
+                    foreach ($vocabulary as $term) {
+                        $this->Category->add_to_node($term, $node->id, $key);
+                    }
+                }
+            }
+        }
+
         message('Los cambios fueron guardados');
         redirect_back_or_default();
 	}

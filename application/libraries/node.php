@@ -15,7 +15,6 @@ class node {
         $this->db->where('id', $id);
 
         $n = $this->db->get($this->tablename)->row();
-
         $n->fields = $this->_load_fields($n);
         return new NodeResult($n);
     }
@@ -94,28 +93,30 @@ class node {
     		}
     		$field_params['node_id'] = $node_id;
     		$this->db->insert($fields_table, $field_params);
-    		
-    	}
+            $id = $this->db->insert_id();
+        }
+        return node_load($id);
     }
 
     public function search($options) {
-        $ci =& get_instance();
-        $ci->db->select('n.id', FALSE);
-        $ci->db->from('node n, fields_'.$options['type'].' f');
+        $this->db->select('n.id, n.type', FALSE);
+        $this->pre_query();
+        $this->db->from('node n, fields_'.$options['type'].' f');
         if (!empty($options['conditions'])) {
             foreach ($options['conditions'] as $condition) {
-                $ci->db->where($condition, '', FALSE);
+                $this->db->where($condition, '', FALSE);
             }
         }
-        $ci->db->where('n.id', 'f.node_id', FALSE);
+        $this->db->where('n.id', 'f.node_id', FALSE);
 
         $order = !empty($options['order']) ? $options['order'] : array('n.id' => 'DESC');
         foreach($order as $k => $v) {
-            $ci->db->order_by($k, $k);
+            $this->db->order_by($k, $k, FALSE);
         }
 
-        $r = $ci->db->get()->result();
+        $r = $this->db->get()->result();
         $output = array();
+
         foreach ($r as $i) {
             $output[] = node_load($i->id);
         }

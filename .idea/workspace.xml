@@ -23,8 +23,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="edit.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/nodes/edit.php">
+      <file leaf-file-name="homepage.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
@@ -32,37 +32,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="node.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/forms/node.php">
+      <file leaf-file-name="event.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="67" selection-start="67" selection-end="67" vertical-scroll-proportion="-0.0">
+            <state line="48" column="36" selection-start="2164" selection-end="2164" vertical-scroll-proportion="-26.291666">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/base.php">
+      <file leaf-file-name="todo.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/css/todo.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="62" selection-start="1998" selection-end="1998" vertical-scroll-proportion="-25.0">
+            <state line="98" column="31" selection-start="1850" selection-end="1850" vertical-scroll-proportion="0.4695122">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/events.js">
+      <file leaf-file-name="events_helper.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/helpers/events_helper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="11" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".htaccess" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="61" selection-start="78" selection-end="78" vertical-scroll-proportion="0.018292682">
+            <state line="29" column="52" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,22 +69,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/metaboxes/business.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
-        <option value="$PROJECT_DIR$/application/core/MY_Lang.php" />
-        <option value="$PROJECT_DIR$/application/views/sidebars/edit_business.php" />
-        <option value="$PROJECT_DIR$/application/controllers/nodes.php" />
-        <option value="$PROJECT_DIR$/application/helpers/picture_helper.php" />
-        <option value="$PROJECT_DIR$/application/libraries/node.php" />
-        <option value="$PROJECT_DIR$/application/helpers/node_helper.php" />
-        <option value="$PROJECT_DIR$/application/controllers/welcome.php" />
-        <option value="$PROJECT_DIR$/application/helpers/events_helper.php" />
-        <option value="$PROJECT_DIR$/application/helpers/dates_helper.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/event.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/node.php" />
         <option value="$PROJECT_DIR$/application/views/base.php" />
-        <option value="$PROJECT_DIR$/assets/js/events.js" />
         <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/application/controllers/welcome.php" />
+        <option value="$PROJECT_DIR$/assets/js/events.js" />
+        <option value="$PROJECT_DIR$/application/helpers/comments_helper.php" />
+        <option value="$PROJECT_DIR$/application/config/autoload.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/node.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
+        <option value="$PROJECT_DIR$/application/libraries/node.php" />
+        <option value="$PROJECT_DIR$/application/controllers/nodes.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/event.php" />
+        <option value="$PROJECT_DIR$/application/helpers/category_helper.php" />
+        <option value="$PROJECT_DIR$/application/models/category.php" />
+        <option value="$PROJECT_DIR$/application/helpers/events_helper.php" />
+        <option value="$PROJECT_DIR$/application/views/nodes/display/event.php" />
+        <option value="$PROJECT_DIR$/assets/css/todo.less" />
       </list>
     </option>
   </component>
@@ -153,38 +144,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ckeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="todo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ckeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="todo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -217,6 +176,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -257,7 +234,87 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
+              <option name="myItemId" value="nodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="display" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,114 +445,116 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+    <entry file="file://$PROJECT_DIR$/application/helpers/comments_helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="55" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.56532663">
+        <state line="4" column="75" selection-start="218" selection-end="218" vertical-scroll-proportion="0.07317073">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="23" selection-start="3547" selection-end="3547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/node_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="39" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="32" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/events_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/dates_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="45" selection-start="4035" selection-end="4035" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/forms/event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="1277" selection-end="1277" vertical-scroll-proportion="-13.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/picture_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="45" selection-start="4628" selection-end="4628" vertical-scroll-proportion="0.64684016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ckeditor/_samples/ajax.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="57" selection-start="842" selection-end="895" vertical-scroll-proportion="0.47110552">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ckeditor/_samples/autogrow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.1839081">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ckeditor/_samples/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.97864324">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/edit.php">
+    <entry file="file://$PROJECT_DIR$/application/views/sidebars/edit_event.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sidebars/edit_business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="49" selection-start="203" selection-end="207" vertical-scroll-proportion="0.056532662">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="55" selection-start="3235" selection-end="3235" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/node_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="59" selection-start="2276" selection-end="2276" vertical-scroll-proportion="0.65954775">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="30" selection-start="3303" selection-end="3303" vertical-scroll-proportion="0.81707317">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/forms/node.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="67" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+        <state line="22" column="80" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.41457286">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/base.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/nodes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="62" selection-start="1998" selection-end="1998" vertical-scroll-proportion="-25.0">
+        <state line="27" column="8" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/events.js">
+    <entry file="file://$PROJECT_DIR$/application/helpers/category_helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="11" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
+        <state line="30" column="23" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
+    <entry file="file://$PROJECT_DIR$/application/models/category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="61" selection-start="78" selection-end="78" vertical-scroll-proportion="0.018292682">
+        <state line="43" column="25" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/forms/event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="68" selection-start="1795" selection-end="1795" vertical-scroll-proportion="0.5464824">
+          <folding>
+            <marker date="1332186819000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/events_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="52" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="36" selection-start="2164" selection-end="2164" vertical-scroll-proportion="-26.291666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/todo.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="31" selection-start="1850" selection-end="1850" vertical-scroll-proportion="0.4695122">
           <folding />
         </state>
       </provider>

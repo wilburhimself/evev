@@ -18,5 +18,11 @@
 <?php print form_close(); ?>
 
 <?php
-    if (file_exists(APPPATH.'/views/metaboxes/'.$node_type.'.php')) $this->load->view("metaboxes/{$node_type}", array('node' => $node));
+    if (isset($node)) {
+        if (file_exists(APPPATH.'/views/metaboxes/'.$node_type.'.php')) {
+            $this->load->view("metaboxes/{$node_type}", array('node' => $node));
+        }
+
+    }
+
 ?>

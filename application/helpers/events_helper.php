@@ -22,3 +22,10 @@ function going_status($event, $user=null) {
         $ci->db->insert('events_going', $data);
     }
 }
+
+function count_users_going($node) {
+    $ci =& get_instance();
+    $ci->db->where('node_id', $node->id);
+
+    return $ci->db->get('events_going')->num_rows();
+}

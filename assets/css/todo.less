@@ -81,6 +81,9 @@ a {
             position: relative;
             height: auto;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            -webkit-border-radius: 4px;
+            -mox-border-radius: 4px;
+            border-radius: 4px;
 
             img {
                 width: 100%;
@@ -94,11 +97,29 @@ a {
             }
             .metadata {
                 font-size: 80%;
-                min-height: 30px;
                 margin: 0;
+                padding: 0;
+                clear: both;
             }
             &:hover {
                 color: inherit;
+            }
+
+            .startdate {
+                .day-number {
+                    display: block;
+                    float: left;
+                    padding: 4px;
+                    background: #f0f0f0;
+                    border: 1px solid #ccc;
+                    font-size: 160%;
+                    font-weight: bold;
+                    margin-right: 0.3em;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    border-radius: 4px;
+
+                }
             }
         }
 
@@ -150,4 +171,11 @@ a {
     &.loving {
         background: url(../images/icons.png) no-repeat -59px -2px;
     }
+}
+
+.comments-textarea {
+    width: 100%;
+    min-height: 120px;
+    height: auto !important;
+    height: 120px;
 }

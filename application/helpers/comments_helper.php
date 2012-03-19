@@ -2,7 +2,7 @@
 function form_for_comments($node) {
     $output = form_open('comments/save');
     $output .= form_hidden('comment[node_id]', $node->id);
-    $output .= '<p>'.form_textarea('comment[content]').'</p>';
+    $output .= '<p>'.form_textarea('comment[content]', '', 'class="comments-textarea"').'</p>';
     $output .= form_submit('', 'Guardar comentario');
     $output .= form_close();
     return $output;

@@ -19,13 +19,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-
         $data['page_title'] = 'Homepage';
         $data['events'] = search(array(
                            'type' => 'event',
                            'conditions' => array(
-                              'f.business=5',
-                              'f.startdate>'.timeformat('date', time()),
+                              'f.startdate> "'.date('Y-m-d').'"',
                            ),
                            'order' => array(
                                'f.startdate' => 'ASC'
