@@ -24,6 +24,11 @@ function node_dropdown($type) {
     return $output;
 }
 
+function search($options) {
+    $ci =& get_instance();
+    return $ci->node->search($options);
+}
+
 /**
  * @param integer $id
  * @param string $op

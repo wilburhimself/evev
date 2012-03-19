@@ -102,12 +102,12 @@ function years() {
 function timeformat($format, $time) {
     $formats = array(
         'short' => '%A %d, %B %Y',
-        'long' => '%A %d de %B a las %I:%M',
+        'long' => '%A %d de %B a las %I:%M %p',
         'datetime' => '%Y-%m-%d %H:%M:%S',
         'date' => '%Y-%m-%d',
         'hour' => '%H:%M',
     );
-    return strftime($formats[$format], strtotime($time));
+    return htmlentities(strftime($formats[$format], strtotime($time)));
 }
 
 function timepicker() {

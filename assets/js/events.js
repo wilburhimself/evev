@@ -7,4 +7,7 @@
 
         $(".item").equalHeight();
     });
+
+    $(".node-form textarea").ckeditor();
+
 })(jQuery);

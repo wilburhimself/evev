@@ -19,8 +19,18 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+
         $data['page_title'] = 'Homepage';
-        $data['events'] = $this->node->objects(array('type' => array('event', 'special')));
+        $data['events'] = search(array(
+                           'type' => 'event',
+                           'conditions' => array(
+                              'f.business=5',
+                              'f.startdate>'.timeformat('date', time()),
+                           ),
+                           'order' => array(
+                               'f.startdate' => 'ASC'
+                           )
+                      ));
         $data['yield'] = 'homepage';
         $this->load->vars($data);
     	$this->load->view('base');

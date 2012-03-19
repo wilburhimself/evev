@@ -1,4 +1,4 @@
-<?php print form_open('nodes/save', 'class="form-vertical"'); ?>
+<?php print form_open('nodes/save', 'class="form-vertical node-form"'); ?>
     <fieldset>
         <div class="control-group">
             <div class="control-label"><?= form_label('Título', 'node-title'); ?></div>

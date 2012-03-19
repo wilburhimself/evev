@@ -1,4 +1,5 @@
 <?php
+
 function user_going($event, $user=null) {
     $ci =& get_instance();
     $user = !empty($user) ? $user : get_logged_user();
@@ -20,5 +21,4 @@ function going_status($event, $user=null) {
         $data['node_id'] = $event->id;
         $ci->db->insert('events_going', $data);
     }
-
 }

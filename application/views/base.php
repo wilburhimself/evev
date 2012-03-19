@@ -37,6 +37,8 @@
         <script src="<?= site_url('assets/js/jquery-1.7.1.min.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery-ui-1.8.16.custom.min.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery-ui-timepicker-addon.js'); ?>"></script>
+        <script src="<?= site_url('ckeditor/ckeditor.js'); ?>"></script>
+        <script src="<?= site_url('ckeditor/adapters/jquery.js'); ?>"></script>
         <script src="<?= site_url('assets/js/events.js'); ?>"></script>
     </body>
 </html>

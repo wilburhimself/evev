@@ -11,10 +11,11 @@
     <div class="control-label"><?= form_label('Inicio', 'event-startdate'); ?></div>
     <div class="controls"><?= form_input('node[startdate]', !empty($node) ? $node->startdate : null, 'class="input-xlarge" id="event-startdate"'); ?></div>
 </div>
-<!--<div class="control-group">
+<div class="control-group">
     <div class="control-label"><?= form_label('Final', 'event-enddate'); ?></div>
     <div class="controls"><?= form_input('node[enddate]', !empty($node) ? $node->enddate : null, 'class="input-xlarge" id="event-enddate"'); ?></div>
-</div>-->
+</div>
+    
 <?= form_hidden('node[type]', 'event'); ?>
 <?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Evento', 'class="btn btn-primary"'); ?>
