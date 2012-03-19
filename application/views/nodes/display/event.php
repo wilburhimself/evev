@@ -11,19 +11,17 @@
             <h1><?= $node->title; ?></h1>
             <?php $pic = get_cover('event-logo', $node->id); print thumbnail($pic, 780, 350); ?>
         </div>
-        
-        <?php if (is_logged_in() and user_going($node, get_logged_user())): ?>
-            I'm Going <?= anchor('events/going/'.$node->id, 'not going?'); ?>
-        <?php else: ?>
-            are you going to this event? <?= anchor('events/going/'.$node->id, 'going'); ?>
-        <?php endif; ?>
-        <br />
-        <?php if (is_logged_in() and user_likes($node)): ?>
-            <?= anchor('likes/status/'.$node->id, 'Unlike', 'class="icon love loving"'); ?>
-        <?php else: ?>
-            <?= anchor('likes/status/'.$node->id, 'Like', 'class="icon love"'); ?>
-        <?php endif; ?>
-
+        <?php
+            if (is_logged_in()) {
+                if (user_going($node, get_logged_user())) {
+                    print 'Estás planificando ir a este evento | ';
+                    print anchor('events/going/'.$node->id, "Ya no pienso ir a este evento");
+                } else {
+                    print 'No tienes planificado ir a este evento | ';
+                    print anchor('events/going/'.$node->id, "Estoy planificando ir a este evento");
+                }
+            }
+        ?>
         <div class="summary">
             <?= $node->description; ?>
         </div>
@@ -32,9 +30,25 @@
             <div class="comments-list">
                 <?= partial_collection(get_comments($node), 'comments/_item'); ?>
             </div>
-
             <?= form_for_comments($node); ?>
         </div>
+        <div class="related">
+            <h3>Otros eventos de <?= $business->title; ?></h3>
+            <?php $other_events = search(
+                array(
+                    'type' => 'event',
+                    'num' => 4,
+                    'conditions' => array(
+                        'f.business='.$node->business,
+                    ),
+                    'order' => array(
+                        'f.startdate' => 'ASC',
+                    ),
+                ));
+                print partial_collection($other_events, 'events/_item', array('object_name' => 'event'));
+            ?>
+        </div>
+
     </div>
 
 <?php else: ?>
@@ -48,7 +62,8 @@
         </p>
         <h3><?= $node->title ?></h3>
         <p class="metadata">
-            <?= count_users_going($node); ?> Going
+            <span class="tab"><?= count_users_going($node); ?> Going</span>
+            <span class="tab"><?= sizeof(get_comments($node)); ?> Comentarios</span>
         </p>
         
     </a>

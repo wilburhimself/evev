@@ -113,7 +113,9 @@ class node {
         foreach($order as $k => $v) {
             $this->db->order_by($k, $k, FALSE);
         }
-
+        $num = !empty($options['num']) ? $options['num'] : null;
+        $offset = !empty($options['offset']) ? $options['offset'] : null;
+        $this->db->limit($num, $offset);
         $r = $this->db->get()->result();
         $output = array();
 

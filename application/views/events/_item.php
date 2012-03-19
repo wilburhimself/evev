@@ -1,0 +1,1 @@
+<?php print node_display($event, 'teaser'); ?>
