@@ -2,14 +2,15 @@
     <fieldset>
         <div class="control-group">
             <div class="control-label"><?= form_label('Título', 'node-title'); ?></div>
-            <div class="controls"><?= form_input('node[title]', !empty($node) ? $node->title : null, 'id="node-title'); ?></div>
+            <div class="controls"><?= form_input('node[title]', !empty($node) ? $node->title : null, 'id="node-title"') ?></div>
         </div>
 
+        <?php if (empty($node)): ?>
         <div class="control-group">
             <div class="control-label"><?= form_label('Idioma', 'node-language'); ?></div>
             <div class="controls"><?= form_dropdown('node[language]', languages_dropdown(), !empty($node) ? $node->language : null); ?></div>
         </div>
-
+        <?php endif; ?>
          <?php
             $this->load->view('forms/'.$node_type);
         ?>

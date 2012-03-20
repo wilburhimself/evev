@@ -78,7 +78,7 @@
             <span class="weekday"><?= htmlentities(strftime('%A, %l', strtotime($node->startdate))) ?> <?= date('A', strtotime($node->startdate)) ?><br />
                 <?= htmlentities(strftime('%B', strtotime($node->startdate))) ?></span>
         </p>
-        <h3><?= $node->title ?></h3>
+        <h3><?= substr($node->title, 0, 60) ?><?= (strlen($node->title) > 60) ? '...' : null ?></h3>
         <p class="metadata">
             <span class="tab"><?= count_users_going($node); ?> Going</span>
             <span class="tab"><?= sizeof(get_comments($node)); ?> Comentarios</span>

@@ -2,11 +2,11 @@
     <fieldset>
         <div class="control-group">
             <div class="control-label"><?= form_label('Título', 'node-title'); ?></div>
-            <div class="controls"><?= form_input('node[title]', !empty($node) ? $node->title : null, 'id="node-title'); ?></div>
+            <div class="controls"><?= form_input('node[title]', !empty($node) ? $node->title : null, 'id="node-title"'); ?></div>
         </div>
 
         <div class="control-group">
-            <div class="control-label"><?= form_label('Traduciendo a '.$language_code, 'node-language'); ?></div>
+            <div class="control-label"><?= form_label('Traduciendo a '.language_name($language_code), 'node-language'); ?></div>
             <div class="controls"><?= form_hidden('node[language]', $language_code); ?></div>
         </div>
 

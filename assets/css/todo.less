@@ -9,7 +9,7 @@
 }
 .container {
     .clearfix;
-    max-width: 1018px;
+    max-width: 960px;
     min-width: 320px;
     margin: 0 auto;
     position: relative;
@@ -69,13 +69,13 @@ a {
     position: relative;
     .main-content {
         float: left;
-        width: 780px;
+        width: 800px;
 
         .item {
             display: block;
             float: left;
-            width: 158px;
-            padding: 11px;
+            width: 21%;
+            padding: 11px 1%;
             min-height: 320px;
             margin: 1% 2% 1% 0;
             background: #fff;
@@ -178,7 +178,7 @@ a {
 
     .sidebar {
        float: right;
-       width: 220px;
+       width: 158px;
        background: #d7efef;
        border: 1px solid #ccc;
        margin-top: 1em;
@@ -265,4 +265,41 @@ a {
 .section-title {
     font-size: 150%;
     margin-bottom: 1em;
+}
+
+.node-form {
+    .control-group {
+        .clearfix;
+        clear: both;
+        width: 96%;
+        margin-bottom: 1.4em;
+
+        .control-label {
+            font-weight: bold;
+            display: block;
+            padding-top: 0.8em;
+            border-top: 1px dotted #dcc;
+        }
+
+        .controls {
+            input[type=text] {
+                padding: 2%;
+                width: 96%;
+                display: block;
+            }
+            select {
+                width: 100%;
+                padding: 2em;
+            }
+            textarea {
+                padding: 2%;
+                width: 96%;
+            }
+
+        }
+    }
+}
+
+.language-name {
+    padding-right: 1.4em;
 }

@@ -42,5 +42,4 @@
 </div>
 
 <?= form_hidden('node[type]', 'business'); ?>
-<?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Negocio', 'class="btn btn-primary"');  ?>

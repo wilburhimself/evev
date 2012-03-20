@@ -1,6 +1,6 @@
 <div class="control-group">
     <div class="control-label"><?= form_label('Tipo de evento', 'event-type'); ?></div>
-    <div class="controls"><?php category_dropdown('event-type', TRUE); ?></div>
+    <div class="controls"><?php category_dropdown('event-type'); ?></div>
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Descripción', 'event-description'); ?></div>
@@ -24,7 +24,7 @@
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Dirección', 'event-address'); ?></div>
-    <div class="controls"><?= form_textarea('node[address]', !empty($node) ? $node->address : null, 'class-"input-xlarge" id="event-address"'); ?></div>
+    <div class="controls"><?= form_textarea('node[address]', !empty($node) ? $node->address : null, 'class-"no-ck" id="event-address"'); ?></div>
 </div>
 
 <div class="control-group">
@@ -48,6 +48,5 @@
 
 <<div style="clear:both;"></div>
 <?= form_hidden('node[type]', 'event'); ?>
-<?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Evento', 'class="btn btn-primary"'); ?>
  

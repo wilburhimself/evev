@@ -1,7 +1,7 @@
-<h3><?= $page_title ?></h3>
-
+<h1 class="page-title"><?= $page_title ?></h1>
+Idioma del <?= $node->type; ?>: <strong class="language-name"><?= language_name($node->language) ?></strong>
 <?php if (is_translation($node_id)): $original = get_original($node_id); ?>
-    <p>Esto es una traducción de <?= anchor($original->language.'/nodes/edit/'.$original->id, $original->title) ?></p>
+    Esto es una traducción de <?= anchor($original->language.'/nodes/edit/'.$original->id, $original->title) ?>
 <?php elseif (has_translation($node->id)): $translations = get_translations($node->id); ?>
         Traducciones: <?php foreach ($translations as $translation): ?>
             <?= anchor($translation->translation_language.'/nodes/edit/'.$translation->translation_id, $translation->translation_language); ?>

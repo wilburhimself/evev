@@ -92,7 +92,7 @@ class Nodes extends CI_Controller {
         $data['node_type'] = $node->type;
         $data['language_code'] = $language_code;
         $data['node_id'] = $node->id;
-        $data['page_title'] = 'Traduciendo '.$node->type.': '.$node->title .' de '.$node->language.' a '.$language_code;
+        $data['page_title'] = 'Traduciendo '.$node->type.': '.$node->title .' de '.language_name($node->language).' a '.language_name($language_code);
         $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
         $data['translation'] = TRUE;
         $data['yield'] = 'nodes/translate';

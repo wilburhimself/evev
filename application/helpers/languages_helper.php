@@ -14,3 +14,9 @@ function languages_dropdown() {
     }
     return $dropdown;
 }
+
+function language_name($language_code) {
+    $ci =& get_instance();
+    $ci->db->where('language_code', $language_code);
+    return $ci->db->get('languages')->row()->language_name;
+}
