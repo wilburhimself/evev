@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title><?= !empty($page_title) ? $page_title.' | ' : null; ?>TODO Events</title>
-                <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/reset.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/reset.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/todo.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('bootstrap-ui/jquery-ui-1.8.16.custom.css'); ?>" />
         <link rel="profile" href="http://microformats.org/profile/hcalendar">

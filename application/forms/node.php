@@ -14,6 +14,13 @@
             $this->load->view('forms/'.$node_type);
         ?>
         <?= !empty($node) ? anchor('node/'.$node->id.'/delete', 'Borrar', 'class="btn btn-danger"') : null; ?>
+
+        <?php if (!empty($translation)): ?>
+            <?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
+        <?php else: ?>
+            <?= form_hidden('translation[original_id]', $original_node->id) ?>
+            <?= form_hidden('translation[language_code]', $language_code) ?>
+        <?php endif; ?>
     </fieldset>
 <?php print form_close(); ?>
 

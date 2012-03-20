@@ -17,6 +17,5 @@
 </div>
     
 <?= form_hidden('node[type]', 'event'); ?>
-<?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Evento', 'class="btn btn-primary"'); ?>
  

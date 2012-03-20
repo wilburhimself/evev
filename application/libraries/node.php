@@ -11,7 +11,7 @@ class node {
     }
 
     public function load_node($id) {
-        $this->pre_query();
+        //$this->pre_query();
         $this->db->where('id', $id);
 
         $n = $this->db->get($this->tablename)->row();
@@ -74,8 +74,10 @@ class node {
     		foreach (array_keys($params) as $k) {
     			if (in_array($k, $fields_fields)) $field_params[$k] = $params[$k];
     		}
-    		$this->db->where('node_id', $id);
-    		$this->db->update($fields_table, $field_params);
+            if (!empty($field_params)) {
+                $this->db->where('node_id', $id);
+    		    $this->db->update($fields_table, $field_params);
+            }
     	} else {
     		$node_params = array();
     		foreach (array_keys($params) as $k) {

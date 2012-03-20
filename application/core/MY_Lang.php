@@ -118,6 +118,7 @@ class MY_Lang extends CI_Lang {
            $uri = $lang.'/'.$this->uri;
           }
          }
+         
 
          return $uri;
      }

@@ -24,8 +24,15 @@ class Nodes extends CI_Controller {
                 }
             }
         }
+
+        $translation = $this->input->post('is_translation');
+        if (!empty($translation) && $translation == 1) {
+            $translation_data = $this->input->post('translation');
+            add_translation($node->id, $translation_data['original_id'], $translation_data['language_code']);
+        }
+
         message('Los cambios fueron guardados');
-        redirect_back_or_default();
+        redirect($node->language.'/nodes/edit/'.$node->id);
 	}
 
     public function delete($id) {
@@ -47,7 +54,6 @@ class Nodes extends CI_Controller {
 
     public function edit($id) {
         login_required();
-
         $node = node_load($id);
         $data['node'] = $node;
         $data['node_type'] = $node->type;
@@ -61,7 +67,6 @@ class Nodes extends CI_Controller {
 
     public function manage($type=null) {
         login_required();
-
         $type_options = !empty($type) ? array($type) : null;
         $data['nodes'] = get_nodes(array('type' => $type_options));
         if (!empty($type)) $data['node_type'] = $type;
@@ -76,6 +81,21 @@ class Nodes extends CI_Controller {
         $data['node'] = $node;
         $data['page_title'] = $node->title;
         $data['yield'] = 'nodes/show';
+        $this->load->vars($data);
+        $this->load->view('base');
+    }
+
+    public function translate($id, $language_code) {
+        login_required();
+        $node = node_load($id);
+        $data['node'] = $node;
+        $data['node_type'] = $node->type;
+        $data['language_code'] = $language_code;
+        $data['node_id'] = $node->id;
+        $data['page_title'] = 'Traduciendo '.$node->type.': '.$node->title .' de '.$node->language.' a '.$language_code;
+        $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
+        $data['translation'] = TRUE;
+        $data['yield'] = 'nodes/translate';
         $this->load->vars($data);
         $this->load->view('base');
     }

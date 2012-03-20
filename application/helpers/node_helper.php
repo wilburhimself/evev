@@ -6,6 +6,15 @@ function node_form($node_type, $node=null) {
     $ci->load->view('forms/node', $data);
 }
 
+function node_translation_form($node_type, $node, $language_code) {
+    $ci =& get_instance();
+    $data['node_type'] = $node_type;
+    //$data['node'] = new node;
+    $data['original_node'] = $node;
+    $data['language_code'] = $language_code;
+    $ci->load->view('forms/node_translation', $data);
+}
+
 function node_load($id) {
     $ci =& get_instance();
     return $ci->node->load_node($id);
@@ -40,10 +49,14 @@ function search($options) {
  * teaser: For display in lists and usually will render a link to full node display
  *
  */
-
-
 function node_display($node, $op='full') {
     $ci =& get_instance();
     $template = file_exists(APPPATH.'views/nodes/display/'.$node->type.'.php') ? 'nodes/display/'.$node->type : 'nodes/display/node';
     $ci->load->view($template, array('node' => $node, 'op' => $op));
 }
+
+function link_to($node, $text=null) {
+    $text = !empty($text) ? $text : $node->title;
+    return anchor($node->language.'/node/'.$node->id, $text);
+}
+
