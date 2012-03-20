@@ -59,12 +59,13 @@
                 ?>
             </div>
             
-            <div class="comments">
+            <section class="comments">
+                <h3 class="section-title">Comentarios</h3>
                 <div class="comments-list">
                     <?= partial_collection(get_comments($node), 'comments/_item'); ?>
                 </div>
                 <?= form_for_comments($node); ?>
-            </div>
+            </section>
         </div>
 
 

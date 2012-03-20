@@ -1,19 +1,12 @@
-<h3><?= $page_title; ?></h3>
-<table class="table table-stripped">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Nombre del Negocio</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($businesses as $business): ?>
-            <tr>
-                <td><?= $business->id ?></td>
-                <td><?= anchor('business/'.$business->id, $business->title); ?></td>
-                <td><?= anchor('business/'.$business->id.'/edit', '<i class="icon-pencil"></i> Editar'); ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<h1 class="page-title">Negocios</h1>
+<?php foreach ($categories as $category):
+        if (empty_category($category->id)) continue;
+    ?>
+    <section>
+        <h3 class="section-title"><?= $category->name ?></h3>
+        <table>
+            <?= partial_collection(category_nodes($category->id), 'businesses/_item'); ?>
+        </table>
+
+    </section>
+<?php endforeach; ?>

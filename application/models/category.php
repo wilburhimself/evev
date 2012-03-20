@@ -50,4 +50,15 @@ class Category extends CI_Model {
         }
         return $output;
     }
+
+    public function category_nodes($category_id) {
+
+        $this->db->select('node_id')->where('category_id', $category_id);
+        $ids = $this->db->get('node_category')->result();
+        $output = array();
+        foreach ($ids as $id) {
+            $output[] = node_load($id->node_id);
+        }
+        return $output;
+    }
 }

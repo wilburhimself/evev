@@ -47,6 +47,7 @@ $route['^(en|es)/node/(:num)/delete'] = 'nodes/delete/$2';
 $route['node/(:num)'] = 'nodes/show/$1';
 $route['^(en|es)/node/(:num)'] = "nodes/show/$2";
 
+$route['^es/negocios'] = 'businesses';
 
 $route['login'] = 'sessions';
 /* End of file routes.php */

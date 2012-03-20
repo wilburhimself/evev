@@ -1,3 +1,4 @@
+<?php if (is_logged_in()): ?>
 <div class="side-block">
     <h3 class="side-block-title">Navegación</h3>
     <nav class="side-nav">
@@ -9,3 +10,4 @@
         </ul>
     </nav>
 </div>
+<?php endif; ?>

@@ -20,7 +20,7 @@
                 <dt>Fecha</dt>
                 <dd><?= htmlentities(strftime('%A %d de %B', strtotime($node->startdate))) ?></dd>
                 <dt>Hora</dt>
-                <dd><?= htmlentities(strftime('%l%p', strtotime($node->startdate))) ?></dd>
+                <dd><?= htmlentities(strftime('%l', strtotime($node->startdate))) ?> <?= date('A', strtotime($node->startdate)) ?></dd>
                 <?php if (!empty($node->location)): ?>
                     <dt>Lugar</dt>
                     <dd><?= node_load($node->location)->title; ?></dd>
@@ -75,7 +75,7 @@
 
         <p class="date startdate">
             <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
-            <span class="weekday"><?= htmlentities(strftime('%A, %l%p', strtotime($node->startdate))) ?><br />
+            <span class="weekday"><?= htmlentities(strftime('%A, %l', strtotime($node->startdate))) ?> <?= date('A', strtotime($node->startdate)) ?><br />
                 <?= htmlentities(strftime('%B', strtotime($node->startdate))) ?></span>
         </p>
         <h3><?= $node->title ?></h3>

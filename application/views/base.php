@@ -29,6 +29,13 @@
                     <?php $this->load->view($yield); ?>
                 </div>
                 <div class="sidebar">
+                    <nav class="side-block">
+                        <ul>
+                            <li><?= anchor('', 'Calendario') ?></li>
+                            <li><?= anchor('negocios', 'Negocios') ?></li>
+                            <li><?= anchor('feedback', 'Sugiere')  ?></li>
+                        </ul>
+                    </nav>
                     <?php !empty($sidebar) ? $this->load->view($sidebar) : $this->load->view('sidebar'); ?>
                 </div>
             </div>

@@ -30,4 +30,13 @@ function node_categories($node, $vocabulary) {
     $categories = $ci->Category->node_categories($node, $vocabulary);
     return $categories;
 }
- 
+function category_nodes($category_id) {
+    $ci =& get_instance();
+    $nodes = $ci->Category->category_nodes($category_id);
+    return $nodes;
+}
+
+function empty_category($category_id) {
+    return sizeof(category_nodes($category_id)) < 1;
+}
+
