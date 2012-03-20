@@ -2,11 +2,8 @@
     $(document).ready(function() {
         $("#event-startdate, #event-enddate, #special-startdate, #special-enddate").datetimepicker({
             dateFormat: "yy-mm-dd",
-            timeFormat: "hh:mm:ss",
-            ampm: true
+            timeFormat: "hh:mm:ss"
         });
-
-        $(".item").equalHeight();
     });
 
     var config = {
@@ -16,6 +13,6 @@
         toolbar_Full: [['Styles', 'Bold', 'Italic', 'Underline', 'SpellChecker', 'Scayt', '-', 'NumberedList', 'BulletedList'],
                         ['Link', 'Unlink'], ['Undo', 'Redo', '-', 'SelectAll']]
     }
-    $(".node-form textarea.ck").ckeditor(function() {}, config);
+    $(".node-form .ck").ckeditor(function() {}, config);
 
 })(jQuery);

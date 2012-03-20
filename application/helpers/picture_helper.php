@@ -17,6 +17,7 @@ function picture_url($picture){
    return upload_path($picture->entity_type, $picture->entity_id).$picture->filename;
 }
 function upload_to($type, $id, $field="picture") {
+    //if (empty($_FILES['picture'])) return false;
     $upload_path = prepare_path($type, $id);
     $config['upload_path'] = $upload_path;
     $config['allowed_types'] = '*';

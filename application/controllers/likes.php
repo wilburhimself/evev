@@ -5,8 +5,8 @@ class Likes extends CI_Controller {
     }
 
     public function status($id) {
-        $node = node_load($id);
         login_required();
+        $node = node_load($id);
         like_status($node);
         redirect_back_or_default();
     }
