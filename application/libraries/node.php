@@ -96,6 +96,7 @@ class node {
             $id = $node_id;
         }
         $node = node_load($id);
+        //print_r($node);
         return $node;
     }
 
@@ -114,6 +115,12 @@ class node {
         foreach($order as $k => $v) {
             $this->db->order_by($k, $k, FALSE);
         }
+        if (!empty($options['num'])) {
+            $num = $options['num'];
+        } else {
+            $num = 100;
+        }
+        $this->db->limit($num);
         $r = $this->db->get()->result();
         $output = array();
 

@@ -30,7 +30,7 @@
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Descripción', 'business-description'); ?></div>
-    <div class="controls"><?= form_textarea('node[description]', !empty($node) ? $node->description : null, 'id="business-description"'); ?></div>
+    <div class="controls"><?= form_textarea('node[description]', !empty($node) ? $node->description : null, 'id="business-description" class="ck"'); ?></div>
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Twitter Username', 'business-twitter'); ?></div>

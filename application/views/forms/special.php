@@ -18,16 +18,6 @@
     <div class="controls"><?= form_input('node[enddate]', !empty($node) ? $node->enddate : null, 'class="input-xlarge" id="special-enddate"'); ?></div>
 </div>
 
-<div class="control-group">
-    <div class="control-label"><?= form_label('Precio Original', 'special-original-price'); ?></div>
-    <div class="controls"><?= form_input('node[original_price]', !empty($node) ? $node->original_price : null, 'class="input-xlarge" id="special-original-price"'); ?></div>
-</div>
-
-<div class="control-group">
-    <div class="control-label"><?= form_label('Precio de especial', 'special-special-price'); ?></div>
-    <div class="controls"><?= form_input('node[special_price]', !empty($node) ? $node->special_price : null, 'class="input-xlarge" id="special-special-price"'); ?></div>
-</div>
-
 <?= form_hidden('node[type]', 'special'); ?>
 <?= !empty($node) ? form_hidden('id', $node->id) : null; ?>
 <?= form_submit('', 'Guardar Evento', 'class="btn btn-primary"'); ?>
