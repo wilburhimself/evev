@@ -22,18 +22,21 @@ class node {
     public function objects($params=array()) {
         $this->pre_query();
         $types = !empty($params['type']) ? $params['type'] : false;
-        $this->db->order_by('id', 'DESC');
+        //$this->db->order_by('id', 'DESC');
         
         if (!empty($types)) {
             $this->db->where_in('type', $types);
         }
         
-        $order = !empty($params['order']) ? $params['order'] : array('id' => 'DESC');
+        $order = !empty($params['order']) ? $params['order'] : array('title' => 'ASC');
         foreach($order as $k => $v) {
-            $this->db->order_by($k, $k);
+            $this->db->order_by($k, $v);
         }
 
+        $this->db->limit(1000);
+
         $result = $this->db->get($this->tablename)->result();
+
         $output = array();
         foreach ($result as $item) $output[] = $this->load_node($item->id);
         return $output;

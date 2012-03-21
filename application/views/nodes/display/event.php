@@ -72,17 +72,29 @@
 <?php else: ?>
     <a class="vevent item" href="<?= site_url('node/'.$node->id) ?>">
         <?php $pic = get_cover('event-logo', $node->id); print thumbnail($pic, 200, 200); ?>
+        <?php if (date('m', strtotime($node->startdate)) == date('m', strtotime($node->enddate))) print 'si'; ?>
+        <?php if($node->enddate == "0000-00-00 00:00:00"): ?>
+            <p class="date startdate">
+                <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
+                <span class="weekday"><?= htmlentities(strftime('%A', strtotime($node->startdate))) ?></span>
+            </p>
+            <p class="date enddate">
+                <span class="day-number"><?= date('d', strtotime($node->enddate)) ?></span>
+                <span class="weekday"><?= htmlentities(strftime('%A', strtotime($node->enddate))) ?></span>
+            </p>
+        <?php else: ?>
+            <p class="date single startdate">
+                <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
+                <span class="weekday"><?= htmlentities(strftime('%A, %l', strtotime($node->startdate))) ?> <?= date('A', strtotime($node->startdate)) ?><br />
 
-        <p class="date startdate">
-            <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
-            <span class="weekday"><?= htmlentities(strftime('%A, %l', strtotime($node->startdate))) ?> <?= date('A', strtotime($node->startdate)) ?><br />
-                <?= htmlentities(strftime('%B', strtotime($node->startdate))) ?></span>
-        </p>
+                    <?= htmlentities(strftime('%B', strtotime($node->startdate))) ?></span>
+
+            </p>
+        <?php endif; ?>
         <h3><?= substr($node->title, 0, 60) ?><?= (strlen($node->title) > 60) ? '...' : null ?></h3>
         <p class="metadata">
             <span class="tab"><?= count_users_going($node); ?> Going</span>
             <span class="tab"><?= sizeof(get_comments($node)); ?> Comentarios</span>
         </p>
-        
     </a>
 <?php endif; ?>

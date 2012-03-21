@@ -5,7 +5,7 @@
 <div class="control-group">
     <div class="control-label"><?= form_label('Ubicación', 'event-location'); ?></div>
     <div class="controls">
-        <?= form_dropdown('node[location]', node_dropdown('location'), !empty($node) ? $node->location : null, 'id="event-location'); ?>
+        <?= form_dropdown('node[location]', node_dropdown('location')) ?>
     </div>
 </div>
 <div class="control-group">
