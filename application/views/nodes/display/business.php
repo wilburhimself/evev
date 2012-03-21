@@ -1,10 +1,18 @@
+<?php
+    if (is_translation($node->id)) {
+        $original = get_original($node->id);
+        $node_id = $original->id;
+    } else {
+        $node_id = $node->id;
+    }
+?>
 <?php if ($op == 'full'): ?>
     <div class="full business">
         <div class="cover">
-            <?= thumbnail(get_cover('business-cover', $node->id), 780, 250) ?>
+            <?= thumbnail(get_cover('business-cover', $node_id), 780, 250) ?>
         </div>
         <aside>
-            <?= thumbnail(get_cover('business-logo', $node->id), 120, 120, 'loose') ?>
+            <?= thumbnail(get_cover('business-logo', $node_id), 120, 120, 'loose') ?>
             <nav>
                 <ul class="links">
                     <li><?= anchor('likes/status/'.$node->id, 'Agregar a mis favoritos'); ?></li>
@@ -43,7 +51,6 @@
             <?php endif; ?>
 
             <div class="related">
-                <h3>Eventos de <?= $node->title; ?></h3>
                 <?php $other_events = search(
                     array(
                         'type' => 'event',
@@ -55,7 +62,10 @@
                             'f.startdate' => 'ASC',
                         ),
                     ));
-                    print partial_collection($other_events, 'events/_item', array('object_name' => 'event'));
+                    if (sizeof($other_events) > 0){
+                        print '<h3>Eventos de '.$node->title.'</h3>';
+                        print partial_collection($other_events, 'events/_item', array('object_name' => 'event'));
+                    }
                 ?>
             </div>
             

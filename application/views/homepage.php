@@ -15,7 +15,7 @@
                       ));
 
         if (!empty($events)) {
-            print '<div class="month-bar"><h1>'.strftime('%B', time() + ($i * 30 * 24 * 60 * 60)).'</h1></div>';
+            print '<div class="month-bar"><h1>'.ucwords(strftime('%B', time() + ($i * 30 * 24 * 60 * 60))).'</h1></div>';
             print partial_collection($events, 'events/_item', array('object_name' => 'event'));
         }
 

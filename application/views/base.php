@@ -20,6 +20,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+
         </nav>
 
         <div class="container">
@@ -31,9 +32,9 @@
                 <div class="sidebar">
                     <nav class="side-block">
                         <ul>
-                            <li><?= anchor('', 'Calendario') ?></li>
-                            <li><?= anchor('negocios', 'Negocios') ?></li>
-                            <li><?= anchor('feedback', 'Sugiere')  ?></li>
+                            <li><?= anchor($this->lang->lang(), lang('calendar')) ?></li>
+                            <li><?= anchor($this->lang->lang().'/directory', lang('directory')) ?></li>
+                            <li><?= anchor($this->lang->lang().'/feedback', lang('suggest'))  ?></li>
                         </ul>
                     </nav>
                     <?php !empty($sidebar) ? $this->load->view($sidebar) : $this->load->view('sidebar'); ?>

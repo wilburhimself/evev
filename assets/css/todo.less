@@ -9,9 +9,6 @@
 }
 .container {
     .clearfix;
-    
-    max-width: 960px;
-    min-width: 320px;
 
     margin: 0 auto;
     position: relative;
@@ -19,14 +16,13 @@
     clear: both;
 }
 body {
-    padding: 0;
     margin: 0;
-    background: #fff;
+    background: #fff url(../images/sidebar.png) 120% 0 repeat-y;
+
     color: #444;
     font-family: Arial, "Lucida Grande", sans-serif;
     line-height: 1.4;
     font-size: 62.3%;
-
 }
 a {
     color: #000;
@@ -38,28 +34,36 @@ a {
     }
 }
 .main-nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    text-align: right;
     .clearfix;
-    background: #000;
+    background: none;
     a {
         color: #fff;
-        display: block;
+        display: inline;
 
         &.brand {
-            float: left;
-            font-size: 200%;
-            letter-spacing: 9px;
+            text-align: center;
+            font-size: 250%;
+            letter-spacing: 30px;
         }
     }
 
     ul {
-        float: right;
-
+        text-align: center;
         li {
-            float: left;
+            display: inline;
+            a {
+                display: inline;
+            }
         }
     }
     .user-control {
-        float: right;
+        display: none;
+        position: absolute;
+        right: 0;
         color: #ccc;
         a {
             display: inline;
@@ -72,12 +76,16 @@ a {
     position: relative;
     .main-content {
         float: left;
-        width: 800px;
-
+        width: 80%;
+        margin-left: 3em;
+        
+        table {
+            width: 100%;
+        }
         .item {
             display: block;
             float: left;
-            width: 21%;
+            width: 158px;
             padding: 11px 1%;
             min-height: 320px;
             margin: 1% 2% 1% 0;
@@ -105,6 +113,8 @@ a {
                 margin: 2em 0 0;
                 padding: 0;
                 clear: both;
+                position: absolute;
+                bottom: 11px;
 
                 .tab {
                     float: left;
@@ -114,10 +124,17 @@ a {
             &:hover {
                 color: inherit;
             }
-
+            .dates {
+                .clearfix;
+                margin-bottom: 1em;
+                .fullmonth {
+                    text-align: center;
+                }
+            }
             .date {
                 float: left;
                 width: 50%;
+                margin: 0;
 
                 .weekday {
                     clear: both;
@@ -133,6 +150,7 @@ a {
                         display: inline;
                     }
                 }
+
                 .day-number {
                     margin: 0 auto;
                     display: block;
@@ -147,6 +165,20 @@ a {
                     -moz-border-radius: 4px;
                     border-radius: 4px;
                     clear: both;
+                }
+
+                &.double {
+                    text-align: center;
+                    .day-number {
+                        width: 80%;
+                        text-align: center;
+                    }
+                    &.last {
+                        float: right;
+                        .day-number {
+                            float: right;
+                        }
+                    }
                 }
 
             }
@@ -207,17 +239,36 @@ a {
     }
 
     .sidebar {
-       float: right;
-       width: 158px;
-       background: #d7efef;
-       border: 1px solid #ccc;
+       position: fixed;
+       top: 6em;
+       right: 2em;
+       width: 16em;
+       
+       clear: both;
+
        margin-top: 1em;
+       
 
        nav {
+           /*margin: 1.3em 1em 1em;
+           border-radius: 4px;
+           border: 1px solid #c00;
+           -webkit-box-shadow: inset 0 0 9px rgba(0,0,0,0.5);
+
+           background: #fff;
+           */
             a {
                 display: block;
                 font-size: 220%;
                 padding: 6px;
+                color: #000;
+                background: #fff;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                -webkit-box-shadow: inset 0 0 9px rgba(0,0,0,0.5);
+                margin-bottom: 11px;
+
+                text-align: center;
             }
        }
     }
@@ -336,13 +387,12 @@ a {
 
 .month-bar {
     .clearfix;
-    background: #d7efef;
     clear: both;
-    width: 98%;
-    
+    border-bottom: 1px dotted #ccc;
+    width: 95%;
     h1 {
         font-size: 250%;
         color: #404747;
-        padding: 2%;
+        padding: 1% 2% 0.4%;
     }
 }
