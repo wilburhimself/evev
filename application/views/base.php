@@ -9,19 +9,7 @@
         <link rel="profile" href="http://microformats.org/profile/hcalendar">
     </head>
     <body>
-        <nav class="main-nav">
-            <div class="container">
-                <?= anchor('welcome', 'TODO', 'class="brand"'); ?>
-                <div class="user-control">
-                    <?php if (is_logged_in()): ?>
-                        <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>
-                    <?php else: ?>
-                        <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
-                    <?php endif; ?>
-                </div>
-            </div>
 
-        </nav>
 
         <div class="container">
             <?php show_messages(); ?>
@@ -30,7 +18,22 @@
                     <?php $this->load->view($yield); ?>
                 </div>
                 <div class="sidebar">
+                    <nav class="main-nav">
+                        <div class="container">
+                            <?= anchor('welcome', 'TODO', 'class="brand"'); ?>
+                            <div class="user-control">
+                                <?php if (is_logged_in()): ?>
+                                    <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>
+                                <?php else: ?>
+                                    <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <?php language_switcher() ?>
+                        </div>
+
+                    </nav>
                     <nav class="side-block">
+
                         <ul>
                             <li><?= anchor($this->lang->lang(), lang('calendar')) ?></li>
                             <li><?= anchor($this->lang->lang().'/directory', lang('directory')) ?></li>

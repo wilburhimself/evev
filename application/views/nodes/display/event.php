@@ -11,6 +11,8 @@
         
     <div class="vevent full">
         <?php $pic = get_cover('event-logo', $node_id); print thumbnail($pic, 780, 350); ?>
+        
+        <?php translation_links($node); ?>
         <aside>
             <?php
                 if (is_logged_in()) {
@@ -82,42 +84,42 @@
 
 <?php else: ?>
     <a class="vevent item" href="<?= site_url('node/'.$node->id) ?>">
-        <?php $pic = get_cover('event-logo', $node_id); print thumbnail($pic, 200, 200); ?>
+        <?php $pic = get_cover('event-logo', $node_id); print thumbnail($pic, 300, 300); ?>
         <div class="dates">
             <?php if(($node->enddate != "0000-00-00 00:00:00") and date('d-m', strtotime($node->startdate)) != date('d-m', strtotime($node->enddate))): ?>
                 <p class="date double startdate">
-                    <span class="day-number"><?= ucwords(date('d', strtotime($node->startdate))) ?></span>
-                    <?php if (date('m', strtotime($node->startdate)) != date("m", strtotime($node->enddate))): ?>
-                        <span class="weekday"><?= ucwords(htmlentities(strftime('%B', strtotime($node->startdate)))) ?></span>
-                    <?php endif; ?>
+                    <span class="day-number">
+                        <em class="in-name"><?= ucwords(htmlentities(strftime('%B', strtotime($node->startdate)))) ?></em>
+                        <?= ucwords(date('d', strtotime($node->startdate))) ?></span>
+                   
                 </p>
                 <p class="date double enddate last">
-                    <span class="day-number"><?= date('d', strtotime($node->enddate)) ?></span>
-                     <?php if (date('m', strtotime($node->startdate)) != date("m", strtotime($node->enddate))): ?>
-                        <span class="weekday"><?= ucwords(htmlentities(strftime('%B', strtotime($node->enddate)))) ?></span>
-                    <?php endif; ?>
+                    <span class="day-number">
+                        <em class="in-name"><?= ucwords(htmlentities(strftime('%B', strtotime($node->enddate)))) ?></em>
+                        <?= date('d', strtotime($node->enddate)) ?></span>
+
                 </p>
-                 <?php if (date('m', strtotime($node->startdate)) == date("m", strtotime($node->enddate))): ?>
-                    <div class="fullmonth"><?= ucwords(htmlentities(strftime('%B', strtotime($node->startdate)))) ?></div>
-                 <?php endif; ?>
+                 
             <?php else: ?>
                 <p class="date single startdate">
-                    <span class="day-number"><?= date('d', strtotime($node->startdate)) ?></span>
-                    <span class="weekday"><?= ucwords(htmlentities(strftime('%A, %l', strtotime($node->startdate)))) ?><?= date('A', strtotime($node->startdate)) ?>
+                    <span class="day-number"><em class="in-name"><?= ucwords(htmlentities(strftime('%B', strtotime($node->startdate)))) ?></em><?= date('d', strtotime($node->startdate)) ?></span>
+                    <span class="weekday">
+                        <strong><?= ucwords(htmlentities(strftime('%A', strtotime($node->startdate)))) ?></strong><br />
+                        <?= ucwords(htmlentities(strftime('%l:%M', strtotime($node->startdate)))) ?><?= date('A', strtotime($node->startdate)) ?>
                         <?php if(date('d-m', strtotime($node->startdate)) == date('d-m', strtotime($node->enddate))): ?>
-                            - <?= ucwords(htmlentities(strftime('%l', strtotime($node->enddate)))) ?><?= date('A', strtotime($node->enddate)) ?>
+                            - <?= ucwords(htmlentities(strftime('%l:%M', strtotime($node->enddate)))) ?><?= date('A', strtotime($node->enddate)) ?>
                         <?php endif; ?>
-                        <br />
+                        
 
-                        <?= ucwords(htmlentities(strftime('%B', strtotime($node->startdate)))) ?></span>
+
 
                 </p>
             <?php endif; ?>
         </div>
         <h3><?= substr($node->title, 0, 60) ?><?= (strlen($node->title) > 60) ? '...' : null ?></h3>
-        <p class="metadata">
+        <!-- <p class="metadata">
             <span class="tab"><?= count_users_going($node); ?> <?= lang('going') ?></span>
             <span class="tab"><?= sizeof(get_comments($node)); ?> <?= lang('comments') ?></span>
-        </p>
+        </p> -->
     </a>
 <?php endif; ?>

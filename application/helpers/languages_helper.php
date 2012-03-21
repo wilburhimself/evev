@@ -20,3 +20,10 @@ function language_name($language_code) {
     $ci->db->where('language_code', $language_code);
     return $ci->db->get('languages')->row()->language_name;
 }
+
+function language_switcher() {
+    $languages = get_languages();
+    foreach ($languages as $language) {
+        print anchor($language->language_code, $language->language_name);
+    }
+}

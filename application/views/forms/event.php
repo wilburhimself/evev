@@ -29,7 +29,7 @@
 
 <div class="control-group">
     <div class="control-label"><?= form_label('Costo / Precio', 'event-price') ?></div>
-    <div class="controls"><?= form_input('node[cost]', !empty($node) ? $node->cost : null, 'class="input-xlarge" id="event-cost"') ?></div>
+    <div class="controls"><?= form_textarea('node[cost]', !empty($node) ? $node->cost : null, 'class="no-ck input-xlarge" id="event-cost"') ?></div>
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Código de vestimenta', 'event-dress_code') ?></div>

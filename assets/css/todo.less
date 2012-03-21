@@ -9,7 +9,7 @@
 }
 .container {
     .clearfix;
-
+    box-sizing: border-box;
     margin: 0 auto;
     position: relative;
     font-size: 1.2em;
@@ -17,7 +17,6 @@
 }
 body {
     margin: 0;
-    background: #fff url(../images/sidebar.png) 120% 0 repeat-y;
 
     color: #444;
     font-family: Arial, "Lucida Grande", sans-serif;
@@ -34,10 +33,7 @@ a {
     }
 }
 .main-nav {
-    position: fixed;
-    right: 0;
-    top: 0;
-    text-align: right;
+    text-align: center;
     .clearfix;
     background: none;
     a {
@@ -48,6 +44,7 @@ a {
             text-align: center;
             font-size: 250%;
             letter-spacing: 30px;
+            display: block;
         }
     }
 
@@ -76,8 +73,8 @@ a {
     position: relative;
     .main-content {
         float: left;
-        width: 80%;
-        margin-left: 3em;
+        width: 74%;
+        margin: 0 3%;
         
         table {
             width: 100%;
@@ -87,12 +84,12 @@ a {
             float: left;
             width: 158px;
             padding: 11px 1%;
-            min-height: 320px;
-            margin: 1% 2% 1% 0;
+            min-height: 300px;
+            margin: 1% 1% 1% 0;
             background: #fff;
             position: relative;
             height: auto;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 9px rgba(0, 0, 0, 0.3);
             -webkit-border-radius: 4px;
             -mox-border-radius: 4px;
             border-radius: 4px;
@@ -135,51 +132,49 @@ a {
                 float: left;
                 width: 50%;
                 margin: 0;
+                text-align: center;
 
                 .weekday {
-                    clear: both;
                     display: block;
+                    strong {
+                        font-size: 120%;
+                    }
                 }
                 
                 &.single {
                     float: none;
                     width: 100%;
 
-                    .weekday {
-                        clear: none;
-                        display: inline;
+                    .day-number {
+                        float: left;
                     }
                 }
 
                 .day-number {
                     margin: 0 auto;
-                    display: block;
-                    float: left;
-                    padding: 4px;
-                    background: #f0f0f0;
-                    border: 1px solid #ccc;
-                    font-size: 160%;
-                    font-weight: bold;
-                    margin-right: 0.3em;
+                    display: inline-block;
+                    padding: 14px 11px 0;
+                    border: 1px solid #aaa;
+                    background: #fff url(../images/topcal.png) repeat-x 50% 0;
+                    box-shadow: inset 0 0 6px rgba(100, 100, 100, .2),0 0 3px rgba(100, 100, 100, .6);
+                    font-size: 220%;
+                    font-weight: 700;
+                    margin-right: .3em;
                     -webkit-border-radius: 4px;
                     -moz-border-radius: 4px;
                     border-radius: 4px;
                     clear: both;
+                    position: relative;
+
+                    em {
+                        font-size: 9px;
+                        color: #fff;
+                        position: absolute;
+                        top: 0;
+                    }
                 }
 
-                &.double {
-                    text-align: center;
-                    .day-number {
-                        width: 80%;
-                        text-align: center;
-                    }
-                    &.last {
-                        float: right;
-                        .day-number {
-                            float: right;
-                        }
-                    }
-                }
+               
 
             }
         }
@@ -239,17 +234,18 @@ a {
     }
 
     .sidebar {
-       position: fixed;
-       top: 6em;
-       right: 2em;
-       width: 16em;
-       
+       background: #000;
+       min-height: 100%;
+       position: absolute;
+       left: 80%;
+       top: 0;
+       width: 20%;
        clear: both;
-
-       margin-top: 1em;
+       padding-top: 1em;
+       font-size: 100%;
        
 
-       nav {
+       nav.side-block {
            /*margin: 1.3em 1em 1em;
            border-radius: 4px;
            border: 1px solid #c00;
@@ -257,9 +253,9 @@ a {
 
            background: #fff;
            */
+           margin: 2em;
             a {
                 display: block;
-                font-size: 220%;
                 padding: 6px;
                 color: #000;
                 background: #fff;
@@ -395,4 +391,8 @@ a {
         color: #404747;
         padding: 1% 2% 0.4%;
     }
+}
+
+.translations-available {
+    clear: both;
 }

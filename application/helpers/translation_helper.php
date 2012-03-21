@@ -47,3 +47,20 @@ function add_translation($translation_id, $original_id, $language_code) {
     $ci =& get_instance();
     $ci->db->insert('translations', $data);
 }
+
+function translation_links($node) {
+    print '<div class="translations-available">';
+    if (is_translation($node->id) or has_translation($node->id)) {
+        print lang('also_available').': ';
+    }
+    if (is_translation($node->id)) {
+        $original = get_original($node->id);
+        print anchor($original->language.'/node/'.$original->id, language_name($original->language));
+    } elseif (has_translation($node->id)) {
+        $translations = get_translations($node->id);
+        foreach ($translations as $translation) {
+            print anchor($translation->translation_language.'/node/'.$translation->translation_id, language_name($translation->translation_language));
+        }
+    }
+    print '</div>';
+}
