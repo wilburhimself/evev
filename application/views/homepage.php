@@ -7,6 +7,7 @@
                            'type' => 'event',
                            'conditions' => array(
                               'MONTH(f.startdate)='.date("m", time() + ($i * 30 * 24 * 60 * 60)),
+                              'f.startdate >"'.date('Y-m-d').'"'
                            ),
                            'order' => array(
                                'f.startdate' => 'ASC'

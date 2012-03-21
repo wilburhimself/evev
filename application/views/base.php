@@ -16,7 +16,7 @@
                     <?php if (is_logged_in()): ?>
                         <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>
                     <?php else: ?>
-                        <p><?= anchor('login', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
+                        <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
                     <?php endif; ?>
                 </div>
             </div>

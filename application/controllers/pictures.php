@@ -48,6 +48,7 @@
                 $data['created_at'] = time();
                 
                 foreach($_FILES as $k => $v) {
+                    if (!$v['error'] == 0) continue;
                     $f = upload_to($type, $id, $k);
 
                     if ($f) {
