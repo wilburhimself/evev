@@ -1,6 +1,6 @@
 <div class="control-group">
     <div class="control-label"><?= form_label('Tipo de evento', 'event-type'); ?></div>
-    <div class="controls"><?php category_dropdown('event-type'); ?></div>
+    <div class="controls"><?php category_dropdown('event-type', !empty($node) ? $node : null); ?></div>
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Descripción', 'event-description'); ?></div>

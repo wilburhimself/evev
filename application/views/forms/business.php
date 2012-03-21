@@ -1,6 +1,6 @@
 <div class="control-group">
     <div class="control-label"><?= form_label('Tipo de negocio', 'business-type'); ?></div>
-    <div class="controls"><?php category_dropdown('business-type'); ?></div>
+    <div class="controls"><?php category_dropdown('business-type', !empty($node) ? $node : null); ?></div>
 </div>
 <div class="control-group">
     <div class="control-label"><?= form_label('Ubicación', 'event-location'); ?></div>

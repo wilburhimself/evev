@@ -28,8 +28,9 @@ function get_nodes($options=array()) {
 function node_dropdown($type) {
     $nodes = get_nodes(array('type' => array($type)));
     $output = array();
-    foreach ($nodes as $node) $output[$node->id] = $node->title;
-
+    foreach ($nodes as $node) {
+        $output[$node->id] = $node->title;
+    }
     return $output;
 }
 

@@ -23,19 +23,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="todo.less" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/css/todo.less">
+      <file leaf-file-name="events_helper.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/helpers/events_helper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="273" column="17" selection-start="5513" selection-end="5513" vertical-scroll-proportion="0.32317072">
+            <state line="19" column="37" selection-start="639" selection-end="639" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
+      <file leaf-file-name="welcome.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="92" selection-start="3437" selection-end="3437" vertical-scroll-proportion="-25.041666">
+            <state line="30" column="25" selection-start="709" selection-end="1068" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homepage.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="13" selection-start="501" selection-end="501" vertical-scroll-proportion="-9.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="node.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="8" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/css/todo.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="321" column="21" selection-start="6471" selection-end="6471" vertical-scroll-proportion="0.9268293">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="node_helper.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/helpers/node_helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="5" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="business.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="95" selection-start="215" selection-end="215" vertical-scroll-proportion="-1.25">
               <folding />
             </state>
           </provider>
@@ -51,21 +96,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/helpers/translation_helper.php" />
-        <option value="$PROJECT_DIR$/application/helpers/node_helper.php" />
-        <option value="$PROJECT_DIR$/application/views/nodes/add.php" />
-        <option value="$PROJECT_DIR$/application/views/nodes/manage.php" />
-        <option value="$PROJECT_DIR$/application/views/nodes/translate.php" />
         <option value="$PROJECT_DIR$/application/helpers/languages_helper.php" />
         <option value="$PROJECT_DIR$/application/views/forms/node.php" />
         <option value="$PROJECT_DIR$/application/views/forms/node_translation.php" />
         <option value="$PROJECT_DIR$/application/controllers/nodes.php" />
         <option value="$PROJECT_DIR$/application/views/nodes/show.php" />
         <option value="$PROJECT_DIR$/application/views/nodes/edit.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
         <option value="$PROJECT_DIR$/application/views/forms/special.php" />
-        <option value="$PROJECT_DIR$/application/views/forms/event.php" />
         <option value="$PROJECT_DIR$/application/views/nodes/display/event.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/event.php" />
+        <option value="$PROJECT_DIR$/application/models/category.php" />
+        <option value="$PROJECT_DIR$/application/views/forms/business.php" />
+        <option value="$PROJECT_DIR$/application/helpers/category_helper.php" />
+        <option value="$PROJECT_DIR$/application/views/homepage.php" />
+        <option value="$PROJECT_DIR$/application/libraries/node.php" />
+        <option value="$PROJECT_DIR$/application/helpers/node_helper.php" />
         <option value="$PROJECT_DIR$/assets/css/todo.less" />
       </list>
     </option>
@@ -233,7 +278,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nodes" />
+              <option name="myItemId" value="forms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,33 +296,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="display" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="todo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="third_party" />
+              <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -447,55 +466,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="46" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/manage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/languages_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="54" selection-start="550" selection-end="550" vertical-scroll-proportion="0.36585367">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/translate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/show.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="74" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0651341">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/nodes/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="111" selection-start="343" selection-end="343" vertical-scroll-proportion="0.056532662">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="2655" selection-end="2655" vertical-scroll-proportion="0.8291457">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/forms/location.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -524,20 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/category_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="9" selection-start="300" selection-end="300" vertical-scroll-proportion="0.2195122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/forms/event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="37" selection-start="153" selection-end="153" vertical-scroll-proportion="0.03768844">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/nodes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="148" selection-start="3263" selection-end="3263" vertical-scroll-proportion="0.78125">
@@ -547,14 +503,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/nodes/display/event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="92" selection-start="3437" selection-end="3437" vertical-scroll-proportion="-25.041666">
+        <state line="80" column="92" selection-start="3437" selection-end="3437" vertical-scroll-proportion="0.75502515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="37" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/category_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="63" selection-start="664" selection-end="664" vertical-scroll-proportion="0.38414633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/forms/event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="92" selection-start="180" selection-end="208" vertical-scroll-proportion="0.03768844">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/events_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="37" selection-start="639" selection-end="639" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="25" selection-start="709" selection-end="1068" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/homepage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="501" selection-end="501" vertical-scroll-proportion="-9.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/node_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="5" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/node.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="8" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/forms/business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="95" selection-start="215" selection-end="215" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/todo.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="17" selection-start="5513" selection-end="5513" vertical-scroll-proportion="0.32317072">
+        <state line="321" column="21" selection-start="6471" selection-end="6471" vertical-scroll-proportion="0.9268293">
           <folding />
         </state>
       </provider>

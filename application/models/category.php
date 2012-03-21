@@ -46,7 +46,7 @@ class Category extends CI_Model {
         $categories = $this->db->get('node_category')->result();
         $output = array();
         foreach ($categories as $cat) {
-            $output[] = get_category($cat->category_id);
+            $output[$cat->category_id] = get_category($cat->category_id);
         }
         return $output;
     }

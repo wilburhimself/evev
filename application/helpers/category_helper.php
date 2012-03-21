@@ -10,17 +10,23 @@ function get_categories($vocabulary) {
     $categories = $ci->Category->get_categories($vocabulary);
     return $categories;
 }
-function category_dropdown($vocabulary, $multiple=null) {
+function category_dropdown($vocabulary, $node=null, $multiple=null) {
     $categories = get_categories($vocabulary);
     $output = array();
     foreach ($categories as $cat) {
         $output[$cat->id] = $cat->name;
     }
+    if (!empty($node)) {
+        $selected = node_categories($node, $vocabulary);
+    }
+    $sel = !empty($selected) > 0 ? reset($selected)->id : null;
+
     if (empty($multiple)) {
-        print form_dropdown('category['.$vocabulary.'][]', $output);
+        print form_dropdown('category['.$vocabulary.'][]', $output, $sel);
     } else {
         foreach ($output as $key => $value) {
-            print '<span class="checkbox-option">'.form_checkbox('category['.$vocabulary.'][]', $key).' '.$value.'</span>';
+            $sel = array_key_exists($key, $selected) ? TRUE : FALSE;
+            print '<span class="checkbox-option">'.form_checkbox('category['.$vocabulary.'][]', $key, $sel).' '.$value.'</span>';
         }
     }
 }
