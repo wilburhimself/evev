@@ -3,11 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <title><?= !empty($page_title) ? $page_title.' | ' : null; ?>TODO</title>
+        <script src="<?= site_url('assets/js/modernizr.js'); ?>"></script>
 
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/reset.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/todo.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/demo_table.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/jquery.lightbox-0.5.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('bootstrap-ui/jquery-ui-1.8.16.custom.css'); ?>" />
+
         <link rel="profile" href="http://microformats.org/profile/hcalendar">
         
 
@@ -74,6 +77,7 @@
         <script src="<?= site_url('assets/js/jquery-ui-timepicker-addon.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery.cycle.all.js'); ?>"></script>
+        <script src="<?= site_url('assets/js/jquery.lightbox-0.5.js'); ?>"></script>
         <script src="<?= site_url('ckeditor/ckeditor.js'); ?>"></script>
         <script src="<?= site_url('ckeditor/adapters/jquery.js'); ?>"></script>
         <script src="<?= site_url('assets/js/events.js'); ?>"></script>

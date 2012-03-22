@@ -17,5 +17,6 @@
 
     $(".manage-nodes").dataTable();
     $(".slideshow").cycle();
+    $(".business-pictures a").lightBox({fixedNavigation:true});
 
 })(jQuery);
