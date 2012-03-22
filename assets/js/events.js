@@ -15,4 +15,7 @@
     }
     $(".node-form .ck").ckeditor(function() {}, config);
 
+    $(".manage-nodes").dataTable();
+    $(".slideshow").cycle();
+
 })(jQuery);

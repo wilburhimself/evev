@@ -56,6 +56,10 @@ class node {
         $this->db->delete($this->tablename);
         $this->db->where('node_id', $id);
         $this->db->delete($table);
+
+        $relations_table = 'node_categories';
+        $this->db->where('node_id', $id);
+        $this->db->delete($relations_table);
     }
     
     public function node_save($params, $id=null) {

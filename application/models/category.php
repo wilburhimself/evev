@@ -11,7 +11,7 @@ class Category extends CI_Model {
 
     public function get_categories($vocabulary) {
         $this->db->where('language', $this->lang->lang())
-        ->where('vocabulary', $vocabulary);
+        ->where('vocabulary', $vocabulary)->order_by('name', 'ASC');
         return $this->db->get($this->tablename)->result();
     }
 
@@ -52,9 +52,13 @@ class Category extends CI_Model {
     }
 
     public function category_nodes($category_id) {
+        $ids = $this->db->query("SELECT n.title, c.node_id, c.category_id FROM node n, node_category c WHERE
+        c.node_id = n.id
+        AND c.category_id = {$category_id}
 
-        $this->db->select('node_id')->where('category_id', $category_id);
-        $ids = $this->db->get('node_category')->result();
+        group by n.id
+        order by n.title")->result();
+
         $output = array();
         foreach ($ids as $id) {
             $output[] = node_load($id->node_id);

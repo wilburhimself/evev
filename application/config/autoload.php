@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('node', 'database', 'session');
+$autoload['libraries'] = array('node', 'database');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('node', 'database', 'session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form', 'node', 'url', 'html', 'languages', 'dates', 'component', 'messages', 'redirect', 'picture', 'thumbnail', 'user', 'events', 'likes', 'comments', 'language', 'category', 'translation');
+$autoload['helper'] = array('form', 'node', 'url', 'html', 'languages', 'dates', 'component', 'messages', 'redirect', 'picture', 'thumbnail', 'user', 'events', 'likes', 'comments', 'language', 'category', 'translation', 'slides');
 
 
 /*

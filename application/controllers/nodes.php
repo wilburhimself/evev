@@ -99,4 +99,12 @@ class Nodes extends CI_Controller {
         $this->load->vars($data);
         $this->load->view('base');
     }
+
+    public function add_slugs() {
+        foreach($this->db->get('node')->result() as $node) {
+            $data['slug'] = strtolower(url_title($node->title));
+            $this->db->where('id', $node->id);
+            $this->db->update('node', $data);
+        }
+    }
 }

@@ -19,3 +19,4 @@ $lang['photos'] = 'Photos';
 $lang['follow_twitter'] = 'Follow us on Twitter';
 $lang['follow_facebook'] = 'Follow us on Facebook';
 $lang['also_available'] = 'Also Available in';
+$lang['news'] = 'News';

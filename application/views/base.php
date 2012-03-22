@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js">
     <head>
-        <meta charset="UTF-8" />
-        <title><?= !empty($page_title) ? $page_title.' | ' : null; ?>TODO Events</title>
+        <meta charset="utf-8" />
+        <title><?= !empty($page_title) ? $page_title.' | ' : null; ?>TODO</title>
+
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/reset.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/todo.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/demo_table.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?= site_url('bootstrap-ui/jquery-ui-1.8.16.custom.css'); ?>" />
         <link rel="profile" href="http://microformats.org/profile/hcalendar">
+        
+
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-30124726-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
     </head>
     <body>
 
@@ -14,13 +31,10 @@
         <div class="container">
             <?php show_messages(); ?>
             <div class="colwrap">
-                <div class="main-content">
-                    <?php $this->load->view($yield); ?>
-                </div>
-                <div class="sidebar">
-                    <nav class="main-nav">
+                <div class="main-nav">
                         <div class="container">
-                            <?= anchor('welcome', 'TODO', 'class="brand"'); ?>
+                            <?= anchor('welcome', 'TODO', 'class="brand"'); ?> <strong>Casa de Campo</strong>
+                           
                             <div class="user-control">
                                 <?php if (is_logged_in()): ?>
                                     <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>
@@ -31,16 +45,26 @@
                             <?php language_switcher() ?>
                         </div>
 
-                    </nav>
-                    <nav class="side-block">
+                    </div>
+                <div class="clearfix" style="clear: both;">
+                    <div class="main-content">
+                        <?php $this->load->view($yield); ?>
+                    </div>
+                    <div class="sidebar">
 
-                        <ul>
-                            <li><?= anchor($this->lang->lang(), lang('calendar')) ?></li>
-                            <li><?= anchor($this->lang->lang().'/directory', lang('directory')) ?></li>
-                            <li><?= anchor($this->lang->lang().'/feedback', lang('suggest'))  ?></li>
-                        </ul>
-                    </nav>
-                    <?php !empty($sidebar) ? $this->load->view($sidebar) : $this->load->view('sidebar'); ?>
+                        <div class="side-block">
+
+                            <ul>
+                                <li>
+                                    <h3><?= anchor($this->lang->lang(), lang('calendar')) ?></h3>
+
+                                </li>
+                                <li><?= anchor($this->lang->lang().'/directory', lang('directory')) ?></li>
+                                <li><a href="http://casadecampoliving.com/<?= $this->lang->lang() == 'es' ? 'es' : null ?>" target="_blank"><?= lang('news') ?></a></li>
+                            </ul>
+                        </div>
+                        <?php !empty($sidebar) ? $this->load->view($sidebar) : $this->load->view('sidebar'); ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,6 +72,8 @@
         <script src="<?= site_url('assets/js/jquery-1.7.1.min.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery-ui-1.8.16.custom.min.js'); ?>"></script>
         <script src="<?= site_url('assets/js/jquery-ui-timepicker-addon.js'); ?>"></script>
+        <script src="<?= site_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
+        <script src="<?= site_url('assets/js/jquery.cycle.all.js'); ?>"></script>
         <script src="<?= site_url('ckeditor/ckeditor.js'); ?>"></script>
         <script src="<?= site_url('ckeditor/adapters/jquery.js'); ?>"></script>
         <script src="<?= site_url('assets/js/events.js'); ?>"></script>

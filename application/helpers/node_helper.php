@@ -61,3 +61,8 @@ function link_to($node, $text=null) {
     return anchor($node->language.'/node/'.$node->id, $text);
 }
 
+function slug_exists($slug) {
+    $ci =& get_instance();
+    $ci->db->where('slug', $slug);
+    $result = $ci->db->get('node');
+}

@@ -13,24 +13,13 @@
             <?php translation_links($node); ?>
 
         </div>
-        <aside>
-            <?= thumbnail(get_cover('business-logo', $node_id), 120, 120, 'loose') ?>
-            <nav>
-                <ul class="links">
-                    <?php if (is_logged_in()): ?>
-                        <li><?= anchor('likes/status/'.$node->id, 'Agregar a mis favoritos'); ?></li>
-                    <?php endif; ?>
-                    <?php if ($node->twitter): ?>
-                        <li><a href="http://twitter.com/<?= $node->twitter ?>"><?= lang('follow_twitter') ?></a></li>
-                    <?php endif; ?>
-                    <?php if ($node->facebook): ?>
-                        <li><a href="<?= $node->facebook ?>"><?= lang('follow_facebook') ?></a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
-        </aside>
+        <header>
+            <h1 class="page-title"><?= $node->title ?></h1>
+        </header>
         <div class="info">
-            <h1><?= $node->title ?></h1>
+
+            <div class="description"><?= $node->description; ?></div>
+
             <dl>
                 <dt><?= lang('address') ?></dt>
                 <dd><?= nl2br($node->address) ?></dd>
@@ -47,8 +36,8 @@
                 <?php endif; ?>
             </dl>
 
-            <div class="description"><?= $node->description; ?></div>
-            <?php $photos = get_pictures('business-gallery', $node->id);
+
+            <?php $photos = get_pictures('business-gallery', $node_id);
                   if (sizeof($photos) > 0): ?>
                 <section class="business-pictures">
                     <h3><?= lang('photos') ?></h3>
@@ -76,7 +65,7 @@
                     }
                 ?>
             </div>
-            
+            <?php if (is_logged_in()): ?>
             <section class="comments">
                 <h3 class="section-title"><?= lang('comments') ?></h3>
                 <div class="comments-list">
@@ -84,6 +73,7 @@
                 </div>
                 <?= form_for_comments($node); ?>
             </section>
+            <?php endif; ?>
         </div>
 
 

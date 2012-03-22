@@ -5,7 +5,10 @@
     <section>
         <h3 class="section-title"><?= $category->name ?></h3>
         <table width="100%">
-            <?= partial_collection(category_nodes($category->id), 'businesses/_item'); ?>
+            <?php $cat = category_nodes($category->id); ?>
+            <?php if (!empty($cat)): ?>
+            <?= partial_collection($cat, 'businesses/_item'); ?>
+            <?php endif; ?>
         </table>
 
     </section>

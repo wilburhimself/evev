@@ -5,7 +5,7 @@ function thumb_path($picture, $width, $height) {
 	$image_thumb = dirname($path) . '/' . $i['filename'] . '_' . $height . '_' . $width . '.jpg';
     return $image_thumb;
 }
-function image_thumb($image_path, $height, $width) {
+function image_thumb($image_path, $height, $width, $options=array()) {
 	// Get the CodeIgniter super object
 	$CI =& get_instance();
 
@@ -41,7 +41,6 @@ function image_thumb($image_path, $height, $width) {
 		
 
 		// CONFIGURE IMAGE LIBRARY
-		
 		$config['image_library']        = 'GD2';
                 $config['source_image']         = $image_path;
                 $config['new_image']		= $image_thumb;
@@ -73,11 +72,12 @@ function image_thumb($image_path, $height, $width) {
 		
 		$CI->image_lib->clear();
 	}
-
-        return img(array(
+        $img_options = array(
             'src' => $image_thumb,
-            'alt' => ''
-        ));
+            'alt' => '',
+        );
+        if (!empty($options['type'])) $img_options['class'] = $options['type'];
+        return img($img_options);
     
 }
 
@@ -113,7 +113,9 @@ function loose_image_thumb($image_path, $height, $width) {
 }
 
 function thumbnail($picture, $width, $height, $type='strict', $default_picture="assets/images/default.png") {
+    $options = array();
     if (is_object($picture)) {
+        $options['type'] = $picture->entity_type;
         $path = picture_path($picture);
         if (!file_exists($path)) {
             $path = './'.$default_picture;
@@ -121,9 +123,10 @@ function thumbnail($picture, $width, $height, $type='strict', $default_picture="
     } else {
         $path = './'.$default_picture;
     }
+
     switch($type) {
         case 'strict':
-            return image_thumb($path, $height, $width);
+            return image_thumb($path, $height, $width, $options);
         case 'loose':
             return loose_image_thumb($path, $height, $width);
     }

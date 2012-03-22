@@ -23,7 +23,10 @@ function language_name($language_code) {
 
 function language_switcher() {
     $languages = get_languages();
+    print '<div class="language-switcher">';
     foreach ($languages as $language) {
-        print anchor($language->language_code, $language->language_name);
+
+        print anchor($language->language_code, img('assets/images/'.$language->language_code.'.png'));
     }
+    print '</div>';
 }

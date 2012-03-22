@@ -17,7 +17,7 @@
 }
 body {
     margin: 0;
-
+    background: #444;
     color: #444;
     font-family: Arial, "Lucida Grande", sans-serif;
     line-height: 1.4;
@@ -33,18 +33,26 @@ a {
     }
 }
 .main-nav {
-    text-align: center;
     .clearfix;
-    background: none;
+    margin-bottom: 2em;
+    padding-left: 2em;
+    background: url(../images/header.jpg) no-repeat;
+    color: #fff;
+    font-size: 140%;
+    font-family: "Gill Sans", "Gill Sans MT", sans-serif;
+    position: relative;
     a {
         color: #fff;
         display: inline;
 
         &.brand {
-            text-align: center;
-            font-size: 250%;
-            letter-spacing: 30px;
-            display: block;
+            font-size: 290%;
+            letter-spacing: 18px;
+
+            + strong {
+                font-size: 120%;
+                font-weight: normal;
+            }
         }
     }
 
@@ -71,6 +79,12 @@ a {
 .colwrap {
     .clearfix;
     position: relative;
+    width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    .list {
+        clear: both;
+    }
     .main-content {
         float: left;
         width: 74%;
@@ -79,12 +93,13 @@ a {
         table {
             width: 100%;
         }
+
         .item {
             display: block;
             float: left;
-            width: 158px;
+            width: 22%;
             padding: 11px 1%;
-            min-height: 300px;
+            min-height: 310px;
             margin: 1% 1% 1% 0;
             background: #fff;
             position: relative;
@@ -102,6 +117,7 @@ a {
                 margin-bottom: 1em;
             }
             h3 {
+                clear: both;
                 margin-bottom: 0.6em;
             }
             .metadata {
@@ -124,6 +140,12 @@ a {
             .dates {
                 .clearfix;
                 margin-bottom: 1em;
+                margin-right: 0;
+                width: 158px;
+                &.multiple {
+                    background: url(../images/sep.gif) no-repeat 48% 26px
+
+                }
                 .fullmonth {
                     text-align: center;
                 }
@@ -134,8 +156,13 @@ a {
                 margin: 0;
                 text-align: center;
 
+
+
                 .weekday {
                     display: block;
+                    float: right;
+                    width: 58%;
+                    font-size: 90%;
                     strong {
                         font-size: 120%;
                     }
@@ -163,7 +190,7 @@ a {
                     -webkit-border-radius: 4px;
                     -moz-border-radius: 4px;
                     border-radius: 4px;
-                    clear: both;
+                    //clear: both;
                     position: relative;
 
                     em {
@@ -180,28 +207,47 @@ a {
         }
 
         .full {
-            aside {
-                float: left;
-                width: 140px;
+            
+            .event-logo, .business-cover {
+                width: 100%;
+            }
+            header {
+                .clearfix;
+                padding-top: 2em;
+                position: relative;
+                h1 {
+                    margin: 0;
+                }
+                aside {
+                    position: absolute;
+                    right: 20px;
+                    top: -40px;
+                }
             }
             .info {
-                width: 600px;
-                float: left;
-                margin-left: 2em;
+                clear: both;
+                .dates {
+                    float: left;
+
+                    &.multiple {
+                        min-width: 13em;
+                    }
+                }
+
 
                 h1 {
-                    margin-top: 1em;
+                    margin: 1em 0;
                     font-size: 200%;
                 }
 
                 dl {
                     .clearfix;
-                    margin-top: 2em;
+                    margin: 2em 0 4em;
                     
                     dt {
                         display: block;
                         float: left;
-                        width: 200px;
+                        width: 30%;
                         clear: left;
                         padding: 6px 0 5px;
                         border-top: 1px dotted #cbb;
@@ -209,7 +255,7 @@ a {
                     dd {
                         display: block;
                         float: left;
-                        width: 400px;
+                        width: 68%;
                         padding: 6px 0 5px;
                         border-top: 1px dotted #cbb;
                     }
@@ -217,35 +263,25 @@ a {
                 .description {
                     font-size: 120%;
                     clear: both;
-                    margin: 4em 0;
+                    margin: 1em 0 2em;
                 }
-
-                .related {
-                    .item {
-                        min-height: 270px;
-                        height: auto !important;
-                        height: 270px;
-                    }
-                }
-
-
             }
         }
     }
 
     .sidebar {
-       background: #000;
+       background: #f0f0f0;
        min-height: 100%;
        position: absolute;
        left: 80%;
-       top: 0;
+       top: 81px;
        width: 20%;
        clear: both;
        padding-top: 1em;
        font-size: 100%;
        
 
-       nav.side-block {
+       .side-block {
            /*margin: 1.3em 1em 1em;
            border-radius: 4px;
            border: 1px solid #c00;
@@ -385,7 +421,6 @@ a {
     .clearfix;
     clear: both;
     border-bottom: 1px dotted #ccc;
-    width: 95%;
     h1 {
         font-size: 250%;
         color: #404747;
@@ -395,4 +430,111 @@ a {
 
 .translations-available {
     clear: both;
+}
+.slideshow {
+    .clearfix;
+    width: 100%;
+    height: 310px;
+    .slide {
+        display: block;
+        position: relative;
+        padding: 0;
+        h3 {
+            position: absolute;
+            font-size: 150%;
+            color: #fff;
+            background: #000;
+            padding: 11px;
+            top: 250px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-right: 4em;
+            background: rgba(0, 0, 0, 0.6);
+        }
+    }
+
+
+    .event-logo {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.language-switcher {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    a {
+        float: left;
+    }
+    img {
+        display: block;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+.dates {
+    .clearfix;
+    margin-bottom: 1em;
+    &.multiple {
+        background: url(../images/sep.gif) no-repeat 48% 26px
+
+    }
+    .fullmonth {
+        text-align: center;
+    }
+}
+.date {
+    float: left;
+    width: 50%;
+    margin: 0;
+    text-align: center;
+
+
+
+    .weekday {
+        display: block;
+        strong {
+            font-size: 120%;
+        }
+    }
+
+    &.single {
+        float: none;
+        width: 100%;
+
+        .day-number {
+            float: left;
+        }
+    }
+
+    .day-number {
+        margin: 0 auto;
+        display: inline-block;
+        padding: 14px 11px 0;
+        border: 1px solid #aaa;
+        background: #fff url(../images/topcal.png) repeat-x 50% 0;
+        box-shadow: inset 0 0 6px rgba(100, 100, 100, .2),0 0 3px rgba(100, 100, 100, .6);
+        font-size: 220%;
+        font-weight: 700;
+        margin-right: .3em;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        clear: both;
+        position: relative;
+
+        em {
+            font-size: 9px;
+            color: #fff;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+
+
+}
 }
