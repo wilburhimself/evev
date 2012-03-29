@@ -19,3 +19,4 @@ $lang['follow_twitter'] = 'Síguenos en Twitter';
 $lang['follow_facebook'] = 'Síguenos en Facebook';
 $lang['also_available'] = 'También disponible en';
 $lang['news'] = 'Noticias';
+$lang['happening_now'] = 'Ocurriendo ahora';

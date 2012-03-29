@@ -1,22 +1,33 @@
-<div class="slideshow">
-    <?php
-        $slides = get_slides(5);
+<?php
+    $slides = get_slides(5);
+    if (!empty($slides)) {
+        print '<div class="slideshow">';
         foreach ($slides as $node) {
-            if (is_translation($node->id)) {
-                $original = get_original($node->id);
-                $node_id = $original->id;
-            } else {
-                $node_id = $node->id;
-            } ?>
-            <a href="<?= site_url($node->language.'/node/'.$node->id) ?>" class="slide">
-                <?= thumbnail(get_cover('event-logo', $node_id), 800, 350) ?>
-                <h3><?= $node->title ?></h3>
-            </a>
+        if (is_translation($node->id)) {
+            $original = get_original($node->id);
+            $node_id = $original->id;
+        } else {
+            $node_id = $node->id;
+        } ?>
+        <a href="<?= site_url($node->language.'/node/'.$node->id) ?>" class="slide">
+            <?= thumbnail(get_cover('event-logo', $node_id), 800, 350) ?>
+            <h3><?= $node->title ?></h3>
+        </a>
 
-    <?php
+        <?php
         }
-    ?>
+        print '</div>';
+    }
+?>
+<?php
+    $hapenning = currently_happening();
+    if (!empty($hapenning)):
+?>
+<div class="list">
+    <div class="month-bar"><h1><?= lang('happening_now') ?></h1></div>
+    <?= partial_collection($hapenning, 'events/_item', array('object_name' => 'event')); ?>
 </div>
+<?php endif; ?>
 <div class="list">
 <?php
     $month = date('m');

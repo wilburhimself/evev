@@ -1,8 +1,13 @@
 <?php
 function get_slides($num=null) {
     $ci =& get_instance();
-    $ci->db->where('language', $ci->lang->lang());
-    $result = $ci->db->get('slides', $num);
+    $result = $ci->db->query('SELECT n.id, s.node_id
+        FROM node n, fields_event f, slides s
+        WHERE n.language =  "'.$ci->lang->lang().'"
+        AND s.node_id = n.id
+        AND f.startdate > NOW( )
+        AND f.node_id = n.id
+        LIMIT 0 , 30');
     $output = array();
     foreach ($result->result() as $slide) {
         $output[] = node_load($slide->node_id);

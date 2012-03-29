@@ -29,3 +29,13 @@ function count_users_going($node) {
 
     return $ci->db->get('events_going')->num_rows();
 }
+
+function currently_happening($num=null, $offset=null) {
+    $events = search(array(
+        'type' => 'event',
+        'conditions' => array(
+            'NOW() BETWEEN f.startdate AND f.enddate'
+        )
+    ));
+    return $events;
+}
