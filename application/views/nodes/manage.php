@@ -1,19 +1,19 @@
 <h1 class="page-title"><?= $page_title; ?></h1>
 <nav class="admin-submenu">
     <ul>
-        <li><?= !empty($node_type) ? anchor('nodes/add/'.$node_type, 'Agregar '.$node_type) : null; ?></li>
-        <li><?= anchor($this->lang->lang().'/nodes/manage', 'All node types') ?></li>
-        <li><?= anchor($this->lang->lang().'/nodes/manage/event', 'Eventos') ?></li>
-        <li><?= anchor($this->lang->lang().'/nodes/manage/business', 'Negocios') ?></li>
-        <li><?= anchor($this->lang->lang().'/nodes/manage/location', 'Locations') ?></li>
+        <li><?= !empty($node_type) ? anchor('nodes/add/'.$node_type, lang('add').' '.lang($node_type)) : null; ?></li>
+        <li><?= anchor($this->lang->lang().'/nodes/manage', lang('all_node_types')) ?></li>
+        <li><?= anchor($this->lang->lang().'/nodes/manage/event', lang('events')) ?></li>
+        <li><?= anchor($this->lang->lang().'/nodes/manage/business', lang('businesses')) ?></li>
+        <li><?= anchor($this->lang->lang().'/nodes/manage/location', lang('locations')) ?></li>
     </ul>
 </nav>
 <table class="table table-striped manage-nodes">
     <thead>
         <tr>
             <th>id</th>
-            <th>Título</th>
-            <th>Tipo de nodo</th>
+            <th><?= lang('title') ?></th>
+            <th><?= lang('node_type') ?></th>
             <th></th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
                 <td><?= anchor('node/'.$node->id, $node->title); ?></td>
                 <td><?= anchor($this->lang->lang().'/nodes/manage/'.$node->type, $node->type) ?></td>
                 <td>
-                    <?= anchor('nodes/edit/'.$node->id, '<i class="icon-pencil"></i> Editar');  ?>
+                    <?= anchor('nodes/edit/'.$node->id, lang('edit'));  ?>
                 </td>
             </tr>
         <?php endforeach; ?>

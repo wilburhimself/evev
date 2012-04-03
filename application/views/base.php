@@ -30,40 +30,41 @@
     </head>
     <body>
 
-
         <div class="container">
-            <?php show_messages(); ?>
+
             <div class="colwrap">
                 <div class="main-nav">
                         <div class="container">
                             <?= anchor('welcome', 'TODO', 'class="brand"'); ?> <strong>Casa de Campo</strong>
-                           
-                            <div class="user-control">
-                                <?php if (is_logged_in()): ?>
-                                    <?= $this->logged_user->username; ?> | <?= anchor('sessions/destroy', 'Salir'); ?>
-                                <?php else: ?>
-                                    <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
-                                <?php endif; ?>
-                            </div>
                             <?php language_switcher() ?>
                         </div>
 
                     </div>
                 <div class="clearfix" style="clear: both;">
                     <div class="main-content">
+                        <?php show_messages(); ?>
                         <?php $this->load->view($yield); ?>
                     </div>
                     <div class="sidebar">
 
-                        <div class="side-block">
 
+                        <div class="user-control">
+                            <?php if (is_logged_in()): ?>
+                                <?= $this->logged_user->username; ?> | <?= anchor('logout', 'Salir'); ?>
+                            <?php else: ?>
+                                <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
+                            <?php endif; ?>
+                        </div>
+
+
+                        <div class="side-block">
                             <ul>
                                 <li>
                                     <h3><?= anchor($this->lang->lang(), lang('calendar')) ?></h3>
-
                                 </li>
                                 <li><?= anchor($this->lang->lang().'/directory', lang('directory')) ?></li>
-                                <li><a href="http://casadecampoliving.com/<?= $this->lang->lang() == 'es' ? 'es' : null ?>" target="_blank"><?= lang('news') ?></a></li>
+                                <li><a href="http://casadecampoliving.com/<?= $this->lang->lang() == 'es' ? 'es' : null ?>" target="_blank">Casa de Campo Living</a></li>
+                                <li><?= anchor('feedback', lang('submit')); ?></li>
                             </ul>
                         </div>
                         <?php !empty($sidebar) ? $this->load->view($sidebar) : $this->load->view('sidebar'); ?>

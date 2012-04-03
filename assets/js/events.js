@@ -19,4 +19,18 @@
     $(".slideshow").cycle();
     $(".business-pictures a").lightBox({fixedNavigation:true});
 
+    $('.tab').hide();
+    $('.tab:first').show();
+    $('.tabs a:first').addClass('active');
+
+    $('.tabs a').click(function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        $('.tabs a').removeClass('active');
+        $(this).addClass('active');
+        $('.tab').hide();
+        $(href).show();
+
+    });
+
 })(jQuery);

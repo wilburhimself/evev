@@ -22,7 +22,7 @@
 
             <dl>
                 <dt><?= lang('address') ?></dt>
-                <dd><?= nl2br($node->address) ?></dd>
+                <dd><?= nl2br($node->address) ?>, <?= node_load($node->location)->title; ?></dd>
                 <dt><?= lang('phone') ?></dt>
                 <dd><?= $node->phone ?><br />
                 <?= $node->secondary_phone ?></dd>
@@ -54,6 +54,7 @@
                         'num' => 3,
                         'conditions' => array(
                             'f.business='.$node->id,
+                            'DAY(f.startdate) >= DAY(NOW())'
                         ),
                         'order' => array(
                             'f.startdate' => 'ASC',
@@ -65,15 +66,6 @@
                     }
                 ?>
             </div>
-            <?php if (is_logged_in()): ?>
-            <section class="comments">
-                <h3 class="section-title"><?= lang('comments') ?></h3>
-                <div class="comments-list">
-                    <?= partial_collection(get_comments($node), 'comments/_item'); ?>
-                </div>
-                <?= form_for_comments($node); ?>
-            </section>
-            <?php endif; ?>
         </div>
 
 

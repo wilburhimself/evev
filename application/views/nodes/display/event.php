@@ -95,6 +95,7 @@
                         'conditions' => array(
                             'f.business='.$node->business,
                             'n.id<>'.$node->id,
+                            'DAY(f.startdate) >= DAY(NOW())'
                         ),
                         'order' => array(
                             'f.startdate' => 'ASC',

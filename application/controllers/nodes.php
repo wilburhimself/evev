@@ -8,8 +8,49 @@ class Nodes extends CI_Controller {
         login_required();
 
 		$params = $this->input->post('node');
+        $post_id = $this->input->post('id');
+        $id = !empty($post_id) ? $post_id : null;
+
+        if ($this->form_validation->run($params['type'])) {
+            $node = $this->node->node_save($params, $id);
+
+            $categories = $this->input->post('category');
+
+            if (!empty($categories)) {
+                foreach ($categories as $key => $vocabulary) {
+                    if (!empty($vocabulary)) {
+                        $this->Category->remove_from_vocabulary($key, $node->id);
+                        foreach ($vocabulary as $term) {
+                            $this->Category->add_to_node($term, $node->id, $key);
+                        }
+                    }
+                }
+            }
+
+            $translation = $this->input->post('is_translation');
+            if (!empty($translation) && $translation == 1) {
+                $translation_data = $this->input->post('translation');
+                add_translation($node->id, $translation_data['original_id'], $translation_data['language_code']);
+            }
+
+            message('Los cambios fueron guardados');
+            redirect($node->language.'/nodes/edit/'.$node->id);
+        } else {
+            if (empty($id)) {
+                $this->add($params['type']);
+            } else {
+                $this->edit($id);
+            }
+        }
+
+
+	}
+
+    public function save_submit() {
+        $params = $this->input->post('node');
 		$post_id = $this->input->post('id');
         $id = !empty($post_id) ? $post_id : null;
+        $params['status'] = 3;
 		$node = $this->node->node_save($params, $id);
 
         $categories = $this->input->post('category');
@@ -31,9 +72,15 @@ class Nodes extends CI_Controller {
             add_translation($node->id, $translation_data['original_id'], $translation_data['language_code']);
         }
 
+        $sender = $this->input->post('sender');
+        $sender['node_id'] = $node->id;
+
+        $this->db->insert('senders', $sender);
+
         message('Los cambios fueron guardados');
-        redirect($node->language.'/nodes/edit/'.$node->id);
-	}
+        print 'bien';
+        #redirect($node->language.'/nodes/edit/'.$node->id);
+    }
 
     public function delete($id) {
         login_required();
@@ -44,6 +91,7 @@ class Nodes extends CI_Controller {
 
     public function add($type) {
         login_required();
+        $data['type'] = $type;
 
         $data['page_title'] = 'Agregar nodo tipo: '.$type;
         $data['node_type'] = $type;
@@ -57,7 +105,13 @@ class Nodes extends CI_Controller {
         $node = node_load($id);
         $data['node'] = $node;
         $data['node_type'] = $node->type;
+        $data['type'] = $node->type;
         $data['node_id'] = $node->id;
+
+        if ($node->status == 3) {
+            $data['sender'] = get_sender($node);
+        }
+
         $data['page_title'] = 'Editando '.$node->type.': '.$node->title;
         $data['sidebar'] = file_exists(APPPATH.'views/sidebars/edit_'.$node->type.'.php') ? 'sidebars/edit_'.$node->type : 'sidebar';
         $data['yield'] = 'nodes/edit';
@@ -106,5 +160,30 @@ class Nodes extends CI_Controller {
             $this->db->where('id', $node->id);
             $this->db->update('node', $data);
         }
+    }
+
+    public function submits() {
+        login_required();
+        $data['nodes'] = $this->node->objects(array('status' => 3));
+        $data['page_title'] = 'Submits';
+        $data['yield'] = 'nodes/manage';
+        $this->load->vars($data);
+        $this->load->view('base');
+    }
+
+    public function status($node_id) {
+        $node = node_load($node_id);
+        if ($node->status == 0) {
+            $data['status'] = 1;
+        } else if ($node->status == 3) {
+            $data['status'] = 1;
+        } else {
+            $data['status'] = 0;
+        }
+
+        $this->db->where('id', $node_id);
+        $this->db->update('node', $data);
+        redirect_back_or_default();
+        
     }
 }

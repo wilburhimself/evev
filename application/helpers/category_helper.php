@@ -22,6 +22,7 @@ function category_dropdown($vocabulary, $node=null, $multiple=null) {
     $sel = !empty($selected) > 0 ? reset($selected)->id : null;
 
     if (empty($multiple)) {
+        array_unshift($output, '');
         print form_dropdown('category['.$vocabulary.'][]', $output, $sel);
     } else {
         foreach ($output as $key => $value) {

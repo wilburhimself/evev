@@ -36,3 +36,24 @@ function get_user($id) {
     $ci =& get_instance();
     return $ci->User->get_user($id);
 }
+
+function is_admin($user=null) {
+    if (empty($user)) return false;
+    if (!is_logged_in()) return false;
+    return $user->user_type == 'admin' ? true : false;
+}
+
+/**
+ * A user created a node or has the permissions to edit it ...
+ *
+ * @param $user
+ * @param $node
+ * @return void
+ */
+function owns_node($user, $node) {
+    if ((is_admin($user)) or $user->id == $node->user_id) {
+        return true;
+    }
+    return false;
+    
+}

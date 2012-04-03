@@ -15,14 +15,21 @@ class node {
         $this->db->where('id', $id);
 
         $n = $this->db->get($this->tablename)->row();
+
         $n->fields = $this->_load_fields($n);
+
         return new NodeResult($n);
     }
 
     public function objects($params=array()) {
         $this->pre_query();
         $types = !empty($params['type']) ? $params['type'] : false;
-        //$this->db->order_by('id', 'DESC');
+
+        if (!empty($params['status'])) {
+            $this->db->where('status', $params['status']);
+        } else {
+            $this->db->where('status', 1);
+        }
         
         if (!empty($types)) {
             $this->db->where_in('type', $types);
@@ -92,8 +99,8 @@ class node {
     		}
             $node_params['created'] = time();
             $node_params['updated'] = time();
-            $node_params['status'] = 1;
-            $node_params['user_id'] = get_logged_user()->id;
+            $node_params['status'] = empty($node_params['status']) ? 1 : $node_params['status'];
+            $node_params['user_id'] = !empty(get_logged_user()->id) ? get_logged_user()->id : 1;
     		$this->db->insert($this->tablename, $node_params);
     		$node_id = $this->db->insert_id();
     		$field_params = array();
@@ -127,7 +134,7 @@ class node {
         if (!empty($options['num'])) {
             $num = $options['num'];
         } else {
-            $num = 100;
+            $num = 10000;
         }
         $this->db->limit($num);
         $r = $this->db->get()->result();
@@ -150,6 +157,8 @@ class NodeResult {
         $this->fields['status'] = $node->status;
         $this->fields['language'] = $node->language;
         $this->fields['type'] = $node->type;
+        $this->fields['user_id'] = $node->user_id;
+
 
         foreach ($node->fields as $k => $v) $this->$k = $v;
     }

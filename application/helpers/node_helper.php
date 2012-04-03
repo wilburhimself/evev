@@ -6,6 +6,12 @@ function node_form($node_type, $node=null) {
     $ci->load->view('forms/node', $data);
 }
 
+function submit_node_form($node_type) {
+    $ci =& get_instance();
+    $data['node_type'] = $node_type;
+    $ci->load->view('forms/submit_node', $data);
+}
+
 function node_translation_form($node_type, $node, $language_code) {
     $ci =& get_instance();
     $data['node_type'] = $node_type;
@@ -31,6 +37,7 @@ function node_dropdown($type) {
     foreach ($nodes as $node) {
         $output[$node->id] = $node->title;
     }
+    array_unshift($output, '');
     return $output;
 }
 
@@ -65,4 +72,18 @@ function slug_exists($slug) {
     $ci =& get_instance();
     $ci->db->where('slug', $slug);
     $result = $ci->db->get('node');
+}
+
+function has_sender($node) {
+    $ci =& get_instance();
+    $ci->db->where('node_id', $node->id);
+    $result = $ci->db->get('senders');
+    return $result->num_rows() == 1;
+}
+
+function get_sender($node) {
+    $ci =& get_instance();
+    $ci->db->where('node_id', $node->id);
+    $result = $ci->db->get('senders');
+    return $result->row();
 }

@@ -1,27 +1,21 @@
-<?php print form_open('nodes/save/'.$type, 'class="form-vertical node-form"'); ?>
-    <?php if (!empty($sender)): ?>
-
-        <?= anchor('nodes/status/'.$node->id, 'Publicar') ?>
-
-        <fieldset>
-            <legend><?= lang('your_personal_info') ?></legend>
-            <div class="control-group">
-                <div class="control-label"><?= form_label(lang('full_name'), 'full-name'); ?></div>
-                <div class="controls"><?= form_input('sender[fullname]', $sender->fullname, 'id="full-name"'); ?></div>
-            </div>
-            <div class="control-group">
-                <div class="control-label"><?= form_label(lang('email'), 'email-address') ?></div>
-                <div class="controls"><?= form_input('sender[email]', $sender->email, 'id="email-address"') ?></div>
-            </div>
-        </fieldset>
-
-    <?php endif; ?>
+<?php print form_open('nodes/save_submit', 'class="form-vertical node-form"'); ?>
+    <fieldset>
+        <legend><?= lang('your_personal_info') ?></legend>
+        <div class="control-group">
+            <div class="control-label"><?= form_label(lang('full_name'), 'full-name'); ?></div>
+            <div class="controls"><?= form_input('sender[fullname]', '', 'id="full-name"'); ?></div>
+        </div>
+        <div class="control-group">
+            <div class="control-label"><?= form_label(lang('email'), 'email-address') ?></div>
+            <div class="controls"><?= form_input('sender[email]', '', 'id="email-address"') ?></div>
+        </div>
+    </fieldset>
 
     <fieldset>
+        <legend>Datos</legend>
         <div class="control-group">
             <div class="control-label"><?= form_label(lang('title'), 'node-title'); ?></div>
-            <div class="controls"><?= form_input('node[title]', set_value('node[title]', !empty($node) ? $node->title : null), 'id="node-title"') ?></div>
-            <?= form_error('node[title]') ?>
+            <div class="controls"><?= form_input('node[title]', !empty($node) ? $node->title : null, 'id="node-title"') ?></div>
         </div>
 
         <?php if (empty($node)): ?>

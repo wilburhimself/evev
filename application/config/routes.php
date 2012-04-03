@@ -42,6 +42,11 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route['^(en|es)/login'] = 'sessions';
+$route['^(en|es)/logout'] = 'sessions/destroy';
+$route['^(en|es)/register'] = 'sessions/register';
+$route['^(en|es)/u/(:any)'] = 'sessions/profile/$2';
+
 // ------------ > Common to all nodes
 $route['^(en|es)/node/(:num)/delete'] = 'nodes/delete/$2';
 $route['node/(:num)'] = 'nodes/show/$1';
@@ -49,7 +54,6 @@ $route['^(en|es)/node/(:num)'] = "nodes/show/$2";
 
 $route['^(en|es)/directory'] = 'businesses';
 
-$route['login'] = 'sessions';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
 

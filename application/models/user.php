@@ -10,7 +10,7 @@ class User extends CI_Model {
     public function encrypt($string) {
         return sha1(md5(config_item('encryption_key').$string));
     }
-
+    
     /**
      * Return a requested user based on id, username or email
      * @param $id
