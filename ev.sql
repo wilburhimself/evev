@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.11.3
+-- version 3.3.9.2
 -- http://www.phpmyadmin.net
 --
--- Host: 50.63.235.34
--- Generation Time: Mar 22, 2012 at 02:38 PM
--- Server version: 5.0.92
--- PHP Version: 5.1.6
+-- Host: localhost
+-- Generation Time: Apr 04, 2012 at 03:16 PM
+-- Server version: 5.5.9
+-- PHP Version: 5.3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -26,12 +26,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE `categories` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `slug` varchar(50) NOT NULL,
   `vocabulary` varchar(100) NOT NULL,
   `language` varchar(2) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `slug` (`slug`,`vocabulary`),
   KEY `language` (`language`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
@@ -92,14 +92,14 @@ INSERT INTO `categories` VALUES(48, 'Party', 'party', 'event-type', 'en');
 --
 
 CREATE TABLE `comments` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `node_id` int(10) unsigned NOT NULL,
   `created` int(10) unsigned NOT NULL,
   `content` text NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`node_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `comments`
@@ -107,6 +107,8 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` VALUES(5, 1, 12, 1332276570, 'Genial!  Esto es algo fantastico!  ');
 INSERT INTO `comments` VALUES(6, 1, 101, 1332294155, 'Is this working?');
+INSERT INTO `comments` VALUES(7, 2, 338, 1333384331, 'Este va a ser un evento bien vacano!!!');
+INSERT INTO `comments` VALUES(8, 2, 310, 1333384889, 'Hola, esto es un comentario para que lo vea el Sr. Edward');
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,9 @@ CREATE TABLE `fields_business` (
   `twitter` varchar(75) NOT NULL,
   `facebook` varchar(100) NOT NULL,
   `location` int(11) NOT NULL,
-  PRIMARY KEY  (`node_id`),
+  `hours` text NOT NULL,
+  `website` varchar(175) NOT NULL,
+  PRIMARY KEY (`node_id`),
   KEY `location` (`location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -155,186 +159,203 @@ CREATE TABLE `fields_business` (
 -- Dumping data for table `fields_business`
 --
 
-INSERT INTO `fields_business` VALUES(5, 'Altos de Chavon', '809.523.5380', 'Restaurante y Bar con &quot;Papa Jacks Disco&quot; cada viernes y s&aacute;bado despu&eacute;s de las 10pm. &nbsp;&nbsp;<br />\n<br />\nAbierto todos los d&iacute;as: 10am &ndash; late', 'papajacks@gmail.com, papajackschavon@hotmail.com, papajackschavon@yahoo.com', '809-737-3333', 'Restaurante y Bar con "Papa Jacks Disco" cada viernes y sábado después de l', 'PapaJacksChavon  ', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 13);
-INSERT INTO `fields_business` VALUES(10, 'Casa de Campo', '809-523-2929', 'El campo de tiro de Casa de Campo es un lugar donde se pueden dar cartuchasos.', 'cdcshootingcenter@ccampo.com.do', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(11, 'Altos de la Piazzetta, Altos de Chavon, Casa de Campo, La Romana, Dominican Republic', '(809) 523-2045', 'Silgon, Inc. is a media company that develops incredible websites, publishes fantastic magazines and has a lot of really great ideas and options for marketing. If you want to promote your business, give us a call. ', 'info@silgon.net', '', '', 'silgoninc', 'https://www.facebook.com/silgoninc', 13);
-INSERT INTO `fields_business` VALUES(15, 'Av. De La Marina #54, al principio del Paseo del Mar', '809-449-3321', '&bull; Caf&eacute; Nespresso &bull; refrescos &bull;&nbsp;<br />\n<br />\nAbierto todos los d&iacute;as: 8am &ndash; 9:30pm', 'y.genao@ibinautica.com ', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(16, 'Coconut Mall', '809-523-2267 ', 'sandwiches &bull; cakes/dulces &bull; snacks /meriendas &bull; Starbucks &bull; alcoholic drinks / tragos Open /abierto: &bull; 9am&ndash;6pm (sun-thurs) &bull; 9am&ndash;8pm (fri-sat)', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(17, 'Plaza Portofino', '809-523-2382 ', 'Open/abierto: \n5pm - 12am (Monday-Thursday / Lunes - jueves) \nTuesday (closed) Martes (cerrado)\n5pm - 12am (Friday-Saturday / Viernes - sábado) \n12pm - 1am (Sunday /Domingos)', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(18, 'Plaza Portofino', '809-523-2388', '&bull; comida china &bull; delivery &bull;<br />\n<br />\n<strong>Horario</strong><br />\n&bull; 12pm - 12am:&nbsp;Martes - Domingo<br />\n&bull; Cerrado: Lunes', 'kilate01@hotmail.com ', '809-523-2387', '', '', 'http://www.facebook.com/pages/Chinois-Restaurante/183712341703761', 14);
-INSERT INTO `fields_business` VALUES(19, 'Plaza Portofino', '809-523-2343', '• Licor & wine store and bar • snacks • villa delivery service/ servicio a domicilio • \n\nOpen: \nSun – Thur/ Domo-jue, 10am - 10pm, \nFri–Sat/ Vie-sáb, 10am – 12pm', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(20, 'Plaza Portofino', '809-523-2299', '&bull; pizza &bull; pasta &bull; ensaladas &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 11am &ndash; 11pm', 'limoncello888@hotmail.com ', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(21, 'Paseo del Mar', '809-523 2529 / 5026', '• seafood/mariscos • Spanish cuisine/comida española \n\nOpen/abierto: 6pm – 11pm', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(22, 'Avenida de la Marina', '809-523-2323', '&bull; especialidad italiana &bull; pizza &bull; pasta &bull; carnes &bull; mariscos &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos&nbsp;los d&iacute;as: 10am &ndash; 10pm', 'talentoadomicilio@gmail.com', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(23, 'Plaza Portofino #15', '809-523-2227', '&bull; cocina internacional &bull; pizza &bull; pasta &bull; sushi &bull; ensaladas &bull;<br />\n<br />\n<strong>Horario</strong><br />\n12pm &ndash; 12am:&nbsp;Lunes - jueves<br />\n12pm - 1am: Viernes - domingo&nbsp;', 'peperonimarina@yahoo.com', '', '', '', 'http://www.facebook.com/profile.php?id=100003377767358', 14);
-INSERT INTO `fields_business` VALUES(24, 'Plaza Portofino', '809-523-2266', '&bull; variedad de helados &bull; malteadas &bull;<br />\n<br />\n<strong>Horario</strong><br />\n2pm &ndash; 12am: jueves &ndash; lunes<br />\nCerrado:&nbsp;martes y mi&eacute;rcoles', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(25, 'El Faro, Paseo del Mar', '809-523-2348', '&bull; bebidas &bull; noches tem&aacute;ticas<br />\n<br />\nAbierto todos los d&iacute;as: 5pm &ndash; 10pm ', 'victoryclubpianobar@hotmail.com ', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(26, 'Altos de Chavon', ' 809-523-1825', '&bull; comida italiana&nbsp;&bull; pizza &bull; pasta &bull; mariscos&nbsp;&bull; meats/carnes &bull;<br />\n<br />\n<strong>Horario:</strong><br />\n12pm -11:30pm: Viernes - Lunes :&nbsp;<br />\n5pm &ndash; 11:30pm: Martes y jueves:&nbsp;<br />\nCerrado: Mi&eacute;rcoles', 'ginoaltos@hotmail.com ', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(27, 'Altos de Chavon', '809-523-5339', '&bull; comida italiana &bull; antipasti &bull; pasta &bull; carnes &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n7pm - 11pm: jueves - domingo<br />\nCerrado: lunes - mi&eacute;rcoles', 'r.piazzetta@ccampo.com.do', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(28, 'Altos de Chavon', '809-523-1800', '&bull; comida criolla &bull; pastelitos &bull; quipes &bull; croquetas &bull; mofongo &bull;<br />\n<br />\n<strong>Horario</strong><br />\n11am-11pm: lunes - s&aacute;bado&nbsp;<br />\nCerrado: domingo&nbsp;', '', '', '', '', 'https://www.facebook.com/pages/La-Cantina-Latin-Bistro/157476107685753', 13);
-INSERT INTO `fields_business` VALUES(29, 'Altos de Chavon', '809-523-5380', '&bull; comida de bar y tragos &bull; centro nocturno &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 10am - tarde&nbsp;', 'papajackschavon@hotmail.com', '', '', 'PapaJacksChavon', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 13);
-INSERT INTO `fields_business` VALUES(30, 'Altos de Chavon', '809-523-2868 ', '&bull; comida de bar y tragos &bull; centro nocturno &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 5pm - hasta tarde<br />\n<br />\nWebsite: <a href="http://www.onnosbar.com">www.onnosbar.com</a>', 'oficinaaltosdechavon@onnosbar.com, altosdechavon@onnosbar.com', '', '', '', 'https://www.facebook.com/pages/Onnos-BarRestaurant-Altos-De-Chavon/234823459871328', 13);
-INSERT INTO `fields_business` VALUES(31, 'Altos de Chavon', '809-523-5476', '&bull; bebidas &bull; una de las mejores vistas de Casa de Campo &ndash; la del Dye Fore y el R&iacute;o Chav&oacute;n &bull;<br />\n<br />\nAbierto todos los dias: 8am - 5pm', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(32, 'Casa de Campo Hotel', '809.523-3000', '* Mediterranean cuisine •\n\nLunch: 12 md - 4 pm, Dinner: 6 - 11 pm\nBar/lounge open 9am - 1am\n', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(33, 'Golf Pro Shop', '809-523-3162', '&nbsp;&bull; sandwiches &bull; merienda &bull; tragos &bull; refrescos &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos los d&iacute;as: 9am - 7pm', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(34, 'Casa de Campo', '809-523-5266', '&bull; desayuno buffet &bull; cena a la carta &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos los d&iacute;as: 6:30am - 11pm ', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(35, 'Minitas Beach', '809-523-5146', '&bull; comida mediterr&aacute;nea &bull; pizza &bull; pasta &bull; carnes &bull; mariscos &bull; cocteles &bull; al lado del mar &bull;<br />\n<br />\n<strong>Horario</strong><br />\nAlmuerzo y meriendas: 9am &ndash; 4pm<br />\nCena: 7pm &ndash; 11pm<br />\nBar: 9am &ndash; 11pm<br />\nRestaurante cerrado los lunes', 'r.pescador@ccampo.com.do', '', '', '', 'https://www.facebook.com/pages/The-Beach-Club-by-Le-Cirque/152559590821', 144);
-INSERT INTO `fields_business` VALUES(36, 'Minitas Beach', '809-523-5144', '&bull; bebidas &bull; c&oacute;cteles &bull; comida de bar &bull;<br />\n<br />\n<strong>Horario</strong><br />\n9am -&nbsp;6pm: viernes - domingo<br />\nCerrado: lunes - jueves', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(37, 'Altos de Chavon', '809-523-2271', '* beach and resort wear/ ropa playera • jewellery/joyería • souvenirs • gifts/regakis\n\n10am - 8pm (Monday - Friday/ lunes - viernes) / 10am - 10pm (Saturday/ sábado) / 10am - 8pm (Sunday/ domingo)', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(39, 'Calle Barlovento', '809-523-2235', 'Designer high-end women&#39;s fashion boutique / boutique para damas 10am - 6pm (Monday-Thursday/ lunes - jueves) / 10am - 7pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(40, 'Calle Barlovento', '809-523-2310', 'Handmade decorative boats / botes decorativos hechos a mano\n\n10am - 6pm (Monday-Thursday/ lunes - jueves) / 1pm - 8pm (Friday-Saturday / viernes - sábado) / 10am - 6pm (Sunday/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(41, '', '809-523-2698', 'Designer Fashion Boutique / de diseñadores\n\n9am - 8pm (Monday- Thursday/ lunes - jueves) / 9am - 10pm (Friday-Saturday/ viernes-sábado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(42, 'Calle Barlovento', '809-523-2335', 'Designer sunglasses boutique/ lentes de sol por diseñadores\n\n9am - 8pm (Monday - Thursday/ lunes - jueves) / 9am - 10pm (Friday - Saturday/ viernes - sabado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(43, 'Coconut Mall', '809-523-2226', 'Mobile phone and internet services / servicios de internet y m&oacute;viles 10am - 6pm (Monday - Saturday/ lunes - s&aacute;bado), 10am - 2pm (Sundays/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(44, 'Calle Barlovento', '809-523-1841', '• outdoor and adventure sports wear • atuendos deportivos\n\n10am - 8pm (Monday - Sunday/ lunes-domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(45, '', '809-523-2275', '&bull; jewelley/joyer&iacute;a &bull; shoes/calzados &bull; 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(46, 'Calle Barlovento', '809-523-2580', '• furniture/ muebles • homeware accessories/ para el hogar • \n\n9am - 6pm (Monday - Thursday/ lunes-jueves) / 9am - 8pm (Friday/viernes) / 10am - 8pm (Saturday/sábado) / 10am - 6pm (Sunday/domingo)', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(47, '', '809-523-2301', 'Rental and sales of golf cars, bikes, pasolas/ rentas y ventas\n\n9am - 6pm (Monday-Saturday /Lunes- sábado 9am - 4pm', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(48, '', '809-523-2298', 'art • furntiure • \n\n9am - 10pm (Sunday - Thrusday/ domingo - jueves) / 9am - 12pm (Friday - Saturday/ viernes - sábado)', 'jean riocumayasa@yahoo.com ', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(49, 'Plaza Portofino', '809-523-2242', '• wines/vinos • liquors/licores • \n\n11am - 10:30pm (Monday-Friday/ lunes-viernes) / 11am - 12am (Saturday-Sunday/ sábado-domingo)', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(50, '', '809-523-2296', '• jewellery/joyería • watches/relojes • purses/carteras •\n\n10am - 9:30pm (Monday - Saturday / lunes - sábado) / 10am - 8pm (Sunday / domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(51, 'Coconut Mall', '809-523-2383', '• household hardware/eobjetos para el hogar • electronics/electrodomésticos • BBQ''s • household items/elementos• \n\n9am - 6pm (Monday- Saturday/ Lunes - sábado) / 9am - 2pm (Sunday/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(52, 'Calle Barlovento', '809-523-2275', 'Cigars/puros • cigarettes/cigarros • smoking accessories/accesorios para fumar • magazines/revistas • snacks/picadera\n\n10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(53, '', '809-523-2691', 'Men''s formal wear/ atuendos formales caballeros • chacabanas •\n\n10am - 6pm (Sunday-Thrusday) / 10am - 8pm (Friday-Saturday)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(54, '', '809-523-2304 / 2305', 'Fashion wear • decorative plates, bowls and housewear items • jewellery • purses •\n\n10am - 8pm (Monday - Sunday)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(55, '', '809-523-2507', '• Limited pharmacy items • perfumes • inflatable beach toys •\n\n10am - 8pm (Mon, Wed & Thurs/ Lun, mier, jue) / 10am - 9pm (Friday-Saturday) / 10am - 6pm (Sunday) / 9am - 8pm (Tuesday)', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(56, 'Calle Barlovento', '809-523-2237', '10am - 6pm (Monday-Saturday /Wednesday (closed) / 10am - 3pm (Sunday)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(57, '', '809-523-2300', 'antiques/ antiguedades • art/arte • collectors items/ artículos para colección •\n\n10am - 6pm (Monday-Saturday / lunes -sábbado) / (Wednesday/ miércoles - closed/ cerrado) / 10am - 3pm (Sunday/domingo)', 'torrianimauro@hotmail.com ', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(58, '', '809-523- 2287', '• swimwear/trajes de baño • beach shoes/calzado playero • bags/carteras • cover-ups •\n\nFriday-Saturday/viernes- sábado (10am - 10pm) / 10am - 8pm (Sunday - Thursday/ domingo - jueves)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(59, 'Calle Principal', '809-523-2564', '• LED lighting solutions/ soluciones luces LED •\n\n10am - 6pm (Monday - Friday/ lunes-viernes) 10am - 1pm (Saturday/sábado) / Sunday/domingo (closed/cerrado)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(60, 'Calle Barlovento', '809-523-2265', '• homeware accessories/para el hogar • gifts/regalos • jewellery/joyería • clothing/atuendos • shoes/calzado • fashion/moda \n\n10am - 8pm (Sunday - Thrusday/domingo - jueves) / 10am - 10pm (Friday-Saturday/ viernes - sábado)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(61, 'Calle Principal', '809-523-2344', '• supermarket/ supermercado • food/comida • household items/elementos del hogar • drinks/bebidas • \n\n9am - 8pm (Monday - Thursday/ lunes-jueves) / 9am - 9pm (Friday - Saturday/ viernes-sábado) / 9am - 6pm (Sunday/ domingo)', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(62, 'Calle Barlovento', '809-523-2837', 'fashion swimwear for men and boys/ trajes de baños masc.\n\n10am - 8pm (Sunday - Thursday/ domingo - jueves) / 10am - 10pm (Friday - Saturday/ viernes - sábado)\n', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(63, 'Coconut Mall', '809-550-8436 ', '• bespoke wooden furniture \n• creación de muebles de madera\n\n8:30am-5pm (mon-sat/lun-sat)\nclosed sun/cerado dom\n\nLa Romana: \nCalle 4ta, Esquina Rev. Emilio Herrera, Villa España, 22000 La Romana, Dominican Republic', 'info@rusticosymas.net', '', '', 'RusticosRD', 'https://www.facebook.com/RusticosRD', 14);
-INSERT INTO `fields_business` VALUES(64, 'Altos de Chavon', '809-523-2133', '• supermarket/supermercado •\n\n8am - 8pm (Monday-Sunday)', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(65, 'Altos de Chavon', '809-523-2027', '&bull; moda &bull;&nbsp;joyas&nbsp;&bull; souvenirs &bull; ropa &bull;<br />\n<br />\nAbierto todo los d&iacute;as: 9am&nbsp;-&nbsp;6pm&nbsp;', 'jennypolancosa@claro.net.do', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 13);
-INSERT INTO `fields_business` VALUES(66, 'Altos de Chavon', '809-523-8331 / 2066', '&bull; jewellery/joyas 9am-10pm (Monday-Saturday/ Lunes -s&aacute;bado) / 9am - 9pm (Sunday/ Domingo)', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(67, 'Altos de Chavon', '809-523-5066', '• amber larimar museum/museo • jewellery/joyas\n\n9am - 9pm (Monday/ Lunes) \n9am - 6pm (Tuesday-Sunday/ Martes - domingo) ', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(69, 'Altos de Chavon', '809-523-8111', '&bull; cigars/puros 9am - 6pm (Monday-Saturday/Lunes - s&aacute;bado) Sunday/Domingo (Closed / Cerrado)', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(70, 'Altos de Chavon', '809-523-5353', '&bull; pottery/cer&aacute;micas&nbsp;<br />\n&bull; textiles<br />\n&bull; homeware accessories/ accesorios del hogar<br />\n&bull; 9am - 5pm (Monday-Sunday / Lunes -domingo)', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(71, 'Altos de Chavon', '809.523.3333 EXT.5479', '&bull; atuendos golf&nbsp;&bull; golf accesorios &bull;&nbsp;<br />\n<br />\nAbierto&nbsp;todos los d&iacute;as: 7:30am - 5:30pm', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(72, 'Altos de Chavon', '809.523.5337', '&bull; embroidered linens/ linos bordados 9:30am-8:40pm (Thursdays-Mondays/ Jue-Lun) 9:30am - 6pm (Tuesdays and Wednesdays/ Mar y mier)', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(73, 'Casa de Campo Hotel', '809.523.3333 Ext. 2165', 'Fashion boutique/tienda de moda\nOpening hours: 9am - 9pm (Monday - Sundays)\n', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(74, 'Casa de Campo Hotel', '809.523.3333 Ext. 2166', 'Essentials • personal items/artículos personales •\nOpening hours/ Horarios: 9am - 9pm (Monday - Sundays / Lunes - domingo )\n', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(75, 'Casa de Campo Hotel', '809.523.3333 Exts. 8129 / 8179', 'Opening hours/ Horarios: 8am - 6pm (Monday - Friday/ Lunes - vienres) / 8am - 3pm (Saturday/S&aacute;bado) / Sundays / Domingos (closed/ cerrado) ', 'm.taylor@costasur.com.do ', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(76, 'Casa de Campo Hotel', '809.523.5185', 'One of the Caribbean''s most complete facilities!\n\nOpen daily/abierto diaramente: 6am - 9pm\n\n• Entry/entrada: US$11 (free for hotel guests/gratis para huéspedes) • Personal training/entrenamiento personal (US$45) • Kick-boxing (US$17) • golf training/entrenamiento de golf (US$45) • Spinning (US$35) • \n', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(77, 'Casa de Campo Hotel', '809.523.8224', 'Opening hours/ horarios: 10am - 6:30pm (Monday-Saturday/lunes-sábado), Sunday/Domingo (Closed/cerrado) \n', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(78, 'Calle Barlovento', '809.523.2381', 'Opening hours/horario: 9am - 7:30pm (Monday - Saturday/Lunes - sábado), 9am - 6pm(Sundays/ Domingo)\n', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(79, 'Calle Barlovento #5', '809-523-7080', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes)\n/9am-1pm (Saturday/sábado) / (Sunday/ domingo) (Closed/cerrado)	\n', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(80, 'Ave. Santa Rosa de Lima, Esq. General Luperón, La Romana', '(809)556-2181 / (809)556-2183', 'Lunes a Viernes de 8:30 A.M a 4:30 P.M.\nSábados de 9:00 A.M. a 1:00 P.M', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(81, 'Calle Barlovento #41', '809-523-7070 / 2364', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes) /9am-1pm(Saturday/sábado), Sunday/domingo(closed/cerrado)	', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(82, 'Coconut Mall, #6 & #7', ' 809-523-7088', 'Opening times/ horarios: 9am-5pm(Monday-Fridays/ lunes-viernes) /9am-2pm(Saturday/sábado), Sunday (closed) 	\n\n', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(83, 'Cerca de la entrada principal de Casa de Campo', '809.523.3333 Ext. 1818', 'Abierto diariamente: 7am - 9pm&nbsp;', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(84, 'Batey #1, Central Romana, La Romana', '809.523.8695', '', '', '', '', '', '', 150);
-INSERT INTO `fields_business` VALUES(85, 'Casa de Campo Hotel', '809.523.3333 ext.3127', 'La enfermer&iacute;a del hotel&nbsp;Casa de Campo', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(86, 'Casa de Campo Hotel', '809.523.3333 ext.3165/2106/3194', '', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(87, '', '809.523.5193/5194', '', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(88, '', '', '', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(89, 'Casa de Campo Hotel', '809.523.8077/ 2079/ 2080/ 2161', 'Villa Owners Club', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(90, 'Av. De la Marina #9', '809-523-2288', 'Opening hours/horario : 9am - 5pm (Monday-Sunday/lunes-domingo)\n', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(91, '', '809-523-3333 EXT. 3188', 'Hotel laundry service/\nOpening hours/horarios: 8am-5pm (Monday-Friday/lunes-viernes) 8am-12pm (Saturday/sábado), Sunday/domingo (closed/cerrado)\n', '', '', '', '', '', 96);
-INSERT INTO `fields_business` VALUES(92, 'Calle del Faro #25', '809-523-2278', '', 'g.f.fini@gmail.com', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(93, 'Coconut Mall', '809-523-8297', '', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(94, 'Coconut Mall', '809-523-2221', '', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(95, '', '809-523-2739', 'Sailing School http://www.scuolavela.com/', '', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(98, 'Casa de Campo Hotel', '8095233333', '', 'res1@ccampo.com.do', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(99, 'Casa de Campo', '8095233333', '', '', '', '', '', '', 0);
-INSERT INTO `fields_business` VALUES(100, '', '8095238115', '', '', '', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(102, 'Casa de Campo Polo', '809.523.8951', '', '', '', '', '', 'https://www.facebook.com/casadecampopolo', 144);
-INSERT INTO `fields_business` VALUES(108, '', '', '', '', '', '', '', '', 13);
-INSERT INTO `fields_business` VALUES(147, 'Gustavo Mejia Ricart #74', '809.732.0230', 'Bar/club ubicado&nbsp;en Santo Domingo y organizador de varias fiestas adentro del complejo de Casa de Campo.&nbsp;<br />\n<br />\n<br />\nWebsite: <a href="http://www. praia.com.do">www. praia.com.do</a>', 'info@praia.com.do', '', '', '', 'https://www.facebook.com/pages/PRAIA/144113945598937', 7);
-INSERT INTO `fields_business` VALUES(175, 'Gustavo Mejia Ricart #74', '809.732.0230', 'Bar/nightclub located in Santo Domingo and the organizers of various parties inside Casa de Campo.<br />\n<br />\nWebsite:&nbsp;<a href="http://www. praia.com.do">www.praia.com.do</a>', 'info@praia.com.do', '', '', '', 'https://www.facebook.com/pages/PRAIA/144113945598937', 173);
-INSERT INTO `fields_business` VALUES(176, '', '', '', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(177, 'Casa de Campo Polo', '809.523.8951', '', '', '', '', '', 'https://www.facebook.com/casadecampopolo', 169);
-INSERT INTO `fields_business` VALUES(178, '', '8095238115', '', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(179, '', '809-523-2739', 'Sailing School http://www.scuolavela.com/', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(180, 'Coconut Mall', '809-523-2221', '', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(181, 'Coconut Mall', '809-523-8297', '', '', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(182, 'Calle del Faro #25', '809-523-2278', '', 'g.f.fini@gmail.com', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(183, '', '809-523-3333 EXT. 3188', '<strong>Opening hours: </strong><br />\nMonday-Friday - 8am-5pm&nbsp;<br />\nSaturday - 8am-12pm<br />\nSunday - Closed', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(184, 'Av. De la Marina #9', '809-523-2288', 'Monday-Sunday: &nbsp;9am - 5pm', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(185, '', '809.523.5193/', '', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(186, '', '809.523.5193', '', '', '809.523.5194', '', '', 'https://www.facebook.com/oca.acceso', 169);
-INSERT INTO `fields_business` VALUES(187, 'Casa de Campo Hotel', '809.523.3333 ext.3127', 'The&nbsp;First Aid / Nurses Station for the Casa de Campo hotel', '', '', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(188, 'Altos de Chavon', '809-523-2027', '&bull; fashion clothing, &nbsp;jewellery&nbsp;&amp; souvenirs&nbsp;<br />\n<br />\n9am&nbsp;-&nbsp;6pm&nbsp;Monday-Sunday', '', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 172);
-INSERT INTO `fields_business` VALUES(189, 'Altos de Chavon', '809-523-2027', '&bull; fashion &bull; clothing &bull; jewellery&nbsp;&bull; souvenirs &bull;<br />\n<br />\nOpen daily: 9am&nbsp;-&nbsp;6pm', 'jennypolancosa@claro.net.do', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 172);
-INSERT INTO `fields_business` VALUES(190, 'Altos de Chavon', '809-523-8331 / 2066', '&bull; joyas&nbsp;/ jewlerry<br />\n9am-10pm&nbsp;Lunes -s&aacute;bado<br />\n9am - 9pm Domingo', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(191, 'Altos de Chavon', '809-523-5066', '&bull; amber larimar museum/museo<br />\n&bull; jewellery/joyas<br />\n<br />\n9am - 9pm&nbsp;Monday<br />\n9am - 6pm&nbsp;Tuesday-Sunday', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(192, 'Altos de Chavon', '809-523-8111', '&bull; cigars&nbsp;<br />\n<br />\n9am - 6pm&nbsp;Monday-Saturday<br />\nSunday Closed', '', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(193, 'Altos de Chavon', '809-523-5353', '&bull; pottery/cer&aacute;micas&nbsp;<br />\n&bull; textiles<br />\n&bull; homeware accessories/ accesorios del hogar<br />\n&bull; 9am - 5pm (Monday-Sunday / Lunes -domingo)', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(194, 'Altos de Chavon', '809.523.3333 EXT.5479', '&bull; golf wear&nbsp;&bull; golf accessories &bull;<br />\n<br />\nOpen daily: 7:30am - 5:30pm', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(195, 'Altos de Chavon', '809.523.5337', '&bull; embroidered linens/ linos bordados 9:30am-8:40pm (Thursdays-Mondays/ Jue-Lun) 9:30am - 6pm (Tuesdays and Wednesdays/ Mar y mier)', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(196, 'Casa de Campo Hotel', '809.523.3333 Ext. 2165', 'Fashion boutique/tienda de moda Opening hours: 9am - 9pm (Monday - Sundays) ', '', '', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(197, 'Near the main entrance', '809.523.3333 Ext. 1818', 'Open daily: 7am - 9pm&nbsp;', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(198, 'Coconut Mall, #6 & #7', ' 809-523-7088', 'Opening times/ horarios: 9am-5pm(Monday-Fridays/ lunes-viernes) /9am-2pm(Saturday/s&aacute;bado), Sunday (closed) ', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(199, 'Calle Barlovento #41', '809-523-7070 / 2364', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes) /9am-1pm(Saturday/s&aacute;bado), Sunday/domingo(closed/cerrado) ', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(200, 'Casa de Campo Hotel', '809.523.8224', 'Opening hours/ horarios: 10am - 6:30pm (Monday-Saturday/lunes-s&aacute;bado), Sunday/Domingo (Closed/cerrado) ', '', '', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(201, 'Casa de Campo Hotel', '809.523.5185', 'One of the Caribbean&#39;s most complete facilities! Open daily/abierto diaramente: 6am - 9pm &bull; Entry/entrada: US$11 (free for hotel guests/gratis para hu&eacute;spedes) &bull; Personal training/entrenamiento personal (US$45) &bull; Kick-boxing (US$17) &bull; golf training/entrenamiento de golf (US$45) &bull; Spinning (US$35) &bull; ', '', '', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(202, 'Casa de Campo Hotel', '809.523.3333 Exts. 8179', 'Opening hours/ Horarios: 8am - 6pm (Monday - Friday/ Lunes - vienres) / 8am - 3pm (Saturday/S&aacute;bado) / Sundays / Domingos (closed/ cerrado) ', 'm.taylor@costasur.com.do ', '809.523.3333 Exts. 8129', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(203, 'Casa de Campo Hotel', '809.523.3333 Ext. 2166', 'Essentials &bull; personal items/art&iacute;culos personales &bull; Opening hours/ Horarios: 9am - 9pm (Monday - Sundays / Lunes - domingo ) ', '', '', '', '', '', 170);
-INSERT INTO `fields_business` VALUES(204, 'Altos de Chavon', '809-523-2133', '&bull; supermarket/supermercado &bull; 8am - 8pm (Monday-Sunday)', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(205, 'Coconut Mall', '809-550-8436 ', '&bull; bespoke wooden furniture &bull; creaci&oacute;n de muebles de madera 8:30am-5pm (mon-sat/lun-sat) closed sun/cerado dom La Romana: Calle 4ta, Esquina Rev. Emilio Herrera, Villa Espa&ntilde;a, 22000 La Romana, Dominican Republic', 'info@rusticosymas.net', '', '', 'RusticosRD', 'https://www.facebook.com/RusticosRD', 171);
-INSERT INTO `fields_business` VALUES(206, 'Calle Barlovento', '809-523-2837', 'fashion swimwear for men and boys/ trajes de ba&ntilde;os masc. 10am - 8pm (Sunday - Thursday/ domingo - jueves) / 10am - 10pm (Friday - Saturday/ viernes - s&aacute;bado) ', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(208, 'Calle Principal', '809-523-2344', '&bull; supermarket/ supermercado &bull; food/comida &bull; household items/elementos del hogar &bull; drinks/bebidas &bull; 9am - 8pm (Monday - Thursday/ lunes-jueves) / 9am - 9pm (Friday - Saturday/ viernes-s&aacute;bado) / 9am - 6pm (Sunday/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(209, 'Calle Barlovento', '809-523-2265', '&bull; homeware accessories/para el hogar &bull; gifts/regalos &bull; jewellery/joyer&iacute;a &bull; clothing/atuendos &bull; shoes/calzado &bull; fashion/moda 10am - 8pm (Sunday - Thrusday/domingo - jueves) / 10am - 10pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(210, 'Calle Principal', '809-523-2564', '&bull; LED lighting solutions/ soluciones luces LED &bull; 10am - 6pm (Monday - Friday/ lunes-viernes) 10am - 1pm (Saturday/s&aacute;bado) / Sunday/domingo (closed/cerrado)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(211, '', '809-523- 2287', '&bull; swimwear/trajes de ba&ntilde;o &bull; beach shoes/calzado playero &bull; bags/carteras &bull; cover-ups &bull; Friday-Saturday/viernes- s&aacute;bado (10am - 10pm) / 10am - 8pm (Sunday - Thursday/ domingo - jueves)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(212, '', '809-523-2300', 'antiques/ antiguedades &bull; art/arte &bull; collectors items/ art&iacute;culos para colecci&oacute;n &bull; 10am - 6pm (Monday-Saturday / lunes -s&aacute;bbado) / (Wednesday/ mi&eacute;rcoles - closed/ cerrado) / 10am - 3pm (Sunday/domingo)', 'torrianimauro@hotmail.com ', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(213, 'Calle Barlovento', '809-523-2237', '10am - 6pm (Monday-Saturday /Wednesday (closed) / 10am - 3pm (Sunday)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(214, '', '809-523-2304 / 2305', 'Fashion wear &bull; decorative plates, bowls and housewear items &bull; jewellery &bull; purses &bull; 10am - 8pm (Monday - Sunday)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(215, '', '809-523-2691', 'Men&#39;s formal wear/ atuendos formales caballeros &bull; chacabanas &bull; 10am - 6pm (Sunday-Thrusday) / 10am - 8pm (Friday-Saturday)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(216, 'Calle Barlovento', '809-523-2275', 'Cigars/puros &bull; cigarettes/cigarros &bull; smoking accessories/accesorios para fumar &bull; magazines/revistas &bull; snacks/picadera 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(217, 'Coconut Mall', '809-523-2383', '&bull; household hardware/eobjetos para el hogar &bull; electronics/electrodom&eacute;sticos &bull; BBQ&#39;s &bull; household items/elementos&bull; 9am - 6pm (Monday- Saturday/ Lunes - s&aacute;bado) / 9am - 2pm (Sunday/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(218, '', '809-523-2296', '&bull; jewellery/joyer&iacute;a &bull; watches/relojes &bull; purses/carteras &bull; 10am - 9:30pm (Monday - Saturday / lunes - s&aacute;bado) / 10am - 8pm (Sunday / domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(219, '', '809-523-2298', 'art &bull; furntiure &bull; 9am - 10pm (Sunday - Thrusday/ domingo - jueves) / 9am - 12pm (Friday - Saturday/ viernes - s&aacute;bado)', 'jean riocumayasa@yahoo.com ', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(220, '', '809-523-2301', 'Rental and sales of golf cars, bikes, pasolas/ rentas y ventas 9am - 6pm (Monday-Saturday /Lunes- s&aacute;bado 9am - 4pm', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(221, '', '809-523-2275', '&bull; jewelley/joyer&iacute;a &bull; shoes/calzados &bull; 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(222, 'Calle Barlovento', '809-523-1841', '&bull; outdoor and adventure sports wear &bull; atuendos deportivos 10am - 8pm (Monday - Sunday/ lunes-domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(223, 'Coconut Mall', '809-523-2226', 'Mobile phone and internet services / servicios de internet y m&oacute;viles 10am - 6pm (Monday - Saturday/ lunes - s&aacute;bado), 10am - 2pm (Sundays/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(224, 'Calle Barlovento', '809-523-2335', 'Designer sunglasses boutique/ lentes de sol por dise&ntilde;adores 9am - 8pm (Monday - Thursday/ lunes - jueves) / 9am - 10pm (Friday - Saturday/ viernes - sabado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(225, '', '809-523-2698', 'Designer Fashion Boutique / de dise&ntilde;adores 9am - 8pm (Monday- Thursday/ lunes - jueves) / 9am - 10pm (Friday-Saturday/ viernes-s&aacute;bado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(226, 'Calle Barlovento', '809-523-2310', 'Handmade decorative boats / botes decorativos hechos a mano 10am - 6pm (Monday-Thursday/ lunes - jueves) / 1pm - 8pm (Friday-Saturday / viernes - s&aacute;bado) / 10am - 6pm (Sunday/ domingo)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(227, 'Calle Barlovento', '809-523-2235', 'Designer high-end women&#39;s fashion boutique / boutique para damas 10am - 6pm (Monday-Thursday/ lunes - jueves) / 10am - 7pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(228, 'Minitas Beach', '809-523-5144', '&bull; drinks &bull; cocktails &bull; bar food &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n9am &ndash; 6pm: Friday &ndash; Sunday<br />\nClosed: Monday &ndash; Thursday', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(229, 'Batey #1, Central Romana, La Romana', '809.523.8695', '', '', '', '', '', '', 168);
-INSERT INTO `fields_business` VALUES(230, 'Minitas Beach', '809-523-5146', '&bull; Mediterranean food &bull; &nbsp;pizza &bull; pasta &bull; meats &bull; seafood &bull; fine wines &bull; cocktails &bull; ocean-side dining on the beach &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\nLunch, bar food: 9am &ndash; 4pm<br />\nDinner: 7pm &ndash; 11pm<br />\nBar: 9am &ndash; 11pm<br />\nRestaurant closed: Mondays', 'r.pescador@ccampo.com.do', '', '', '', 'https://www.facebook.com/pages/The-Beach-Club-by-Le-Cirque/152559590821', 169);
-INSERT INTO `fields_business` VALUES(231, 'Casa de Campo', '809-523-5266', '&bull; buffet style breakfasts &bull; dinner &quot;a la carte&quot; &bull;<br />\n<br />\nOpen daily: 6:30am - 11pm ', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(232, 'Golf Pro Shop', '809-523-3162', '&bull; sandwiches &bull; snacks &bull; drinks &bull;<br />\n<br />\nOpen daily: 9am - 7pm', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(233, 'Altos de Chavon', '809-523-5476', '&bull; drinks &bull; one of the best views in Casa de Campo &ndash; over the Dye Fore and Chav&oacute;n River &bull;<br />\n<br />\nOpen daily: 8am - 5pm', '', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(234, 'Altos de Chavon', '809-523-2868 ', '&bull; bar food and drinks&nbsp;&bull; late night partying&nbsp;&bull;<br />\n<br />\nOpen daily: 5pm- late<br />\n<br />\nWebsite: <a href="http://www.onnosbar.com">www.onnosbar.com</a>', 'oficinaaltosdechavon@onnosbar.com, altosdechavon@onnosbar.com', '', '', '', 'https://www.facebook.com/pages/Onnos-BarRestaurant-Altos-De-Chavon/234823459871328', 172);
-INSERT INTO `fields_business` VALUES(236, 'Altos de Chavon', '809-523-1800', '&bull; Caribbean/latin food and snacks &bull; pastelitos &bull; quipes &bull; croquetas &bull; mofongo &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n11am &ndash; 11pm: Monday &ndash; Saturday<br />\nClosed: Sundays<br />\n<br />\n<br />\n<br />\n', '', '', '', '', 'https://www.facebook.com/pages/La-Cantina-Latin-Bistro/157476107685753', 172);
-INSERT INTO `fields_business` VALUES(237, 'Altos de Chavon', '809-523-5339', '&bull; fine Italian dining&nbsp;&bull; antipasti &bull; pasta &bull; meats &bull; seafood &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n7pm - 11pm: abierto: Thursdays - Sundays<br />\nClosed: Monday - Wednesday', 'r.piazzetta@ccampo.com.do', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(238, 'Altos de Chavon', ' 809-523-1825', '&bull; fine Italian dining&nbsp;&bull; pizza &bull; pasta &bull; seafood &bull; meats &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n12pm &ndash; 11:30pm: Friday &ndash; Monday<br />\n5pm &ndash; 11:30pm: Tuesdays and Thursdays<br />\nClosed: Wednesdays<br />\n<br />\n', 'ginoaltos@hotmail.com ', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(239, 'The Lighthouse, Paseo del Mar', '809-523-2348', '&bull; drinks &bull; <span style="white-space: nowrap;">theme nights &bull;&nbsp;</span><br />\n<br />\nOpen daily: 5pm &ndash; 10pm ', 'victoryclubpianobar@hotmail.com ', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(240, 'Plaza Portofino', '809-523-2266', '&bull; variety of ice creams &bull; soft drinks &bull;&nbsp;<br />\n<br />\n<strong>Opening Times</strong><br />\n2pm &ndash; 12am: Thursday &ndash; Monday<br />\nClosed: Tuesdays and Wednesdays<br />\n<br />\n', '', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(241, 'Plaza Portofino #15', '809-523-2227', '&bull; international cuisine &bull; pizza &bull; pasta &bull; sushi &bull; salads &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n12pm &ndash; 12am: Monday &ndash; Thursday<br />\n12pm &ndash; 1am: Friday and Sunday', 'peperonimarina@yahoo.com', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(242, 'Calle Principal', '809-523-2323', '&bull; Italian specialities&nbsp;&bull; pizza &bull; pasta &bull; meats&nbsp;&bull; seafood &bull;<br />\n<br />\nOpen daily: 10am &ndash; 10pm', 'talentoadomicilio@gmail.com', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(243, 'Plaza Portofino', '809-523-2299', '&bull; pizza &bull; pasta &bull; salads &bull;<br />\n<br />\nOpen daily: 11am &ndash; 11pm', 'limoncello888@hotmail.com ', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(244, 'Plaza Portofino', '809-523-2388', '&bull; Chinese food &bull;&nbsp;take-away &bull;<br />\n<br />\n<strong>Opening times</strong><br />\n&bull; 12pm - 12am: (Tuesday - Sunday)<br />\n&bull; Closed: Sunday', 'kilate01@hotmail.com ', '809-523-2387', '', '', 'http://www.facebook.com/pages/Chinois-Restaurante/183712341703761', 171);
-INSERT INTO `fields_business` VALUES(245, 'Avenida de la Marina #54, at the start of the Paseo del Mar', '809-449-3321', '&bull; Nespresso coffee &bull; soft drinks &bull;&nbsp;<br />\n<br />\nOpen:&nbsp;8am &ndash; 9:30pm', 'y.genao@ibinautica.com ', '', '', '', '', 171);
-INSERT INTO `fields_business` VALUES(246, 'Altos de la Piazzetta, Altos de Chavon, Casa de Campo, La Romana, Dominican Republic', '(809) 523-2045', 'Silgon, Inc. is a media company that develops incredible websites, publishes fantastic magazines and has a lot of really great ideas and options for marketing. If you want to promote your business, give us a call. ', 'info@silgon.net', '', '', 'silgoninc', 'https://www.facebook.com/silgoninc', 172);
-INSERT INTO `fields_business` VALUES(247, 'Casa de Campo', '809-523-2929', 'El campo de tiro de Casa de Campo es un lugar donde se pueden dar cartuchasos.', 'cdcshootingcenter@ccampo.com.do', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(248, 'Altos de Chavon', '809.523.5380', '<span style="white-space: nowrap;">Bar and restaurant with the&nbsp;</span>&quot;Papa Jacks Disco&quot; every Friday and Saturday from 10.00pm.&nbsp;<br />\n<br />\nOpen daily: 10am &ndash; late', 'papajacks@gmail.com, papajackschavon@hotmail.com,  papajackschavon@yahoo.com', '809-737-3333', '', 'PapaJacksChavon', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 172);
-INSERT INTO `fields_business` VALUES(249, 'Punta Minitas 45', '809-523-2644', '<strong>CALTAGIRONE COSTRUZIONI ITALIA</strong>, &nbsp;marca italiana conocida y de renombre a nivel Internacional, cuenta con m&aacute;s de 120 a&ntilde;os de historia y ha contribuido al crecimiento y al desarrollo sea de la gran capital de Italia, Roma, que de numerosos residenciales en toda Italia. &nbsp;Opera e interviene tambi&eacute;n en campo internacional con la realizaci&oacute;n de significativas obras de &nbsp;urbanizaci&oacute;n e infraestructuras. &nbsp;Caltagirone Costruzioni Italia, es el constructor y el administrador del proyecto, adem&aacute;s est&aacute; encargado de la direcci&oacute;n operativa de la compa&ntilde;&iacute;a, incluyendo la administraci&oacute;n de compra de materiales. Este estilo funcional abarca las visitas diarias al proyecto, por parte de la alta gerencia y es uno de los secretos de la compa&ntilde;&iacute;a para mantener un nivel de calidad excepcional.<br />\n<br />\n<strong>Informacion&nbsp;Adicional:</strong><br />\ninfo@impresecaltagirone.com<br />\nInfo@lasrosasblancascasadecampo.com<br />\ninfo@marygolfcasadecampo.com', 'info@impresecaltagirone.com', '01139-06-88522312', '809-523-2645', '', '', 144);
-INSERT INTO `fields_business` VALUES(251, 'Punta Minitas 45', '809-523-2644', '<strong>CALTAGIRONE COSTRUZIONI ITALIA</strong>, &nbsp;marca italiana conocida y de renombre a nivel Internacional, cuenta con m&aacute;s de 120 a&ntilde;os de historia y ha contribuido al crecimiento y al desarrollo sea de la gran capital de Italia, Roma, que de numerosos residenciales en toda Italia. &nbsp;Opera e interviene tambi&eacute;n en campo internacional con la realizaci&oacute;n de significativas obras de &nbsp;urbanizaci&oacute;n e infraestructuras. &nbsp;Caltagirone Costruzioni Italia, es el constructor y el administrador del proyecto, adem&aacute;s est&aacute; encargado de la direcci&oacute;n operativa de la compa&ntilde;&iacute;a, incluyendo la administraci&oacute;n de compra de materiales. Este estilo funcional abarca las visitas diarias al proyecto, por parte de la alta gerencia y es uno de los secretos de la compa&ntilde;&iacute;a para mantener un nivel de calidad excepcional.<br />\n<br />\n<strong>Informacion&nbsp;Adicional:</strong><br />\ninfo@impresecaltagirone.com<br />\nInfo@lasrosasblancascasadecampo.com<br />\ninfo@marygolfcasadecampo.com', 'info@impresecaltagirone.com', '01139-06-88522312', '809-523-2645', '', '', 169);
-INSERT INTO `fields_business` VALUES(252, 'Altos de Chavón', '(809) 523-8270', 'La Fundaci&oacute;n MIR es una organizaci&oacute;n sin fines de lucro que trabaja para educar a los ni&ntilde;os de escasos recursos del &aacute;rea de La Romana. La fundaci&oacute;n administra tres escuelas que velan por las necesidades de m&aacute;s de 1,000 ni&ntilde;os; MIR Esperanza (escuela vocacional de ni&ntilde;os), la Escuela T&eacute;cnico Vocacional Fundaci&oacute;n MIR (para las ni&ntilde;as) y la Primaria MIR (para los m&aacute;s peque&ntilde;os).', 'magdalena@fundacionmir.org', '', '', '', 'http://www.facebook.com/fundacion.mir', 144);
-INSERT INTO `fields_business` VALUES(253, 'Avenida Libertad #5, La Romana', '(809) 523-8901', '<div>\n	El Hogar del Ni&ntilde;o es un centro educacional y de cuidado para m&aacute;s de 1,500 ni&ntilde;os, ubicado en el pueblo de La Romana, justo a las afueras de Casa de Campo. Ni&ntilde;os que van desde los pocas semanas de nacidos hasta los 18 a&ntilde;os de edad, son cuidados y educados a diario desde las 5:30am las 7pm.</div>\n<div>\n	&nbsp;</div>\n<div>\n	La organizaci&oacute;n tambi&eacute;n provee educaci&oacute;n especial para ni&ntilde;os especiales que padecen de ceguera o con limitaciones auditivas, al igual que una escuela vocacional en la que m&aacute;s de 235 estudiantes reciben educaci&oacute;n en las distintas &aacute;reas como: costura, preparaci&oacute;n industrial, mantenimiento e instalaci&oacute;n el&eacute;ctrica; manejo de programas de c&oacute;mputos.</div>\n', 'info@pbo.org.do', '(809) 556-3181', '(809) 550-9661', '', '', 6);
-INSERT INTO `fields_business` VALUES(254, 'Avenida Libertad #5, La Romana', '(809) 523-8901', '<div>\n	The Hogar del Ni&ntilde;o is a children&rsquo;s daycare and educational center for over 1500 children, located in La Romana town, just outside of Casa de Campo. Children from as young as just a few weeks old up to 18 years old are cared for and educated daily, from as early as 5:30am and staying as late as 7pm.</div>\n<div>\n	&nbsp;</div>\n<div>\n	The organization also provides special schooling to over 75 hearing impaired and blind children, as well as a vocational school where over 235 students receive classes in different areas like: sewing; industrial preparation, installation and electrical maintenance; plumbing and management of computer office programs.</div>\n', 'info@pbo.org.do', '(809) 556-3181', '(809) 550-9661', '', '', 168);
-INSERT INTO `fields_business` VALUES(255, 'Altos de Villa Verde, en la avenida Circunvalación No. 79, La Romana', '809-349-0022', 'Es una instituci&oacute;n sin fines de lucro, con m&aacute;s de 15 a&ntilde;os brindando asistencia m&eacute;dica y social a todo el Este del Pa&iacute;s; la organizaci&oacute;n est&aacute; centrada en el apoyo al desarrollo de programas y actividades dirigidas a los m&aacute;s necesitados, entre los cuales se puede mencionar: Control de Desnutrici&oacute;n y Alimentaci&oacute;n para Ni&ntilde;os Desnutridos y enfermos de Tuberculosis y VIH, Salud de la Mujer, Filtros Bio-Arena para Agua Potable en campos y bateyes (Colaboraci&oacute;n de Rotary Club International), Programa de Prevenci&oacute;n y Detecci&oacute;n de VIH/ SIDA (Colaboraci&oacute;n con Fundaci&oacute;n MIR), Asistencia social y Salud Integral para ni&ntilde;os. Adem&aacute;s, Operativos M&eacute;dicos o Cl&iacute;nicas ambulatorias en campos, parajes, bateyes y barrios pobres de la zona y jornadas Quir&uacute;rgicas (Salpingoscopia, Cirug&iacute;a General y Reconstructiva, Ortopedia, Ginecolog&iacute;a, Odontolog&iacute;a, Oftalmolog&iacute;a, Urolog&iacute;a pedi&aacute;trica, fistulas Arterio-venosas, Labio Leporino, entre otros).', 'e.valdez@hsamaritano.org', '', '', '', '', 6);
-INSERT INTO `fields_business` VALUES(256, 'Altos de Villa Verde, en la avenida Circunvalación No. 79, La Romana', '809-349-0022', 'The &quot;Buen Samaritano&quot; General Hospital&nbsp;is a non-profit institution that has been providing assistance to the needy for more than 15 years. The organization is focused on supporting the development of programs and activities targeting the neediest in the Dominican Republic.<br />\n<br />\nThe programs include: Malnutrition and Food Control for malnourished children and patients with HIV or Tuberculosis, Women&rsquo;s Health, Bio-Sand Filters for clean drinking water in the Bateyes (in collaboration with Rotary Club International), HIV / AIDS Detection and Prevention Program (in collaboration with the MIR Foundation ) Integral Health and social care for children, Mobile Medical clinics in the Bateyes and City neighborhoods, and Medical Surgical Operations (Salpingoscopy, General and Reconstructive Surgery, Orthopedics, Gynecology, Dentistry, Ophthalmology, Pediatric Urology, Arteriovenous fistula , harelip, etc.).', 'e.valdez@hsamaritano.org', '', '', '', '', 168);
-INSERT INTO `fields_business` VALUES(257, 'Plaza Portofino #13 The Marina - Casa de Campo, DR', '(809) 523-2273', 'Tina Fanjul Associates Inc. Real Estate has been matching buyers with sellers since 1977. Founded by Tina Fanjul, the firm now includes more than 18 sales associates and a full-time support staff. Whether you are selling or buying, renting or investing, our professionals will address your real estate needs with the utmost integrity and skill.', 'office@fanjulrealestate.com', '', '', '', '', 172);
-INSERT INTO `fields_business` VALUES(258, 'Plaza Portofino #13 The Marina - Casa de Campo, DR', '(809) 523-2273', '<div>\n	Tina Fanjul Associates Inc. Real Estate ha sido coincidente compradores con los vendedores desde el a&ntilde;o 1977. Fundada por Tina Fanjul, la empresa ahora cuenta con m&aacute;s de 18 asociados de ventas y personal de apoyo de tiempo completo. Si usted esta vendiendo o comprando, alquilando o invertir,nuestros profesionales se ocupar&aacute; de sus necesidades de bienes ra&iacute;ces con la m&aacute;xima integridad y habilidad.&nbsp;</div>\n<div>\n	&nbsp;</div>\n', 'office@fanjulrealestate.com', '', '', '', '', 14);
-INSERT INTO `fields_business` VALUES(261, 'Casa de Campo', '8095233333', '', '', '', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(290, '', '+1 (203) 629 5290', 'Walkabout Foundation es una organizaci&oacute;n sin fines de lucro que se centra en la financiaci&oacute;n de la investigaci&oacute;n para encontrar una cura para la par&aacute;lisis y la donaci&oacute;n de sillas de ruedas a personas necesitadas en todo el mundo. Ay&uacute;danos a hacer realidad el sue&ntilde;o de esos millones de personas que esperan a caminar de nuevo un d&iacute;a.&nbsp;', 'info@walkaboutfoundation.org', '+44 (0) 792 0124 183', '', '', '', 144);
-INSERT INTO `fields_business` VALUES(291, '', '+1 (203) 629 5290', 'Walkabout Foundation is a non-profit organization that focuses on funding research to find a cure for paralysis and donating wheelchairs to people in need around the world. Help us realize the dream of those millions of individuals who hope to walk again one day soon by joining our cause today.', 'info@walkaboutfoundation.org', '+44 (0) 792 0124 183', '', '', '', 169);
-INSERT INTO `fields_business` VALUES(293, 'Altos de Chavón', '(809) 523-8270', 'The Fundaci&oacute;n MIR is a non-profit organization which works to provide education to the children of the greater La Romana area, who are most in need. They run 3 schools that cater to the needs of more than 1,000 children; the MIR Esperanza (boys vocational school), the Escuela Tecnica Vocacional Fundaci&oacute;n MIR (girls vocational school) and the Primaria MIR (infants school).', 'magdalena@fundacionmir.org', '', '', '', 'http://www.facebook.com/fundacion.mir', 172);
-INSERT INTO `fields_business` VALUES(302, 'Max Henríquez Ureña and Winston Churchill - Edificio In Tempo', '(809) 621-7777', '<br />\n<strong>Website:</strong> <a href="http://www.vuelos.aircaraibes.es/">www.vuelos.aircaraibes.es</a>', 'paxsales@generalairservices.com', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(303, 'Max Henríquez Ureña and Winston Churchill - Edificio In Tempo', '(809) 621-7777', '<br />\n<strong>Website:</strong> <a href="http://www.vuelos.aircaraibes.es/">www.vuelos.aircaraibes.es</a>', 'paxsales@generalairservices.com', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(307, '', '(809) 688-4400', '<span style="font-family: arial, sans-serif; font-size: 13px; ">La Fundaci&oacute;n Ferries del Caribe fue fundada en 1999, por N&eacute;stor Gonz&aacute;lez para ayudar a construir hogares en la zona de extrema pobreza de la Provincia de Batey Isabela en Barahona. Antes de que la Fundaci&oacute;n inici&oacute; un trabajo fant&aacute;stico que es la mayor&iacute;a de las personas que viven en esta zona viv&iacute;an en casas de barro, con el objetivo de la Fundaci&oacute;n Ferries del Caribe es convertir el Batey Isabela en una ciudad de al menos 500 casas de concreto.</span>', '', '', '', '', '', 7);
-INSERT INTO `fields_business` VALUES(308, '', '(809) 688-4400', '<span style="font-family: arial, sans-serif; font-size: 13px; ">The Fundacion Ferries del Caribe was founded in 1999, by N&eacute;stor Gonz&aacute;lez to help build households in the extremely poor area of the Batey Isabela Province in Barahona. Before the Foundation began it&rsquo;s fantastic work most people living in this area were living in mud houses, the aim of the Fundacion Ferries del Caribe is to convert Batey Isabela into a town of at least 500 concrete houses.</span>', '', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(316, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '<span style="white-space: nowrap;">The Dominican Federation of Golf&nbsp;</span>', 'administracion@fedogolfrd.com', '', '', '', '', 173);
-INSERT INTO `fields_business` VALUES(317, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '', 'administracion@fedogolfrd.com', '', '', '', '', 7);
-INSERT INTO `fields_business` VALUES(318, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '', 'administracion@fedogolfrd.com', '', '', '', '', 173);
+INSERT INTO `fields_business` VALUES(5, 'Altos de Chavon', '809.523.5380', 'Restaurante y Bar con &quot;Papa Jacks Disco&quot; cada viernes y s&aacute;bado despu&eacute;s de las 10pm. &nbsp;&nbsp;<br />\n<br />\nAbierto todos los d&iacute;as: 10am &ndash; late', 'papajacks@gmail.com, papajackschavon@hotmail.com, papajackschavon@yahoo.com', '809-737-3333', 'Restaurante y Bar con "Papa Jacks Disco" cada viernes y sábado después de l', 'PapaJacksChavon  ', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 13, '', '');
+INSERT INTO `fields_business` VALUES(10, 'Casa de Campo', '809-523-2929', 'El campo de tiro de Casa de Campo es un lugar donde se pueden dar cartuchasos.', 'cdcshootingcenter@ccampo.com.do', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(11, 'Altos de la Piazzetta, Altos de Chavon, Casa de Campo, La Romana, Dominican Republic', '(809) 523-2045', 'Silgon, Inc. is a media company that develops incredible websites, publishes fantastic magazines and has a lot of really great ideas and options for marketing. If you want to promote your business, give us a call. ', 'info@silgon.net', '', '', 'silgoninc', 'https://www.facebook.com/silgoninc', 13, '', '');
+INSERT INTO `fields_business` VALUES(15, 'Av. De La Marina #54, al principio del Paseo del Mar', '809-449-3321', '&bull; Caf&eacute; Nespresso &bull; refrescos &bull;&nbsp;<br />\n<br />\nAbierto todos los d&iacute;as: 8am &ndash; 9:30pm', 'y.genao@ibinautica.com ', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(16, 'Coconut Mall', '809-523-2267 ', 'sandwiches &bull; cakes/dulces &bull; snacks /meriendas &bull; Starbucks &bull; alcoholic drinks / tragos Open /abierto: &bull; 9am&ndash;6pm (sun-thurs) &bull; 9am&ndash;8pm (fri-sat)', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(17, 'Plaza Portofino', '809-523-2382 ', 'Open<br />\n&bull; 5pm - 12am:&nbsp;Sunday-Thursday<br />\n&bull; Closed: Tuesday<br />\n&bull;&nbsp;12pm - 1am: Friday-Saturday<br />\n', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(18, 'Plaza Portofino', '809-523-2388', '&bull; comida china &bull; delivery &bull;<br />\n<br />\n<strong>Horario</strong><br />\n&bull; 12pm - 12am:&nbsp;Martes - Domingo<br />\n&bull; Cerrado: Lunes', 'kilate01@hotmail.com ', '809-523-2387', '', '', 'http://www.facebook.com/pages/Chinois-Restaurante/183712341703761', 14, '', '');
+INSERT INTO `fields_business` VALUES(19, 'Plaza Portofino', '809-523-2343', '• Licor & wine store and bar • snacks • villa delivery service/ servicio a domicilio • \n\nOpen: \nSun – Thur/ Domo-jue, 10am - 10pm, \nFri–Sat/ Vie-sáb, 10am – 12pm', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(20, 'Plaza Portofino', '809-523-2299', '&bull; pizza &bull; pasta &bull; ensaladas &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 11am &ndash; 11pm', 'limoncello888@hotmail.com ', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(21, 'Paseo del Mar', '809-523 2529 / 5026', '• seafood/mariscos • Spanish cuisine/comida española \n\nOpen/abierto: 6pm – 11pm', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(22, 'Avenida de la Marina', '809-523-2323', '&bull; especialidad italiana &bull; pizza &bull; pasta &bull; carnes &bull; mariscos &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos&nbsp;los d&iacute;as: 10am &ndash; 10pm', 'talentoadomicilio@gmail.com', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(23, 'Plaza Portofino #15', '809-523-2227', '&bull; cocina internacional &bull; pizza &bull; pasta &bull; sushi &bull; ensaladas &bull;<br />\n<br />\n<strong>Horario</strong><br />\n12pm &ndash; 12am:&nbsp;Lunes - jueves<br />\n12pm - 1am: Viernes - domingo&nbsp;', 'peperonimarina@yahoo.com', '', '', '', 'http://www.facebook.com/profile.php?id=100003377767358', 14, '', '');
+INSERT INTO `fields_business` VALUES(24, 'Plaza Portofino', '809-523-2266', '&bull; variedad de helados &bull; malteadas &bull;<br />\n<br />\n<strong>Horario</strong><br />\n2pm &ndash; 12am: jueves &ndash; lunes<br />\nCerrado:&nbsp;martes y mi&eacute;rcoles', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(25, 'El Faro, Paseo del Mar', '809-523-2348', '&bull; bebidas &bull; noches tem&aacute;ticas<br />\n<br />\nAbierto todos los d&iacute;as: 5pm &ndash; 10pm ', 'victoryclubpianobar@hotmail.com ', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(26, 'Altos de Chavon', ' 809-523-1825', '&bull; comida italiana&nbsp;&bull; pizza &bull; pasta &bull; mariscos&nbsp;&bull; meats/carnes &bull;<br />\n<br />\n<strong>Horario:</strong><br />\n12pm -11:30pm: Viernes - Lunes :&nbsp;<br />\n5pm &ndash; 11:30pm: Martes y jueves:&nbsp;<br />\nCerrado: Mi&eacute;rcoles', 'ginoaltos@hotmail.com ', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(27, 'Altos de Chavon', '809-523-5339', '&bull; comida italiana &bull; antipasti &bull; pasta &bull; carnes &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n7pm - 11pm: jueves - domingo<br />\nCerrado: lunes - mi&eacute;rcoles', 'r.piazzetta@ccampo.com.do', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(28, 'Altos de Chavon', '809-523-1800', '&bull; comida criolla &bull; pastelitos &bull; quipes &bull; croquetas &bull; mofongo &bull;<br />\n<br />\n<strong>Horario</strong><br />\n11am-11pm: lunes - s&aacute;bado&nbsp;<br />\nCerrado: domingo&nbsp;', '', '', '', '', 'https://www.facebook.com/pages/La-Cantina-Latin-Bistro/157476107685753', 13, '', '');
+INSERT INTO `fields_business` VALUES(29, 'Altos de Chavon', '809-523-5380', '&bull; comida de bar y tragos &bull; centro nocturno &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 10am - tarde&nbsp;', 'papajackschavon@hotmail.com', '', '', 'PapaJacksChavon', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 13, '', '');
+INSERT INTO `fields_business` VALUES(30, 'Altos de Chavon', '809-523-2868 ', '&bull; comida de bar y tragos &bull; centro nocturno &bull;<br />\n<br />\nAbierto todos los d&iacute;as: 5pm - hasta tarde<br />\n<br />\nWebsite: <a href="http://www.onnosbar.com">www.onnosbar.com</a>', 'oficinaaltosdechavon@onnosbar.com, altosdechavon@onnosbar.com', '', '', '', 'https://www.facebook.com/pages/Onnos-BarRestaurant-Altos-De-Chavon/234823459871328', 13, '', '');
+INSERT INTO `fields_business` VALUES(31, 'Altos de Chavon', '809-523-5476', '&bull; bebidas &bull; una de las mejores vistas de Casa de Campo &ndash; la del Dye Fore y el R&iacute;o Chav&oacute;n &bull;<br />\n<br />\nAbierto todos los dias: 8am - 5pm', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(32, 'Casa de Campo Hotel', '809.523-3000', '* Mediterranean cuisine •\n\nLunch: 12 md - 4 pm, Dinner: 6 - 11 pm\nBar/lounge open 9am - 1am\n', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(33, 'Golf Pro Shop', '809-523-3162', '&nbsp;&bull; sandwiches &bull; merienda &bull; tragos &bull; refrescos &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos los d&iacute;as: 9am - 7pm', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(34, 'Casa de Campo', '809-523-5266', '&bull; desayuno buffet &bull; cena a la carta &bull;<br />\n<br />\n<span style="white-space: normal;">A</span>bierto todos los d&iacute;as: 6:30am - 11pm ', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(35, 'Minitas Beach', '809-523-5146', '&bull; comida mediterr&aacute;nea &bull; pizza &bull; pasta &bull; carnes &bull; mariscos &bull; cocteles &bull; al lado del mar &bull;<br />\n<br />\n<strong>Horario</strong><br />\nAlmuerzo y meriendas: 9am &ndash; 4pm<br />\nCena: 7pm &ndash; 11pm<br />\nBar: 9am &ndash; 11pm<br />\nRestaurante cerrado los lunes', 'r.pescador@ccampo.com.do', '', '', '', 'https://www.facebook.com/pages/The-Beach-Club-by-Le-Cirque/152559590821', 144, '', '');
+INSERT INTO `fields_business` VALUES(36, 'Minitas Beach', '809-523-5144', '&bull; bebidas &bull; c&oacute;cteles &bull; comida de bar &bull;<br />\n<br />\n<strong>Horario</strong><br />\n9am -&nbsp;6pm: viernes - domingo<br />\nCerrado: lunes - jueves', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(37, 'Altos de Chavon', '809-523-2271', '* beach and resort wear/ ropa playera • jewellery/joyería • souvenirs • gifts/regakis\n\n10am - 8pm (Monday - Friday/ lunes - viernes) / 10am - 10pm (Saturday/ sábado) / 10am - 8pm (Sunday/ domingo)', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(39, 'Calle Barlovento', '809-523-2235', 'Designer high-end women&#39;s fashion boutique / boutique para damas 10am - 6pm (Monday-Thursday/ lunes - jueves) / 10am - 7pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(40, 'Calle Barlovento', '809-523-2310', 'Handmade decorative boats / botes decorativos hechos a mano\n\n10am - 6pm (Monday-Thursday/ lunes - jueves) / 1pm - 8pm (Friday-Saturday / viernes - sábado) / 10am - 6pm (Sunday/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(41, '', '809-523-2698', 'Designer Fashion Boutique / de diseñadores\n\n9am - 8pm (Monday- Thursday/ lunes - jueves) / 9am - 10pm (Friday-Saturday/ viernes-sábado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(42, 'Calle Barlovento', '809-523-2335', 'Designer sunglasses boutique/ lentes de sol por diseñadores\n\n9am - 8pm (Monday - Thursday/ lunes - jueves) / 9am - 10pm (Friday - Saturday/ viernes - sabado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(43, 'Coconut Mall', '809-523-2226', 'Mobile phone and internet services / servicios de internet y m&oacute;viles 10am - 6pm (Monday - Saturday/ lunes - s&aacute;bado), 10am - 2pm (Sundays/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(44, 'Calle Barlovento', '809-523-1841', '• outdoor and adventure sports wear • atuendos deportivos\n\n10am - 8pm (Monday - Sunday/ lunes-domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(45, '', '809-523-2275', '&bull; jewelley/joyer&iacute;a &bull; shoes/calzados &bull; 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(46, 'Calle Barlovento', '809-523-2580', '• furniture/ muebles • homeware accessories/ para el hogar • \n\n9am - 6pm (Monday - Thursday/ lunes-jueves) / 9am - 8pm (Friday/viernes) / 10am - 8pm (Saturday/sábado) / 10am - 6pm (Sunday/domingo)', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(47, '', '809-523-2301', 'Rental and sales of golf cars, bikes, pasolas/ rentas y ventas\n\n9am - 6pm (Monday-Saturday /Lunes- sábado 9am - 4pm', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(48, '', '809-523-2298', 'art • furntiure • \n\n9am - 10pm (Sunday - Thrusday/ domingo - jueves) / 9am - 12pm (Friday - Saturday/ viernes - sábado)', 'jean riocumayasa@yahoo.com ', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(49, 'Plaza Portofino', '809-523-2242', '• wines/vinos • liquors/licores • \n\n11am - 10:30pm (Monday-Friday/ lunes-viernes) / 11am - 12am (Saturday-Sunday/ sábado-domingo)', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(50, '', '809-523-2296', '• jewellery/joyería • watches/relojes • purses/carteras •\n\n10am - 9:30pm (Monday - Saturday / lunes - sábado) / 10am - 8pm (Sunday / domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(51, 'Coconut Mall', '809-523-2383', '• household hardware/eobjetos para el hogar • electronics/electrodomésticos • BBQ''s • household items/elementos• \n\n9am - 6pm (Monday- Saturday/ Lunes - sábado) / 9am - 2pm (Sunday/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(52, 'Calle Barlovento', '809-523-2275', 'Cigars/puros • cigarettes/cigarros • smoking accessories/accesorios para fumar • magazines/revistas • snacks/picadera\n\n10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(53, '', '809-523-2691', 'Men''s formal wear/ atuendos formales caballeros • chacabanas •\n\n10am - 6pm (Sunday-Thrusday) / 10am - 8pm (Friday-Saturday)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(54, '', '809-523-2304 / 2305', 'Fashion wear • decorative plates, bowls and housewear items • jewellery • purses •\n\n10am - 8pm (Monday - Sunday)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(55, '', '809-523-2507', '• Limited pharmacy items • perfumes • inflatable beach toys •\n\n10am - 8pm (Mon, Wed & Thurs/ Lun, mier, jue) / 10am - 9pm (Friday-Saturday) / 10am - 6pm (Sunday) / 9am - 8pm (Tuesday)', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(56, 'Calle Barlovento', '809-523-2237', '10am - 6pm (Monday-Saturday /Wednesday (closed) / 10am - 3pm (Sunday)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(57, '', '809-523-2300', 'antiques/ antiguedades • art/arte • collectors items/ artículos para colección •\n\n10am - 6pm (Monday-Saturday / lunes -sábbado) / (Wednesday/ miércoles - closed/ cerrado) / 10am - 3pm (Sunday/domingo)', 'torrianimauro@hotmail.com ', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(58, '', '809-523- 2287', '• swimwear/trajes de baño • beach shoes/calzado playero • bags/carteras • cover-ups •\n\nFriday-Saturday/viernes- sábado (10am - 10pm) / 10am - 8pm (Sunday - Thursday/ domingo - jueves)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(59, 'Calle Principal', '809-523-2564', '• LED lighting solutions/ soluciones luces LED •\n\n10am - 6pm (Monday - Friday/ lunes-viernes) 10am - 1pm (Saturday/sábado) / Sunday/domingo (closed/cerrado)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(60, 'Calle Barlovento', '809-523-2265', '• homeware accessories/para el hogar • gifts/regalos • jewellery/joyería • clothing/atuendos • shoes/calzado • fashion/moda \n\n10am - 8pm (Sunday - Thrusday/domingo - jueves) / 10am - 10pm (Friday-Saturday/ viernes - sábado)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(61, 'Calle Principal', '809-523-2344', '• supermarket/ supermercado • food/comida • household items/elementos del hogar • drinks/bebidas • \n\n9am - 8pm (Monday - Thursday/ lunes-jueves) / 9am - 9pm (Friday - Saturday/ viernes-sábado) / 9am - 6pm (Sunday/ domingo)', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(62, 'Calle Barlovento', '809-523-2837', 'fashion swimwear for men and boys/ trajes de baños masc.\n\n10am - 8pm (Sunday - Thursday/ domingo - jueves) / 10am - 10pm (Friday - Saturday/ viernes - sábado)\n', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(63, 'Coconut Mall', '809-550-8436 ', '• bespoke wooden furniture \n• creación de muebles de madera\n\n8:30am-5pm (mon-sat/lun-sat)\nclosed sun/cerado dom\n\nLa Romana: \nCalle 4ta, Esquina Rev. Emilio Herrera, Villa España, 22000 La Romana, Dominican Republic', 'info@rusticosymas.net', '', '', 'RusticosRD', 'https://www.facebook.com/RusticosRD', 14, '', '');
+INSERT INTO `fields_business` VALUES(64, 'Altos de Chavon', '809-523-2133', '• supermarket/supermercado •\n\n8am - 8pm (Monday-Sunday)', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(65, 'Altos de Chavon', '809-523-2027', '&bull; moda &bull;&nbsp;joyas&nbsp;&bull; souvenirs &bull; ropa &bull;<br />\n<br />\nAbierto todo los d&iacute;as: 9am&nbsp;-&nbsp;6pm&nbsp;', 'jennypolancosa@claro.net.do', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 13, '', '');
+INSERT INTO `fields_business` VALUES(66, 'Altos de Chavon', '809-523-8331 / 2066', '&bull; jewellery/joyas 9am-10pm (Monday-Saturday/ Lunes -s&aacute;bado) / 9am - 9pm (Sunday/ Domingo)', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(67, 'Altos de Chavon', '809-523-5066', '• amber larimar museum/museo • jewellery/joyas\n\n9am - 9pm (Monday/ Lunes) \n9am - 6pm (Tuesday-Sunday/ Martes - domingo) ', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(69, 'Altos de Chavon', '809-523-8111', '&bull; cigars/puros 9am - 6pm (Monday-Saturday/Lunes - s&aacute;bado) Sunday/Domingo (Closed / Cerrado)', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(70, 'Altos de Chavon', '809-523-5353', '&bull; pottery/cer&aacute;micas&nbsp;<br />\n&bull; textiles<br />\n&bull; homeware accessories/ accesorios del hogar<br />\n&bull; 9am - 5pm (Monday-Sunday / Lunes -domingo)', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(71, 'Altos de Chavon', '809.523.3333 EXT.5479', '&bull; atuendos golf&nbsp;&bull; golf accesorios &bull;&nbsp;<br />\n<br />\nAbierto&nbsp;todos los d&iacute;as: 7:30am - 5:30pm', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(72, 'Altos de Chavon', '809.523.5337', '&bull; embroidered linens/ linos bordados 9:30am-8:40pm (Thursdays-Mondays/ Jue-Lun) 9:30am - 6pm (Tuesdays and Wednesdays/ Mar y mier)', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(73, 'Casa de Campo Hotel', '809.523.3333 Ext. 2165', 'Fashion boutique/tienda de moda\nOpening hours: 9am - 9pm (Monday - Sundays)\n', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(74, 'Casa de Campo Hotel', '809.523.3333 Ext. 2166', 'Essentials • personal items/artículos personales •\nOpening hours/ Horarios: 9am - 9pm (Monday - Sundays / Lunes - domingo )\n', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(75, 'Casa de Campo Hotel', '809.523.3333 Exts. 8129 / 8179', 'Opening hours/ Horarios: 8am - 6pm (Monday - Friday/ Lunes - vienres) / 8am - 3pm (Saturday/S&aacute;bado) / Sundays / Domingos (closed/ cerrado) ', 'm.taylor@costasur.com.do ', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(76, 'Casa de Campo Hotel', '809.523.5185', 'One of the Caribbean''s most complete facilities!\n\nOpen daily/abierto diaramente: 6am - 9pm\n\n• Entry/entrada: US$11 (free for hotel guests/gratis para huéspedes) • Personal training/entrenamiento personal (US$45) • Kick-boxing (US$17) • golf training/entrenamiento de golf (US$45) • Spinning (US$35) • \n', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(77, 'Casa de Campo Hotel', '809.523.8224', 'Opening hours/ horarios: 10am - 6:30pm (Monday-Saturday/lunes-sábado), Sunday/Domingo (Closed/cerrado) \n', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(78, 'Calle Barlovento', '809.523.2381', 'Opening hours/horario: 9am - 7:30pm (Monday - Saturday/Lunes - sábado), 9am - 6pm(Sundays/ Domingo)\n', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(79, 'Calle Barlovento #5', '809-523-7080', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes)\n/9am-1pm (Saturday/sábado) / (Sunday/ domingo) (Closed/cerrado)	\n', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(80, 'Ave. Santa Rosa de Lima, Esq. General Luperón, La Romana', '(809)556-2181 / (809)556-2183', 'Lunes a Viernes de 8:30 A.M a 4:30 P.M.\nSábados de 9:00 A.M. a 1:00 P.M', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(81, 'Calle Barlovento #41', '809-523-7070 / 2364', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes) /9am-1pm(Saturday/sábado), Sunday/domingo(closed/cerrado)	', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(82, 'Coconut Mall, #6 & #7', ' 809-523-7088', 'Opening times/ horarios: 9am-5pm(Monday-Fridays/ lunes-viernes) /9am-2pm(Saturday/sábado), Sunday (closed) 	\n\n', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(83, 'Cerca de la entrada principal de Casa de Campo', '809.523.3333 Ext. 1818', 'Abierto diariamente: 7am - 9pm&nbsp;', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(84, 'Batey #1, Central Romana, La Romana', '809.523.8695', '', '', '', '', '', '', 150, '', '');
+INSERT INTO `fields_business` VALUES(85, 'Casa de Campo Hotel', '809.523.3333 ext.3127', 'La enfermer&iacute;a del hotel&nbsp;Casa de Campo', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(86, 'Casa de Campo Hotel', '809.523.3333 ext.3165/2106/3194', '', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(87, '', '809.523.5193/5194', '', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(88, '', '', '', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(89, 'Casa de Campo Hotel', '809.523.8077/ 2079/ 2080/ 2161', 'Villa Owners Club', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(90, 'Av. De la Marina #9', '809-523-2288', 'Opening hours/horario : 9am - 5pm (Monday-Sunday/lunes-domingo)\n', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(91, '', '809-523-3333 EXT. 3188', 'Hotel laundry service/\nOpening hours/horarios: 8am-5pm (Monday-Friday/lunes-viernes) 8am-12pm (Saturday/sábado), Sunday/domingo (closed/cerrado)\n', '', '', '', '', '', 96, '', '');
+INSERT INTO `fields_business` VALUES(92, 'Calle del Faro #25', '809-523-2278', '', 'g.f.fini@gmail.com', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(93, 'Coconut Mall', '809-523-8297', '', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(94, 'Coconut Mall', '809-523-2221', '', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(95, '', '809-523-2739', 'Sailing School http://www.scuolavela.com/', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(98, 'Casa de Campo Hotel', '8095233333', '', 'res1@ccampo.com.do', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(99, 'Casa de Campo', '8095233333', '', '', '', '', '', '', 0, '', '');
+INSERT INTO `fields_business` VALUES(100, '', '8095238115', '', '', '', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(102, 'Casa de Campo Polo', '809.523.8951', '', '', '', '', '', 'https://www.facebook.com/casadecampopolo', 144, '', '');
+INSERT INTO `fields_business` VALUES(108, '', '', '', '', '', '', '', '', 13, '', '');
+INSERT INTO `fields_business` VALUES(147, 'Gustavo Mejia Ricart #74', '809.732.0230', 'Bar/club ubicado&nbsp;en Santo Domingo y organizador de varias fiestas adentro del complejo de Casa de Campo.&nbsp;<br />\n<br />\n<br />\nWebsite: <a href="http://www. praia.com.do">www. praia.com.do</a>', 'info@praia.com.do', '', '', '', 'https://www.facebook.com/pages/PRAIA/144113945598937', 7, '', '');
+INSERT INTO `fields_business` VALUES(175, 'Gustavo Mejia Ricart #74', '809.732.0230', 'Bar/nightclub located in Santo Domingo and the organizers of various parties inside Casa de Campo.<br />\n<br />\nWebsite:&nbsp;<a href="http://www. praia.com.do">www.praia.com.do</a>', 'info@praia.com.do', '', '', '', 'https://www.facebook.com/pages/PRAIA/144113945598937', 173, '', '');
+INSERT INTO `fields_business` VALUES(176, '', '', '', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(177, 'Casa de Campo Polo', '809.523.8951', '', '', '', '', '', 'https://www.facebook.com/casadecampopolo', 169, '', '');
+INSERT INTO `fields_business` VALUES(178, '', '8095238115', '', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(179, '', '809-523-2739', 'Sailing School http://www.scuolavela.com/', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(180, 'Coconut Mall', '809-523-2221', '', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(181, 'Coconut Mall', '809-523-8297', '', '', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(182, 'Calle del Faro #25', '809-523-2278', '', 'g.f.fini@gmail.com', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(183, '', '809-523-3333 EXT. 3188', '<strong>Opening hours: </strong><br />\nMonday-Friday - 8am-5pm&nbsp;<br />\nSaturday - 8am-12pm<br />\nSunday - Closed', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(184, 'Av. De la Marina #9', '809-523-2288', 'Monday-Sunday: &nbsp;9am - 5pm', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(185, '', '809.523.5193/', '', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(186, '', '809.523.5193', '', '', '809.523.5194', '', '', 'https://www.facebook.com/oca.acceso', 169, '', '');
+INSERT INTO `fields_business` VALUES(187, 'Casa de Campo Hotel', '809.523.3333 ext.3127', 'The&nbsp;First Aid / Nurses Station for the Casa de Campo hotel', '', '', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(188, 'Altos de Chavon', '809-523-2027', '&bull; fashion clothing, &nbsp;jewellery&nbsp;&amp; souvenirs&nbsp;<br />\n<br />\n9am&nbsp;-&nbsp;6pm&nbsp;Monday-Sunday', '', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 172, '', '');
+INSERT INTO `fields_business` VALUES(189, 'Altos de Chavon', '809-523-2027', '&bull; fashion &bull; clothing &bull; jewellery&nbsp;&bull; souvenirs &bull;<br />\n<br />\nOpen daily: 9am&nbsp;-&nbsp;6pm', 'jennypolancosa@claro.net.do', '809-523-8155', '', '', 'https://www.facebook.com/pages/JENNY-POLANCO-BOUTIQUE/311735254584', 172, '', '');
+INSERT INTO `fields_business` VALUES(190, 'Altos de Chavon', '809-523-8331 / 2066', '&bull; joyas&nbsp;/ jewlerry<br />\n9am-10pm&nbsp;Lunes -s&aacute;bado<br />\n9am - 9pm Domingo', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(191, 'Altos de Chavon', '809-523-5066', '&bull; amber larimar museum/museo<br />\n&bull; jewellery/joyas<br />\n<br />\n9am - 9pm&nbsp;Monday<br />\n9am - 6pm&nbsp;Tuesday-Sunday', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(192, 'Altos de Chavon', '809-523-8111', '&bull; cigars&nbsp;<br />\n<br />\n9am - 6pm&nbsp;Monday-Saturday<br />\nSunday Closed', '', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(193, 'Altos de Chavon', '809-523-5353', '&bull; pottery/cer&aacute;micas&nbsp;<br />\n&bull; textiles<br />\n&bull; homeware accessories/ accesorios del hogar<br />\n&bull; 9am - 5pm (Monday-Sunday / Lunes -domingo)', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(194, 'Altos de Chavon', '809.523.3333 EXT.5479', '&bull; golf wear&nbsp;&bull; golf accessories &bull;<br />\n<br />\nOpen daily: 7:30am - 5:30pm', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(195, 'Altos de Chavon', '809.523.5337', '&bull; embroidered linens/ linos bordados 9:30am-8:40pm (Thursdays-Mondays/ Jue-Lun) 9:30am - 6pm (Tuesdays and Wednesdays/ Mar y mier)', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(196, 'Casa de Campo Hotel', '809.523.3333 Ext. 2165', 'Fashion boutique/tienda de moda Opening hours: 9am - 9pm (Monday - Sundays) ', '', '', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(197, 'Near the main entrance', '809.523.3333 Ext. 1818', 'Open daily: 7am - 9pm&nbsp;', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(198, 'Coconut Mall, #6 & #7', ' 809-523-7088', 'Opening times/ horarios: 9am-5pm(Monday-Fridays/ lunes-viernes) /9am-2pm(Saturday/s&aacute;bado), Sunday (closed) ', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(199, 'Calle Barlovento #41', '809-523-7070 / 2364', 'Opening times/ horarios: 9am-5pm (Monday-Fridays/ lunes-viernes) /9am-1pm(Saturday/s&aacute;bado), Sunday/domingo(closed/cerrado) ', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(200, 'Casa de Campo Hotel', '809.523.8224', 'Opening hours/ horarios: 10am - 6:30pm (Monday-Saturday/lunes-s&aacute;bado), Sunday/Domingo (Closed/cerrado) ', '', '', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(201, 'Casa de Campo Hotel', '809.523.5185', 'One of the Caribbean&#39;s most complete facilities! Open daily/abierto diaramente: 6am - 9pm &bull; Entry/entrada: US$11 (free for hotel guests/gratis para hu&eacute;spedes) &bull; Personal training/entrenamiento personal (US$45) &bull; Kick-boxing (US$17) &bull; golf training/entrenamiento de golf (US$45) &bull; Spinning (US$35) &bull; ', '', '', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(202, 'Casa de Campo Hotel', '809.523.3333 Exts. 8179', 'Opening hours/ Horarios: 8am - 6pm (Monday - Friday/ Lunes - vienres) / 8am - 3pm (Saturday/S&aacute;bado) / Sundays / Domingos (closed/ cerrado) ', 'm.taylor@costasur.com.do ', '809.523.3333 Exts. 8129', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(203, 'Casa de Campo Hotel', '809.523.3333 Ext. 2166', 'Essentials &bull; personal items/art&iacute;culos personales &bull; Opening hours/ Horarios: 9am - 9pm (Monday - Sundays / Lunes - domingo ) ', '', '', '', '', '', 170, '', '');
+INSERT INTO `fields_business` VALUES(204, 'Altos de Chavon', '809-523-2133', '&bull; supermarket/supermercado &bull; 8am - 8pm (Monday-Sunday)', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(205, 'Coconut Mall', '809-550-8436 ', '&bull; bespoke wooden furniture &bull; creaci&oacute;n de muebles de madera 8:30am-5pm (mon-sat/lun-sat) closed sun/cerado dom La Romana: Calle 4ta, Esquina Rev. Emilio Herrera, Villa Espa&ntilde;a, 22000 La Romana, Dominican Republic', 'info@rusticosymas.net', '', '', 'RusticosRD', 'https://www.facebook.com/RusticosRD', 171, '', '');
+INSERT INTO `fields_business` VALUES(206, 'Calle Barlovento', '809-523-2837', 'fashion swimwear for men and boys/ trajes de ba&ntilde;os masc. 10am - 8pm (Sunday - Thursday/ domingo - jueves) / 10am - 10pm (Friday - Saturday/ viernes - s&aacute;bado) ', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(208, 'Calle Principal', '809-523-2344', '&bull; supermarket/ supermercado &bull; food/comida &bull; household items/elementos del hogar &bull; drinks/bebidas &bull; 9am - 8pm (Monday - Thursday/ lunes-jueves) / 9am - 9pm (Friday - Saturday/ viernes-s&aacute;bado) / 9am - 6pm (Sunday/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(209, 'Calle Barlovento', '809-523-2265', '&bull; homeware accessories/para el hogar &bull; gifts/regalos &bull; jewellery/joyer&iacute;a &bull; clothing/atuendos &bull; shoes/calzado &bull; fashion/moda 10am - 8pm (Sunday - Thrusday/domingo - jueves) / 10am - 10pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(210, 'Calle Principal', '809-523-2564', '&bull; LED lighting solutions/ soluciones luces LED &bull; 10am - 6pm (Monday - Friday/ lunes-viernes) 10am - 1pm (Saturday/s&aacute;bado) / Sunday/domingo (closed/cerrado)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(211, '', '809-523- 2287', '&bull; swimwear/trajes de ba&ntilde;o &bull; beach shoes/calzado playero &bull; bags/carteras &bull; cover-ups &bull; Friday-Saturday/viernes- s&aacute;bado (10am - 10pm) / 10am - 8pm (Sunday - Thursday/ domingo - jueves)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(212, '', '809-523-2300', 'antiques/ antiguedades &bull; art/arte &bull; collectors items/ art&iacute;culos para colecci&oacute;n &bull; 10am - 6pm (Monday-Saturday / lunes -s&aacute;bbado) / (Wednesday/ mi&eacute;rcoles - closed/ cerrado) / 10am - 3pm (Sunday/domingo)', 'torrianimauro@hotmail.com ', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(213, 'Calle Barlovento', '809-523-2237', '10am - 6pm (Monday-Saturday /Wednesday (closed) / 10am - 3pm (Sunday)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(214, '', '809-523-2304 / 2305', 'Fashion wear &bull; decorative plates, bowls and housewear items &bull; jewellery &bull; purses &bull; 10am - 8pm (Monday - Sunday)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(215, '', '809-523-2691', 'Men&#39;s formal wear/ atuendos formales caballeros &bull; chacabanas &bull; 10am - 6pm (Sunday-Thrusday) / 10am - 8pm (Friday-Saturday)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(216, 'Calle Barlovento', '809-523-2275', 'Cigars/puros &bull; cigarettes/cigarros &bull; smoking accessories/accesorios para fumar &bull; magazines/revistas &bull; snacks/picadera 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(217, 'Coconut Mall', '809-523-2383', '&bull; household hardware/eobjetos para el hogar &bull; electronics/electrodom&eacute;sticos &bull; BBQ&#39;s &bull; household items/elementos&bull; 9am - 6pm (Monday- Saturday/ Lunes - s&aacute;bado) / 9am - 2pm (Sunday/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(218, '', '809-523-2296', '&bull; jewellery/joyer&iacute;a &bull; watches/relojes &bull; purses/carteras &bull; 10am - 9:30pm (Monday - Saturday / lunes - s&aacute;bado) / 10am - 8pm (Sunday / domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(219, '', '809-523-2298', 'art &bull; furntiure &bull; 9am - 10pm (Sunday - Thrusday/ domingo - jueves) / 9am - 12pm (Friday - Saturday/ viernes - s&aacute;bado)', 'jean riocumayasa@yahoo.com ', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(220, '', '809-523-2301', 'Rental and sales of golf cars, bikes, pasolas/ rentas y ventas 9am - 6pm (Monday-Saturday /Lunes- s&aacute;bado 9am - 4pm', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(221, '', '809-523-2275', '&bull; jewelley/joyer&iacute;a &bull; shoes/calzados &bull; 10am - 10pm (Monday - Sunday/ lunes - domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(222, 'Calle Barlovento', '809-523-1841', '&bull; outdoor and adventure sports wear &bull; atuendos deportivos 10am - 8pm (Monday - Sunday/ lunes-domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(223, 'Coconut Mall', '809-523-2226', 'Mobile phone and internet services / servicios de internet y m&oacute;viles 10am - 6pm (Monday - Saturday/ lunes - s&aacute;bado), 10am - 2pm (Sundays/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(224, 'Calle Barlovento', '809-523-2335', 'Designer sunglasses boutique/ lentes de sol por dise&ntilde;adores 9am - 8pm (Monday - Thursday/ lunes - jueves) / 9am - 10pm (Friday - Saturday/ viernes - sabado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(225, '', '809-523-2698', 'Designer Fashion Boutique / de dise&ntilde;adores 9am - 8pm (Monday- Thursday/ lunes - jueves) / 9am - 10pm (Friday-Saturday/ viernes-s&aacute;bado) / 9am - 8pm (Sunday/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(226, 'Calle Barlovento', '809-523-2310', 'Handmade decorative boats / botes decorativos hechos a mano 10am - 6pm (Monday-Thursday/ lunes - jueves) / 1pm - 8pm (Friday-Saturday / viernes - s&aacute;bado) / 10am - 6pm (Sunday/ domingo)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(227, 'Calle Barlovento', '809-523-2235', 'Designer high-end women&#39;s fashion boutique / boutique para damas 10am - 6pm (Monday-Thursday/ lunes - jueves) / 10am - 7pm (Friday-Saturday/ viernes - s&aacute;bado)', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(228, 'Minitas Beach', '809-523-5144', '&bull; drinks &bull; cocktails &bull; bar food &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n9am &ndash; 6pm: Friday &ndash; Sunday<br />\nClosed: Monday &ndash; Thursday', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(229, 'Batey #1, Central Romana, La Romana', '809.523.8695', '', '', '', '', '', '', 168, '', '');
+INSERT INTO `fields_business` VALUES(230, 'Minitas Beach', '809-523-5146', '&bull; Mediterranean food &bull; &nbsp;pizza &bull; pasta &bull; meats &bull; seafood &bull; fine wines &bull; cocktails &bull; ocean-side dining on the beach &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\nLunch, bar food: 9am &ndash; 4pm<br />\nDinner: 7pm &ndash; 11pm<br />\nBar: 9am &ndash; 11pm<br />\nRestaurant closed: Mondays', 'r.pescador@ccampo.com.do', '', '', '', 'https://www.facebook.com/pages/The-Beach-Club-by-Le-Cirque/152559590821', 169, '', '');
+INSERT INTO `fields_business` VALUES(231, 'Casa de Campo', '809-523-5266', '&bull; buffet style breakfasts &bull; dinner &quot;a la carte&quot; &bull;<br />\n<br />\nOpen daily: 6:30am - 11pm ', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(232, 'Golf Pro Shop', '809-523-3162', '&bull; sandwiches &bull; snacks &bull; drinks &bull;<br />\n<br />\nOpen daily: 9am - 7pm', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(233, 'Altos de Chavon', '809-523-5476', '&bull; drinks &bull; one of the best views in Casa de Campo &ndash; over the Dye Fore and Chav&oacute;n River &bull;<br />\n<br />\nOpen daily: 8am - 5pm', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(234, 'Altos de Chavon', '809-523-2868 ', '&bull; bar food and drinks&nbsp;&bull; late night partying&nbsp;&bull;<br />\n<br />\nOpen daily: 5pm- late<br />\n<br />\nWebsite: <a href="http://www.onnosbar.com">www.onnosbar.com</a>', 'oficinaaltosdechavon@onnosbar.com, altosdechavon@onnosbar.com', '', '', '', 'https://www.facebook.com/pages/Onnos-BarRestaurant-Altos-De-Chavon/234823459871328', 172, '', '');
+INSERT INTO `fields_business` VALUES(236, 'Altos de Chavon', '809-523-1800', '&bull; Caribbean/latin food and snacks &bull; pastelitos &bull; quipes &bull; croquetas &bull; mofongo &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n11am &ndash; 11pm: Monday &ndash; Saturday<br />\nClosed: Sundays<br />\n<br />\n<br />\n<br />\n', '', '', '', '', 'https://www.facebook.com/pages/La-Cantina-Latin-Bistro/157476107685753', 172, '', '');
+INSERT INTO `fields_business` VALUES(237, 'Altos de Chavon', '809-523-5339', '&bull; fine Italian dining&nbsp;&bull; antipasti &bull; pasta &bull; meats &bull; seafood &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n7pm - 11pm: abierto: Thursdays - Sundays<br />\nClosed: Monday - Wednesday', 'r.piazzetta@ccampo.com.do', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(238, 'Altos de Chavon', ' 809-523-1825', '&bull; fine Italian dining&nbsp;&bull; pizza &bull; pasta &bull; seafood &bull; meats &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n12pm &ndash; 11:30pm: Friday &ndash; Monday<br />\n5pm &ndash; 11:30pm: Tuesdays and Thursdays<br />\nClosed: Wednesdays<br />\n<br />\n', 'ginoaltos@hotmail.com ', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(239, 'The Lighthouse, Paseo del Mar', '809-523-2348', '&bull; drinks &bull; <span style="white-space: nowrap;">theme nights &bull;&nbsp;</span><br />\n<br />\nOpen daily: 5pm &ndash; 10pm ', 'victoryclubpianobar@hotmail.com ', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(240, 'Plaza Portofino', '809-523-2266', '&bull; variety of ice creams &bull; soft drinks &bull;&nbsp;<br />\n<br />\n<strong>Opening Times</strong><br />\n2pm &ndash; 12am: Thursday &ndash; Monday<br />\nClosed: Tuesdays and Wednesdays<br />\n<br />\n', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(241, 'Plaza Portofino #15', '809-523-2227', '&bull; international cuisine &bull; pizza &bull; pasta &bull; sushi &bull; salads &bull;<br />\n<br />\n<strong>Opening Times</strong><br />\n12pm &ndash; 12am: Monday &ndash; Thursday<br />\n12pm &ndash; 1am: Friday and Sunday', 'peperonimarina@yahoo.com', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(242, 'Calle Principal', '809-523-2323', '&bull; Italian specialities&nbsp;&bull; pizza &bull; pasta &bull; meats&nbsp;&bull; seafood &bull;<br />\n<br />\nOpen daily: 10am &ndash; 10pm', 'talentoadomicilio@gmail.com', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(243, 'Plaza Portofino', '809-523-2299', '&bull; pizza &bull; pasta &bull; salads &bull;<br />\n<br />\nOpen daily: 11am &ndash; 11pm', 'limoncello888@hotmail.com ', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(244, 'Plaza Portofino', '809-523-2388', '&bull; Chinese food &bull;&nbsp;take-away &bull;<br />\n<br />\n<strong>Opening times</strong><br />\n&bull; 12pm - 12am: (Tuesday - Sunday)<br />\n&bull; Closed: Sunday', 'kilate01@hotmail.com ', '809-523-2387', '', '', 'http://www.facebook.com/pages/Chinois-Restaurante/183712341703761', 171, '', '');
+INSERT INTO `fields_business` VALUES(245, 'Avenida de la Marina #54, at the start of the Paseo del Mar', '809-449-3321', '&bull; Nespresso coffee &bull; soft drinks &bull;&nbsp;<br />\n<br />\nOpen:&nbsp;8am &ndash; 9:30pm', 'y.genao@ibinautica.com ', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(246, 'Altos de la Piazzetta, Altos de Chavon, Casa de Campo, La Romana, Dominican Republic', '(809) 523-2045', 'Silgon, Inc. is a media company that develops incredible websites, publishes fantastic magazines and has a lot of really great ideas and options for marketing. If you want to promote your business, give us a call. ', 'info@silgon.net', '', '', 'silgoninc', 'https://www.facebook.com/silgoninc', 172, '', '');
+INSERT INTO `fields_business` VALUES(247, 'Casa de Campo', '809-523-2929', 'El campo de tiro de Casa de Campo es un lugar donde se pueden dar cartuchasos.', 'cdcshootingcenter@ccampo.com.do', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(248, 'Altos de Chavon', '809.523.5380', '<span style="white-space: nowrap;">Bar and restaurant with the&nbsp;</span>&quot;Papa Jacks Disco&quot; every Friday and Saturday from 10.00pm.&nbsp;<br />\n<br />\nOpen daily: 10am &ndash; late', 'papajacks@gmail.com, papajackschavon@hotmail.com,  papajackschavon@yahoo.com', '809-737-3333', '', 'PapaJacksChavon', 'https://www.facebook.com/profile.php?id=1383526499&sk=info', 172, '', '');
+INSERT INTO `fields_business` VALUES(249, 'Punta Minitas 45', '809-523-2644', '<strong>CALTAGIRONE COSTRUZIONI ITALIA</strong>, &nbsp;marca italiana conocida y de renombre a nivel Internacional, cuenta con m&aacute;s de 120 a&ntilde;os de historia y ha contribuido al crecimiento y al desarrollo sea de la gran capital de Italia, Roma, que de numerosos residenciales en toda Italia. &nbsp;Opera e interviene tambi&eacute;n en campo internacional con la realizaci&oacute;n de significativas obras de &nbsp;urbanizaci&oacute;n e infraestructuras. &nbsp;Caltagirone Costruzioni Italia, es el constructor y el administrador del proyecto, adem&aacute;s est&aacute; encargado de la direcci&oacute;n operativa de la compa&ntilde;&iacute;a, incluyendo la administraci&oacute;n de compra de materiales. Este estilo funcional abarca las visitas diarias al proyecto, por parte de la alta gerencia y es uno de los secretos de la compa&ntilde;&iacute;a para mantener un nivel de calidad excepcional.<br />\n<br />\n<strong>Informacion&nbsp;Adicional:</strong><br />\ninfo@impresecaltagirone.com<br />\nInfo@lasrosasblancascasadecampo.com<br />\ninfo@marygolfcasadecampo.com', 'info@impresecaltagirone.com', '01139-06-88522312', '809-523-2645', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(251, 'Punta Minitas 45', '809-523-2644', '<strong>CALTAGIRONE COSTRUZIONI ITALIA</strong>, &nbsp;marca italiana conocida y de renombre a nivel Internacional, cuenta con m&aacute;s de 120 a&ntilde;os de historia y ha contribuido al crecimiento y al desarrollo sea de la gran capital de Italia, Roma, que de numerosos residenciales en toda Italia. &nbsp;Opera e interviene tambi&eacute;n en campo internacional con la realizaci&oacute;n de significativas obras de &nbsp;urbanizaci&oacute;n e infraestructuras. &nbsp;Caltagirone Costruzioni Italia, es el constructor y el administrador del proyecto, adem&aacute;s est&aacute; encargado de la direcci&oacute;n operativa de la compa&ntilde;&iacute;a, incluyendo la administraci&oacute;n de compra de materiales. Este estilo funcional abarca las visitas diarias al proyecto, por parte de la alta gerencia y es uno de los secretos de la compa&ntilde;&iacute;a para mantener un nivel de calidad excepcional.<br />\n<br />\n<strong>Informacion&nbsp;Adicional:</strong><br />\ninfo@impresecaltagirone.com<br />\nInfo@lasrosasblancascasadecampo.com<br />\ninfo@marygolfcasadecampo.com', 'info@impresecaltagirone.com', '01139-06-88522312', '809-523-2645', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(252, 'Altos de Chavón', '(809) 523-8270', 'La Fundaci&oacute;n MIR es una organizaci&oacute;n sin fines de lucro que trabaja para educar a los ni&ntilde;os de escasos recursos del &aacute;rea de La Romana. La fundaci&oacute;n administra tres escuelas que velan por las necesidades de m&aacute;s de 1,000 ni&ntilde;os; MIR Esperanza (escuela vocacional de ni&ntilde;os), la Escuela T&eacute;cnico Vocacional Fundaci&oacute;n MIR (para las ni&ntilde;as) y la Primaria MIR (para los m&aacute;s peque&ntilde;os).', 'magdalena@fundacionmir.org', '', '', '', 'http://www.facebook.com/fundacion.mir', 144, '', '');
+INSERT INTO `fields_business` VALUES(253, 'Avenida Libertad #5, La Romana', '(809) 523-8901', '<div>\n	El Hogar del Ni&ntilde;o es un centro educacional y de cuidado para m&aacute;s de 1,500 ni&ntilde;os, ubicado en el pueblo de La Romana, justo a las afueras de Casa de Campo. Ni&ntilde;os que van desde los pocas semanas de nacidos hasta los 18 a&ntilde;os de edad, son cuidados y educados a diario desde las 5:30am las 7pm.</div>\n<div>\n	&nbsp;</div>\n<div>\n	La organizaci&oacute;n tambi&eacute;n provee educaci&oacute;n especial para ni&ntilde;os especiales que padecen de ceguera o con limitaciones auditivas, al igual que una escuela vocacional en la que m&aacute;s de 235 estudiantes reciben educaci&oacute;n en las distintas &aacute;reas como: costura, preparaci&oacute;n industrial, mantenimiento e instalaci&oacute;n el&eacute;ctrica; manejo de programas de c&oacute;mputos.</div>\n', 'info@pbo.org.do', '(809) 556-3181', '(809) 550-9661', '', '', 6, '', '');
+INSERT INTO `fields_business` VALUES(254, 'Avenida Libertad #5, La Romana', '(809) 523-8901', '<div>\n	The Hogar del Ni&ntilde;o is a children&rsquo;s daycare and educational center for over 1500 children, located in La Romana town, just outside of Casa de Campo. Children from as young as just a few weeks old up to 18 years old are cared for and educated daily, from as early as 5:30am and staying as late as 7pm.</div>\n<div>\n	&nbsp;</div>\n<div>\n	The organization also provides special schooling to over 75 hearing impaired and blind children, as well as a vocational school where over 235 students receive classes in different areas like: sewing; industrial preparation, installation and electrical maintenance; plumbing and management of computer office programs.</div>\n', 'info@pbo.org.do', '(809) 556-3181', '(809) 550-9661', '', '', 168, '', '');
+INSERT INTO `fields_business` VALUES(255, 'Altos de Villa Verde, en la avenida Circunvalación No. 79, La Romana', '809-349-0022', 'Es una instituci&oacute;n sin fines de lucro, con m&aacute;s de 15 a&ntilde;os brindando asistencia m&eacute;dica y social a todo el Este del Pa&iacute;s; la organizaci&oacute;n est&aacute; centrada en el apoyo al desarrollo de programas y actividades dirigidas a los m&aacute;s necesitados, entre los cuales se puede mencionar: Control de Desnutrici&oacute;n y Alimentaci&oacute;n para Ni&ntilde;os Desnutridos y enfermos de Tuberculosis y VIH, Salud de la Mujer, Filtros Bio-Arena para Agua Potable en campos y bateyes (Colaboraci&oacute;n de Rotary Club International), Programa de Prevenci&oacute;n y Detecci&oacute;n de VIH/ SIDA (Colaboraci&oacute;n con Fundaci&oacute;n MIR), Asistencia social y Salud Integral para ni&ntilde;os. Adem&aacute;s, Operativos M&eacute;dicos o Cl&iacute;nicas ambulatorias en campos, parajes, bateyes y barrios pobres de la zona y jornadas Quir&uacute;rgicas (Salpingoscopia, Cirug&iacute;a General y Reconstructiva, Ortopedia, Ginecolog&iacute;a, Odontolog&iacute;a, Oftalmolog&iacute;a, Urolog&iacute;a pedi&aacute;trica, fistulas Arterio-venosas, Labio Leporino, entre otros).', 'e.valdez@hsamaritano.org', '', '', '', '', 6, '', '');
+INSERT INTO `fields_business` VALUES(256, 'Altos de Villa Verde, en la avenida Circunvalación No. 79, La Romana', '809-349-0022', 'The &quot;Buen Samaritano&quot; General Hospital&nbsp;is a non-profit institution that has been providing assistance to the needy for more than 15 years. The organization is focused on supporting the development of programs and activities targeting the neediest in the Dominican Republic.<br />\n<br />\nThe programs include: Malnutrition and Food Control for malnourished children and patients with HIV or Tuberculosis, Women&rsquo;s Health, Bio-Sand Filters for clean drinking water in the Bateyes (in collaboration with Rotary Club International), HIV / AIDS Detection and Prevention Program (in collaboration with the MIR Foundation ) Integral Health and social care for children, Mobile Medical clinics in the Bateyes and City neighborhoods, and Medical Surgical Operations (Salpingoscopy, General and Reconstructive Surgery, Orthopedics, Gynecology, Dentistry, Ophthalmology, Pediatric Urology, Arteriovenous fistula , harelip, etc.).', 'e.valdez@hsamaritano.org', '', '', '', '', 168, '', '');
+INSERT INTO `fields_business` VALUES(257, 'Plaza Portofino #13 The Marina - Casa de Campo, DR', '(809) 523-2273', 'Tina Fanjul Associates Inc. Real Estate has been matching buyers with sellers since 1977. Founded by Tina Fanjul, the firm now includes more than 18 sales associates and a full-time support staff. Whether you are selling or buying, renting or investing, our professionals will address your real estate needs with the utmost integrity and skill.', 'office@fanjulrealestate.com', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(258, 'Plaza Portofino #13 The Marina - Casa de Campo, DR', '(809) 523-2273', '<div>\n	Tina Fanjul Associates Inc. Real Estate ha sido coincidente compradores con los vendedores desde el a&ntilde;o 1977. Fundada por Tina Fanjul, la empresa ahora cuenta con m&aacute;s de 18 asociados de ventas y personal de apoyo de tiempo completo. Si usted esta vendiendo o comprando, alquilando o invertir,nuestros profesionales se ocupar&aacute; de sus necesidades de bienes ra&iacute;ces con la m&aacute;xima integridad y habilidad.&nbsp;</div>\n<div>\n	&nbsp;</div>\n', 'office@fanjulrealestate.com', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(261, 'Casa de Campo', '8095233333', '', '', '', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(290, '', '+1 (203) 629 5290', 'Walkabout Foundation es una organizaci&oacute;n sin fines de lucro que se centra en la financiaci&oacute;n de la investigaci&oacute;n para encontrar una cura para la par&aacute;lisis y la donaci&oacute;n de sillas de ruedas a personas necesitadas en todo el mundo. Ay&uacute;danos a hacer realidad el sue&ntilde;o de esos millones de personas que esperan a caminar de nuevo un d&iacute;a.&nbsp;', 'info@walkaboutfoundation.org', '+44 (0) 792 0124 183', '', '', '', 144, '', '');
+INSERT INTO `fields_business` VALUES(291, '', '+1 (203) 629 5290', 'Walkabout Foundation is a non-profit organization that focuses on funding research to find a cure for paralysis and donating wheelchairs to people in need around the world. Help us realize the dream of those millions of individuals who hope to walk again one day soon by joining our cause today.', 'info@walkaboutfoundation.org', '+44 (0) 792 0124 183', '', '', '', 169, '', '');
+INSERT INTO `fields_business` VALUES(293, 'Altos de Chavón', '(809) 523-8270', 'The Fundaci&oacute;n MIR is a non-profit organization which works to provide education to the children of the greater La Romana area, who are most in need. They run 3 schools that cater to the needs of more than 1,000 children; the MIR Esperanza (boys vocational school), the Escuela Tecnica Vocacional Fundaci&oacute;n MIR (girls vocational school) and the Primaria MIR (infants school).', 'magdalena@fundacionmir.org', '', '', '', 'http://www.facebook.com/fundacion.mir', 172, '', '');
+INSERT INTO `fields_business` VALUES(302, 'Max Henríquez Ureña and Winston Churchill - Edificio In Tempo', '(809) 621-7777', '<br />\n<strong>Website:</strong> <a href="http://www.vuelos.aircaraibes.es/">www.vuelos.aircaraibes.es</a>', 'paxsales@generalairservices.com', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(303, 'Max Henríquez Ureña and Winston Churchill - Edificio In Tempo', '(809) 621-7777', '<br />\n<strong>Website:</strong> <a href="http://www.vuelos.aircaraibes.es/">www.vuelos.aircaraibes.es</a>', 'paxsales@generalairservices.com', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(307, '', '(809) 688-4400', '<span style="font-family: arial, sans-serif; font-size: 13px; ">La Fundaci&oacute;n Ferries del Caribe fue fundada en 1999, por N&eacute;stor Gonz&aacute;lez para ayudar a construir hogares en la zona de extrema pobreza de la Provincia de Batey Isabela en Barahona. Antes de que la Fundaci&oacute;n inici&oacute; un trabajo fant&aacute;stico que es la mayor&iacute;a de las personas que viven en esta zona viv&iacute;an en casas de barro, con el objetivo de la Fundaci&oacute;n Ferries del Caribe es convertir el Batey Isabela en una ciudad de al menos 500 casas de concreto.</span>', '', '', '', '', '', 7, '', '');
+INSERT INTO `fields_business` VALUES(308, '', '(809) 688-4400', '<span style="font-family: arial, sans-serif; font-size: 13px; ">The Fundacion Ferries del Caribe was founded in 1999, by N&eacute;stor Gonz&aacute;lez to help build households in the extremely poor area of the Batey Isabela Province in Barahona. Before the Foundation began it&rsquo;s fantastic work most people living in this area were living in mud houses, the aim of the Fundacion Ferries del Caribe is to convert Batey Isabela into a town of at least 500 concrete houses.</span>', '', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(316, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '<span style="white-space: nowrap;">The Dominican Federation of Golf&nbsp;</span>', 'administracion@fedogolfrd.com', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(317, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '', 'administracion@fedogolfrd.com', '', '', '', '', 7, '', '');
+INSERT INTO `fields_business` VALUES(318, 'Calle El Vergel No. 37, Urbanización El Vergel', '(809) 338-1004', '', 'administracion@fedogolfrd.com', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(331, '', '', '', '', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(333, '', '', '', '', '', '', '', '', 7, '', '');
+INSERT INTO `fields_business` VALUES(342, '', '', '<div>\n	The following is a summary of all the Dominican National holiday&rsquo;s of 2012, you will notice that some holidays have been &ldquo;moved&rdquo; &ndash; this means that the day off and hence the celebration has been moved, usually to fall on a Monday to create a long weekend!</div>\n<div>\n	&nbsp;</div>\n<div>\n	Virgen de la Altagracia &ndash; January 21st<br />\n	&nbsp;</div>\n<div>\n	Juan Pablo Duarte&rsquo;s Birth &ndash; January 26th, (moved to Monday 30th Jan)<br />\n	&nbsp;</div>\n<div>\n	Independence Day and Dominican Carnaval - February the 27th<br />\n	&nbsp;</div>\n<div>\n	Semana Santa &ndash; Monday 2nd to Sunday 8th of April<br />\n	&nbsp;</div>\n<div>\n	Labour Day &ndash; May 1st (moved to Friday April 30th)<br />\n	&nbsp;</div>\n<div>\n	National Elections Day &ndash; May 16th (moved to Sunday May 20th)<br />\n	&nbsp;</div>\n<div>\n	Mother&rsquo;s Day - the last Sunday of May (May 27th)<br />\n	&nbsp;</div>\n<div>\n	Corpus Christy - June 7th<br />\n	&nbsp;</div>\n<div>\n	Father&rsquo;s Day - the last Sunday of July (July 29th)<br />\n	&nbsp;</div>\n<div>\n	D&iacute;a de la Restauraci&oacute;n Dominicana - August 16th<br />\n	&nbsp;</div>\n<div>\n	D&iacute;a de las Mercedes - September 24th<br />\n	&nbsp;</div>\n<div>\n	Dominican Identity/Race Day - October 12th<br />\n	&nbsp;</div>\n<div>\n	D&iacute;a de la Constituci&oacute;n - Nov. 6th (moved to Monday Nov. 5th)</div>\n<div>\n	&nbsp;</div>\n', '', '', '', '', '', 320, '', '');
+INSERT INTO `fields_business` VALUES(344, '', '', '<div>\n	<div>\n		Virgen de la Altagracia - se celebrar&aacute; el 21 de enero<br />\n		&nbsp;</div>\n	<div>\n		Natalicio de Juan Pablo Duarte - se celebra el 26 de enero (movido al lunes 30 de enero)<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de la Independencia y Carnaval Dominicano &ndash; ambos celebrados el 27 de febrero<br />\n		&nbsp;</div>\n	<div>\n		Semana Santa - se celebrar&aacute; desde el lunes 2 al domingo 8 de abril<br />\n		&nbsp;</div>\n	<div>\n		Celebraci&oacute;n del d&iacute;a del trabajo - se celebra el 1 de mayo (movido al 30 de abril)<br />\n		&nbsp;</div>\n	<div>\n		Elecciones Nacionales - se celebra el 16 de mayo (movido al domingo 20 de mayo)<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de las Madres -se celebra el &uacute;ltimo domingo de mayo (27 de mayo)<br />\n		&nbsp;</div>\n	<div>\n		Corpus Christy - se celebrar&aacute; el 7 de junio<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de los Padres - se celebra el &uacute;ltimo domingo de julio (29 de julio)<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de la Restauraci&oacute;n Dominicana - se celebra el 16 de agosto<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de las Mercedes - se celebra el 24 de septiembre<br />\n		&nbsp;</div>\n	<div>\n		D&iacute;a de la Constituci&oacute;n - se celebra el 6 de noviembre (movido al 5 de noviembre)</div>\n	<div>\n		&nbsp;</div>\n</div>\n<br />\n', '', '', '', '', '', 321, '', '');
+INSERT INTO `fields_business` VALUES(365, 'Plaza Portofino', '809-523-2382 ', 'Horario<br />\n&bull; 5pm - 12am: domingo-jueves<br />\n&bull; Cerrado: martes<br />\n&bull;&nbsp;12pm - 1am: viernes-s&aacute;bado<br />\n', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(368, '', '', '', '', '', '', '', '', 321, '', '');
+INSERT INTO `fields_business` VALUES(369, '', '', '', '', '', '', '', '', 321, '', '');
+INSERT INTO `fields_business` VALUES(371, '', '', 'www.presidente.com.do', '', '', '', '', '', 173, '', '');
+INSERT INTO `fields_business` VALUES(372, '', '', 'www.presidente.com.do', '', '', '', '', '', 7, '', '');
+INSERT INTO `fields_business` VALUES(373, 'Calle Barlovento #5', '809-523-7080', '<u><strong>Opening times</strong></u><br />\nMonday - Friday: 9am - 5pm<br />\nSaturday: 9am&nbsp;- 1pm<br />\nSunday: closed<br />\n<br />\n', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(374, 'Calle Barlovento #5', '809-523-7080', '<b><u>Horario</u></b><br />\nLunes - viernes: 9am - 5pm<br />\nS&aacute;bado: 9am&nbsp;- 1pm<br />\nDomingo: cerrado<br />\n<br />\n', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(377, 'Calle Barlovento #9', '809-523-2290', '<u style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; "><strong style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; font-weight: bold; line-height: inherit; ">Opening times</strong></u><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Monday - Friday: 9am - 5pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Saturday: 9am&nbsp;- 2pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Sunday: closed</span>', '', '', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(378, 'Calle Barlovento #9', '809-523-2290', '<b style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; font-weight: bold; line-height: 20px; color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; "><u style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; ">Horario</u></b><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Lunes - viernes: 9am - 5pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">S&aacute;bado: 9am&nbsp;- 2pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Domingo: cerrado</span>', '', '', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(379, 'Coconut Mall #2 and #10', '809-523-2560', '<u style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; "><strong style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; font-weight: bold; line-height: inherit; ">Opening times</strong></u><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Monday - Friday: 9am - 5pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Saturday: 9am&nbsp;- 2pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Sunday: closed</span>', '', '809-523-2561', '', '', '', 171, '', '');
+INSERT INTO `fields_business` VALUES(380, 'Coconut Mall #2 and #10', '809-523-2560', '<b style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; font-weight: bold; line-height: 20px; color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; "><u style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; font: inherit; vertical-align: baseline; ">Horario</u></b><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Lunes - viernes: 9am - 5pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">S&aacute;bado: 9am&nbsp;- 1pm</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n<span style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; ">Domingo: cerrado</span><br style="color: rgb(68, 68, 68); font-family: Arial, ''Lucida Grande'', sans-serif; font-size: 14px; line-height: 20px; " />\n', '', '809-523-2561', '', '', '', 14, '', '');
+INSERT INTO `fields_business` VALUES(381, 'Altos de Chavon', '809-563-2802', '', '', '', '', '', '', 172, '', '');
+INSERT INTO `fields_business` VALUES(383, 'Altos de Chavon', '809-563-2802', '', '', '', '', '', '', 144, '', '');
 
 -- --------------------------------------------------------
 
@@ -354,7 +375,7 @@ CREATE TABLE `fields_event` (
   `dress_code` varchar(200) NOT NULL,
   `contact` varchar(250) NOT NULL,
   `rsvp` varchar(250) NOT NULL,
-  PRIMARY KEY  (`node_id`),
+  PRIMARY KEY (`node_id`),
   KEY `node_id` (`node_id`,`business`),
   KEY `location` (`location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -399,14 +420,13 @@ INSERT INTO `fields_event` VALUES(138, '2012-03-25 17:00:00', '0000-00-00 00:00:
 INSERT INTO `fields_event` VALUES(139, '2012-03-25 21:30:00', '0000-00-00 00:00:00', 'El vuelo inaugural de &quot;Air Caraibes&quot; desde Santo Domingo a Paris. ', 302, 7, '', '', '', '', '');
 INSERT INTO `fields_event` VALUES(140, '2012-03-22 00:00:00', '2012-03-25 00:00:00', 'Como parte de las celebraciones de la &ldquo;Semana de Francia&rdquo;, desde este jueves 22 al domingo 25 de marzo, la tranquila zona de Altos de Chav&oacute;n ser&aacute; convertido en un &ldquo;petit village fran&ccedil;ais&rdquo; con actividades gastron&oacute;micas, art&iacute;sticas y tecnol&oacute;gicas, animadas por artistas que recorrer&aacute;n sus calles, adem&aacute;s de la exhibici&oacute;n de la Auto Feria, 3 exhibiciones de arte y un vivo programa de eventos musicales, teatrales, gastron&oacute;micos y deportivos!<br />\n<br />\n<strong>Entretenimiento en las calles! </strong><br />\nA las calles de Altos de Chav&oacute;n llega el entretenimiento con una variedad de espect&aacute;culos realizados por artistas quienes estar&aacute;n diviertiendo a los invitados en distintas ocasiones durante el evento de cuatro d&iacute;as! El horario aprocimado para estos shows son los siguientes (por favor tome en cuenta que estos horarios pueden cambiar):&nbsp;<br />\n<br />\n&bull; Exhibici&oacute;n de Zancos: S&aacute;b. 11:45pm, 5:15pm y Dom. 2pm<br />\n<br />\n&bull; Show del Malabarista Chespi: S&aacute;b. 2:45pm y Dom. 2:15pm<br />\n<br />\n&bull; Actuaci&oacute;n Mimos a cargo del Instituto Tecnol&oacute;gico (INTEC): S&aacute;b. 4pm, 6pm<br />\n<br />\n&bull; Show de Payasos: S&aacute;b. 2:30pm, 7:30pm y Dom. 2:30pm<br />\n<br />\n&bull; Espect&aacute;culo de Traga-Fuegos con Renato:&nbsp;S&aacute;b. 7pm y Dom. 3:30pm<br />\n<br />\n&bull; Pinta-caritas y globos: Dom. 3pm', 99, 13, 'Plaza Principal', 'Gratuito', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(141, '2012-03-08 19:00:00', '0000-00-00 00:00:00', 'La muestra comprende imágenes de casi tamaño natural de un juego de polo donde la escala confrontacional del espectador promedia  2.41 metros de ancho por 1.52 metros de altura. Los trabajos expresan las acciones estrenduosas reminiscentes del origen persa del polo: el entrenamiento de la caballería.  Los imponentes caballos materializan un poder de corte aguerrido mientras comunica la intensidad física, el antiguo deporte del polo.  Hay una libertad primitiva y temeridad, sin embargo, el caballo está instintivamente consciente del juego, su mirada es tranquila.', 108, 13, '', '', '', '', '');
-INSERT INTO `fields_event` VALUES(142, '2012-03-27 00:00:00', '2012-04-07 00:00:00', 'Torneo de polo en los campos de polo de Casa de Campo. El torneo culminar&aacute;&nbsp;con el final el s&aacute;bado&nbsp;7 de abril con una fiesta y entrega de premios.&nbsp;', 102, 144, 'campos de polo', '', '', 'Casa de Campo Polo: 809-523-8951', '');
 INSERT INTO `fields_event` VALUES(143, '2012-03-24 00:00:00', '0000-00-00 00:00:00', 'El campo de golf &ldquo;The Links&rdquo;, que ha estado cerrado por &nbsp;remodelaci&oacute;n desde mayo de 2011 est&aacute; programado para ser reabierto el s&aacute;bado 24 de mayo con un torneo de apertura!&nbsp;<br />\n<br />\nTODOS estan invitados a unirse a la celebraci&oacute;n de la re-apertura de este fant&aacute;stico campo de golf, en lo que ser&aacute; el &ldquo;torneo de apertura&rdquo;, saliendo a las 8am y a la 1:30pm el s&aacute;bado 24 de marzo &ndash; dando a cientos de fan&aacute;ticos del golf en Casa de Campo, la oportunidad de jugar, experimentar y enamorarse del mejorado Links de Casa de Campo!<br />\n<br />\nFormato: Individual Stableford', 100, 144, '"Links" campo de golf ', '• Huéspedes del hotel Casa de Campo: USD$70 • Dueños de villas de Casa de Campo: USD$70 • Huéspedes de villas de Casa de Campo: USD$80 • Dueño de villa de Casa de Campo registrado: USD$90', '', 'Casa de Campo Golf: 809-523-8115, golf@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(148, '2012-03-29 00:00:00', '2012-04-01 00:00:00', 'El &ldquo;MIR Bazaar&rdquo; se realiza cada a&ntilde;o con la ayuda de la Fundaci&oacute;n MIR, la instituci&oacute;n sin fines de lucro es una magn&iacute;fica oportunidad para que las damas de Casa de Campo realicen sus compras, mientras apoyan una noble causa!<br />\n<br />\n<strong>Horario</strong><br />\nJueves: 12pm&nbsp;- 9pm<br />\nViernes y s&aacute;bado: 9am&nbsp;- 9pm<br />\nDomingo: 9am - 2pm<br />\n<br />\n', 252, 144, 'La Romana Country Club', '', '', 'Fundación MIR: 809-523-8270', '');
-INSERT INTO `fields_event` VALUES(149, '2012-03-29 00:00:00', '2012-03-31 00:00:00', 'Con el prop&oacute;sito de continuar con su gesta humanitaria en la frontera entre Rep&uacute;blica Dominicana y Hait&iacute;, el Sexto Torneo de Pesca Abierta de la Fundaci&oacute;n Ferries del Caribe, ser&aacute; celebrado en La Marina Casa de Campo, desde el jueves 29 al s&aacute;bado 31 de marzo de 2012.<br />\n<br />\nEl evento que durante cinco a&ntilde;os y gracias a sus participantes, ha podido construir en la frontera entre Rep&uacute;blica Dominicana y Hait&iacute;, 199 casitas de hormig&oacute;n, la primera escuela de la comunidad, un centro de c&oacute;mputos y un &aacute;rea recreativa para todos los miembros de estas familias, adem&aacute;s de diversas cl&iacute;nicas de salud en este Batey, este a&ntilde;o tiene la meta de construir nuevas facilidades que acoja a ni&ntilde;os participantes del Albergue Nacional para Impedidos F&iacute;sicos, un hogar para ni&ntilde;os especiales.&nbsp;', 307, 144, '', 'US$600', '', '(809) 688-4400', '');
+INSERT INTO `fields_event` VALUES(149, '2012-03-30 00:00:00', '2012-03-31 00:00:00', 'Con el prop&oacute;sito de continuar con su gesta humanitaria en la frontera entre Rep&uacute;blica Dominicana y Hait&iacute;, el Sexto Torneo de Pesca Abierta de la Fundaci&oacute;n Ferries del Caribe, ser&aacute; celebrado en La Marina Casa de Campo, desde el jueves 29 al s&aacute;bado 31 de marzo de 2012.<br />\n<br />\nEl evento que durante cinco a&ntilde;os y gracias a sus participantes, ha podido construir en la frontera entre Rep&uacute;blica Dominicana y Hait&iacute;, 199 casitas de hormig&oacute;n, la primera escuela de la comunidad, un centro de c&oacute;mputos y un &aacute;rea recreativa para todos los miembros de estas familias, adem&aacute;s de diversas cl&iacute;nicas de salud en este Batey, este a&ntilde;o tiene la meta de construir nuevas facilidades que acoja a ni&ntilde;os participantes del Albergue Nacional para Impedidos F&iacute;sicos, un hogar para ni&ntilde;os especiales.&nbsp;', 307, 144, '', 'US$600', '', '(809) 688-4400', '');
 INSERT INTO `fields_event` VALUES(151, '2012-04-01 00:00:00', '2012-04-03 00:00:00', 'Torneo de golf a beneficio de &quot;Reach for the Rainbow&quot;, organizado por Capital One y jugado en los campos de golf &quot;Teeth of the Dog&quot; y &quot;Dye Fore&quot;', 100, 144, 'Teeth of the Dog', '', '', '416-503-0088 ext.124, smackay@reachfortherainbow.ca', '');
 INSERT INTO `fields_event` VALUES(152, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'El torneo de golf "Cajuiles" será juagdo en el campo de golf "Links"', 100, 96, 'Campo de golf "Links" ', '', '', '809-523-8115, golf@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(153, '2012-04-07 16:00:00', '0000-00-00 00:00:00', 'El 7mo annual torneo de polo &quot;Copa Semana Santa&quot; en Casa de Campo terminar&aacute; en gran estilo con una fiesta y coctel despu&eacute;s del juego final. Entrada gratis y se espera tragos, cocteles, picadera y m&uacute;sica!', 102, 144, 'Los campos de polo', 'Gratuito', '', 'Casa de Campo Polo: 809-523-8951, polo@ccampo.com.do', '');
-INSERT INTO `fields_event` VALUES(154, '2012-04-07 20:00:00', '0000-00-00 00:00:00', 'Luis Fonsi regresa a la República Dominicana, esta vez con "Tierra Firme", en el espectacular Anfiteatro de Altos de Chavón.\n\nEste evento forma parte de la plataforma "Presidente Live", en el que Luis Fonis, luego de realizar más de 25 conciertos en países como Ecuador, Argentina y Chile, sin duda ofrecerá un espectáculo de baile, música y alegría.', 99, 150, 'Anfiteatro de Altos de Chavón ', '• General: RD$1,800 • VIP: RD$2,500 • Special Guest: RD$5,000', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(154, '2012-04-07 20:00:00', '0000-00-00 00:00:00', 'Luis Fonsi regresa a la Rep&uacute;blica Dominicana, esta vez con &quot;Tierra Firme&quot;, en el espectacular Anfiteatro de Altos de Chav&oacute;n. Este evento forma parte de la plataforma &quot;Presidente Live&quot;, en el que Luis Fonis, luego de realizar m&aacute;s de 25 conciertos en pa&iacute;ses como Ecuador, Argentina y Chile, sin duda ofrecer&aacute; un espect&aacute;culo de baile, m&uacute;sica y alegr&iacute;a.', 372, 150, 'Anfiteatro de Altos de Chavón ', '• General: RD$1,800 \n• VIP: RD$2,500 \n• Special Guest: RD$5,000', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(155, '2012-04-13 17:00:00', '0000-00-00 00:00:00', 'El Caf&eacute; de la Leche es un evento ben&eacute;fico que se realiza mensualmente, acompa&ntilde;ado de un poco de t&eacute; o caf&eacute;, en donde las damas de Casa de Campo (a&uacute;n cuando se presentan caballeros de vez en cuando) por lo general se re&uacute;nen el primer viernes. Cada mes, este Caf&eacute; de la Leche es organizado por una persona distinta, en su villa privada de Casa de Campo o en alg&uacute;n restaurante o negocio.<br />\n<br />\nEl prop&oacute;sito del Caf&eacute; de la Leche es proveer leche para el Hogar del Ni&ntilde;o (un centro educacional y &ldquo;day care&rdquo; en La Romana) &ndash; que utiliza leche para alimentar a m&aacute;s de 200 beb&eacute;s que a diario son cuidados en la sala de cunas del lugar. Todos son bienvenidos a acudir a esta actividad, y es totalmente gratis! Casa persona le es solicitado colaborar con al menos una lata de leche en polvo, cereales o f&oacute;rmulas para beb&eacute;s.', 253, 144, 'Golf Villa #203', 'Gratuito. Contribución: Leche en polvo, cereales y fórmula para bebés. ', 'Casual - bonito!', '809-523-8901, info@pbo.org.do', '');
 INSERT INTO `fields_event` VALUES(156, '2012-04-14 08:00:00', '0000-00-00 00:00:00', 'Torneo de golf de la C&aacute;mara Americana de Comercio que ser&aacute; jugado en el campo de golf &quot;Teeth of the Dog.&quot; Los fondos recaudados durante el torneo se utilizar&aacute; en beneficio de proyectos de desarrollo comunitario ubicados en diferentes partes del pa&iacute;s, as&iacute; como para el fortalecimiento de las iniciativas del programa de educaci&oacute;n. ', 100, 144, 'Campo de golf "Teeth of the Dog"', '', '', '809-332-7233, mlinares@amcham.org.do', '');
 INSERT INTO `fields_event` VALUES(157, '2012-04-18 00:00:00', '2012-03-22 00:00:00', 'El torneo de golf &quot;2012 Spring Shootout&quot; ser&aacute; jugado en los campos de golf &quot;Links&quot;, &quot;Dye Fore&quot; y &quot;Teeth of the Dog.&quot;', 100, 144, '', '', '', 'Casa de Campo Golf: 809-523-8115, golf@ccampo.com.do', '');
@@ -416,12 +436,11 @@ INSERT INTO `fields_event` VALUES(160, '2012-05-12 00:00:00', '2012-03-13 00:00:
 INSERT INTO `fields_event` VALUES(161, '2012-05-24 00:00:00', '2012-05-26 00:00:00', 'El torneo de golf ser&aacute; jugado en los campos de golf &quot;Links&quot;, &quot;Dye Fore&quot; y &quot;Teeth of the Dog&quot;', 100, 144, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(162, '2012-06-08 00:00:00', '2012-06-09 00:00:00', 'Un torneo de golf divertido organizado por Dewars 12 con 12 anfitrionas sexy y 2 fiestas!', 99, 144, 'El campo de golf "Teeth of the Dog"', '', '', '', '');
 INSERT INTO `fields_event` VALUES(163, '2012-08-01 00:00:00', '2012-08-04 00:00:00', 'El evento se limita a los cubanos y sus invitados y será jugado en los campos de golf "Links", "Dye Fore" y "Teeth of the Dog"', 100, 144, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
-INSERT INTO `fields_event` VALUES(164, '2012-03-10 00:00:00', '0000-00-00 00:00:00', 'A beneficio de la Fundación MIR. Incluye: torneos de tenis y golf y una cena de gala.', 99, 144, '', '', '', '809-523-8270, info@fundacionmir.org', '');
-INSERT INTO `fields_event` VALUES(165, '2012-08-30 00:00:00', '2012-03-02 00:00:00', '', 99, 144, 'La Terraza Tennis Club', '', '', '809-523-5940, teniscasa@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(164, '2012-08-10 00:00:00', '0000-00-00 00:00:00', 'A beneficio de la Fundaci&oacute;n MIR. Incluye: torneos de tenis y golf y una cena de gala.', 252, 144, '', '', '', '809-523-8270, info@fundacionmir.org', '');
+INSERT INTO `fields_event` VALUES(165, '2012-08-30 00:00:00', '2012-09-02 00:00:00', '', 302, 144, 'La Terraza Tennis Club', 'US$100', '', '809-523-5940, teniscasa@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(166, '2012-09-12 00:00:00', '2012-09-16 00:00:00', '', 100, 144, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(259, '2012-03-22 00:00:00', '2012-03-25 00:00:00', 'The &ldquo;Semana de Francia&rdquo;, 4 day event will incorporate a multitude of business, technological, cultural and gastronomic activities all over Casa de Campo with the exceptional spot of Altos de Chav&oacute;n transformed into a typical &ldquo;village Francaise&rdquo;, with gastronomic, artistic and technological fair open every day from 10am &ndash; 10pm animated with street performers and a lively program of musical and theatrical events!', 261, 169, '', '', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(260, '2012-03-22 00:00:00', '2012-03-25 00:00:00', 'As part of the &ldquo;Semana de Francia&rdquo; celebrations this Thursday the 22nd of March to Sunday the 25th of March, the quiet artistic village of Altos de Chav&oacute;n will be transformed into a &ldquo;petit village fran&ccedil;ais&rdquo; &nbsp;with a gastronomic, artistic and technological fair, street performers, an Autoferia (car show), 3 art exhibits and a lively program of musical, theatrical, gastronomical and sporting events!&nbsp;<br />\n<br />\n<strong>Street entertainment! </strong><br />\nBringing life and entertainment to the cobbled streets, will be a varied and exciting schedule of street artists, who will &nbsp;perform at various times throughout the 4-day event, within the main Altos de Chav&oacute;n area.<br />\nThe approximate timetable for performances is as follows (please note this schedule is subject to change): &nbsp;<br />\n<br />\nStilt walking exhibition:<br />\n&bull; Saturday &ndash; 11:45pm, 5:15pm<br />\n&bull; Sunday &ndash; 2pm &nbsp;<br />\n<br />\nShow by the juggler &ldquo;Chespi&rdquo;:<br />\n&bull; Saturday &ndash; 2:45pm<br />\n&bull; Sunday &ndash; 2:15pm &nbsp;<br />\n<br />\nMimes by the Instituto Tecnol&oacute;gico (INTEC):<br />\n&bull; Saturday &ndash; 4pm, 6pm &nbsp;<br />\n<br />\nClown show:<br />\n&bull; Saturday &ndash; 2:30pm, 7:30pm<br />\n&bull; Sunday &ndash; 2:30pm &nbsp;<br />\n<br />\nFire-eating with Renato<br />\n&bull; Saturday &ndash; 7pm<br />\n&bull; Sunday &ndash; 3:30pm &nbsp;<br />\n<br />\nFacepainting and balloon animals<br />\n&bull; Sunday &ndash; 3pm', 261, 172, 'main plaza', 'FREE!', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
-INSERT INTO `fields_event` VALUES(262, '2012-03-27 00:00:00', '2012-04-07 00:00:00', 'The 7th annual &quot;Semana Santa&quot; Polo tournament to be played on the Casa de Campo polo fields.<br />\n<br />\nThe tournament will end on Saturday April the 7th with the finals, prize-giving ceremony and party!&nbsp;<br />\n', 177, 169, 'polo fields', '', '', 'Casa de Campo Polo: 809-523-8951', '');
 INSERT INTO `fields_event` VALUES(263, '2012-03-22 16:00:00', '2012-03-22 19:00:00', 'The tournament which will be played between the Casa de Campo polo team and the guest polo team from the &quot;Domaine du Barbossi&quot; (vineyard and estate similar to Casa de Campo) in France is being played in honor of the late Claude Terrail, who is not only an iconic figure in gastronomic French history, but was also a huge fan of Casa de Campo as well as playing polo in Casa de Campo.<br />\n<br />\nThe final of this polo tournament will be played on Saturday March 24th&nbsp;at 5pm, following which there will be a prize-giving ceremony and cocktail celebration.&nbsp;', 177, 169, 'polo fields', 'Free for spectators', 'Casual', 'Casa de Campo Polo: 809-523-8951', '');
 INSERT INTO `fields_event` VALUES(264, '2012-03-22 18:30:00', '0000-00-00 00:00:00', 'Official inauguration ceremony of the &quot;Semana&nbsp;de Francia&quot; (French Festival) with live music by the INTEC Choir.&nbsp;<br />\n<br />\nAfter the ceremony there will be a cocktail at the Altos de Chav&oacute;n art gallery to celebrate the opening of the &quot;Semana de Francia&quot; as well as the opening of new art exhibit &quot;Soleils&quot; by Michel Bizet.&nbsp;<br />\n<br />\nLater the evening&#39;s entertainment will end with a performance by Rene Coll&#39;s &quot;Big Band&quot; on the Altos de Chav&oacute;n main plaza.&nbsp;', 261, 172, 'main plaza', 'FREE!', 'Elegant - casual', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(265, '2012-03-22 19:30:00', '0000-00-00 00:00:00', 'On Thursday the 22nd of March, the Altos de Chav&oacute;n art gallery will be inaugurating yet another art gallery exhibition; &ldquo;Soleils&rdquo; presented by French artist Michel Bizet. The new exhibit, taking place as part of the &quot;Semana de Francia&quot; will be officially opened with a cocktail reception &ndash; and you are cordially invited to enjoy the celebration!<br />\n<br />\n<strong>About Michel Bizet &nbsp; </strong><br />\nFrench artist, Michel Bizet whose work includes painting, sculpture, fashion and architecture has been based in the Dominican Republic since 1995 and has exhibited in various galleries across the country, most recently &quot;Suites&quot;, which was presented at the Palacio de Bellas Artes in 2011. &nbsp;Michel Bizet is an abstract impressionist artist.', 176, 172, 'Art Gallery', 'FREE!', 'Elegant - casual', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
@@ -440,7 +459,7 @@ INSERT INTO `fields_event` VALUES(277, '2012-03-24 08:00:00', '0000-00-00 00:00:
 INSERT INTO `fields_event` VALUES(278, '2012-03-24 09:00:00', '0000-00-00 00:00:00', '<br />\n', 261, 169, 'La Terraza Tennis Club', 'US$95', '', 'Casa de Campo Tennis: 809-523-5940, teniscasa@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(279, '2012-03-30 19:30:00', '2012-03-30 21:30:00', 'El restaurante Chinois les invita a disfrutar de una exquisita experiencia gastron&oacute;mica, ofreciendo a los due&ntilde;os de villas, residentes y hu&eacute;spedes de Casa de Campo una amplia variedad de comida china, desde egg rolls de vegetales, de pollo, dumplings de camarones, de cerdo, y mucho m&aacute;s, s&oacute;lo por RD$1,000!', 18, 14, 'Chinois Restaurante, Plaza Portofino', 'RD$1,000 - todo lo que te puedas comer', '', 'Chinois: 809-523-2388, kilate01@hotmail.com ', '');
 INSERT INTO `fields_event` VALUES(280, '2012-03-30 19:30:00', '2012-03-30 21:30:00', 'Chinois, the Marina Casa de Campo&#39;s famous Chinese restaurant invites all Casa de Campo residents, visitors and villa owners to enjoy an exquisite dining experience, offering a wide variety of Chinese food from vegetable and chicken egg rolls, shrimp and pork dumplings, and much more for only RD$ 1,000!', 244, 171, 'Chinois Restaurant, Plaza Portofino', 'RD$1,000 - all you can eat', '', 'Chinois: 809-523-2388, kilate01@hotmail.com ', '');
-INSERT INTO `fields_event` VALUES(282, '2012-03-24 11:00:00', '2012-03-21 00:00:00', 'CERI Conference: Study in Montepellier by Sup de Co Montepellier', 261, 172, '"Espace André Malraux" (Genesis Disco) ', 'FREE!', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(282, '2012-03-24 11:00:00', '2012-03-21 00:00:00', 'CERI Conference: Study in Montepellier by Sup de Co Montepellier', 6, 5, '"Espace André Malraux" (Genesis Disco) ', 'FREE!', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(283, '2012-03-24 11:30:00', '2012-03-21 00:00:00', 'Gastronomic Dictation by French Alliance, read by Marie-Ange Horlaville', 195, 172, '"Espace André Malraux" (Genesis Disco)', 'FREE!', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(284, '2012-03-24 15:00:00', '0000-00-00 00:00:00', '<br />\n', 261, 172, 'door #3 of the Altos de Chavón amphitheater', ' RD$500', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(285, '2012-03-24 14:00:00', '0000-00-00 00:00:00', 'Theatrical presentation of &ldquo;Le Petit Prince&rdquo; by Antoine de Saint-Exupery presented by the students of the St John School in La Romana', 261, 172, '"Espace André Malraux" (Genesis Disco)', 'Gratuito', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
@@ -459,15 +478,59 @@ INSERT INTO `fields_event` VALUES(300, '2012-03-25 14:00:00', '0000-00-00 00:00:
 INSERT INTO `fields_event` VALUES(301, '2012-03-25 17:00:00', '0000-00-00 00:00:00', '<br />\n', 261, 172, 'main plaza', 'FREE! ', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(304, '2012-03-25 21:30:00', '0000-00-00 00:00:00', 'The inaugural &quot;Air Caraibes&quot;&nbsp;flight from Santo Domingo to Paris-Orly&nbsp;', 303, 172, '', '', '', '', '');
 INSERT INTO `fields_event` VALUES(305, '2012-04-13 17:00:00', '0000-00-00 00:00:00', '<div>\n	The Cafe de la Leche is a monthly charitable event, a little like a coffee or a tea party held for the ladies of Casa de Campo (although men are occasionally invited) and usually takes place on the first Friday of the month, hosted by a member of the Casa de Campo villa at her Casa de Campo villa or occasionally restaurant/business.</div>\n<div>\n	&nbsp;</div>\n<div>\n	The aim of the Caf&eacute; de la Leche gatherings are to boost the milk supplies of the Hogar del Ni&ntilde;o (a daycare and educational facility in La Romana) &ndash; which uses the milk to feed more than 200 babies cared for daily in it&rsquo;s crib room.</div>\n<div>\n	&nbsp;</div>\n<div>\n	Everyone is welcome to attend these great events and it&rsquo;s totally free &ndash; you are just requested to bring some dried/powdered milk, cereals or baby formula to contribute.</div>\n', 254, 169, 'Golf Villa #203 ', 'Free. Contribution: dried/powdered milk, cereals or baby formula', '', '809-523-8901, info@pbo.org.do', '');
-INSERT INTO `fields_event` VALUES(306, '2012-03-29 00:00:00', '2012-03-31 00:00:00', '<div>\n	The tournament taking place in the waters outside the Marina Casa de Campo, will not only bring together the best fishing boats and fishermen from both the Dominican Republic and Puerto Rico but will also raise money to benefit the &quot;Ferries del Caribe Foundation&quot;, who over the last 6 years have used the monies raised with this event to build concrete houses for more than 1,500 people living in extreme poverty at Batey Isabela in the province of Barahona (near to the Dominican-Haitian border).</div>\n<div>\n	&nbsp;</div>\n<div>\n	In fact, over the last five years, this event has enabled the construction of 199 concrete houses in Batey Isabela, the first community school, a computer center and a recreational area for all members of these families, as well as various health clinics - and this year&#39;s goal is to build new facilities and a specialist home for disabled children who need physical therapies.</div>\n', 308, 172, '', 'US$600', '', '(809) 688-4400', '');
+INSERT INTO `fields_event` VALUES(306, '2012-03-30 00:00:00', '2012-03-31 00:00:00', '<div>\n	The tournament taking place in the waters outside the Marina Casa de Campo, will not only bring together the best fishing boats and fishermen from both the Dominican Republic and Puerto Rico but will also raise money to benefit the &quot;Ferries del Caribe Foundation&quot;, who over the last 6 years have used the monies raised with this event to build concrete houses for more than 1,500 people living in extreme poverty at Batey Isabela in the province of Barahona (near to the Dominican-Haitian border).</div>\n<div>\n	&nbsp;</div>\n<div>\n	In fact, over the last five years, this event has enabled the construction of 199 concrete houses in Batey Isabela, the first community school, a computer center and a recreational area for all members of these families, as well as various health clinics - and this year&#39;s goal is to build new facilities and a specialist home for disabled children who need physical therapies.</div>\n', 308, 172, '', 'US$600', '', '(809) 688-4400', '');
 INSERT INTO `fields_event` VALUES(309, '2012-03-29 00:00:00', '2012-04-01 00:00:00', 'MIR Bazaar The &ldquo;MIR Bazaar&rdquo; is held every year in aid of the Fundaci&oacute;n MIR, non-profit organization and is a wonderful opportunity for Casa de Campo ladies to do a little shopping whilst also supporting a great cause!<br />\n<br />\n<strong>Opening Times</strong><br />\nThursday: 12pm&nbsp;- 9pm<br />\n<span style="white-space: nowrap;">Friday and Saturday</span>: 9am&nbsp;- 9pm<br />\nSunday: 9am - 2pm<br />\n<br />\n', 293, 169, 'La Romana Country Club', '', '', 'Fundación MIR: 809-523-8270', '');
 INSERT INTO `fields_event` VALUES(310, '2012-04-01 00:00:00', '2012-04-03 00:00:00', 'Golf tournament to benefit &quot;Reach for the Rainbow&quot;, organized by Capital One and played on the Teeth of the Dog and Dye Fore golf courses in Casa de Campo<br />\n<br />\n', 178, 172, 'Teeth of the Dog', '', '', '416-503-0088 ext.124, smackay@reachfortherainbow.ca', '');
 INSERT INTO `fields_event` VALUES(311, '2012-04-07 16:00:00', '0000-00-00 00:00:00', 'The final of the 7th annual &quot;Copa Semana Santa&quot; polo tournament, which will be celebrated in grand style with a party and cocktail with drinks, food, music and possibly even dancing!<br />\n<br />\n', 177, 169, 'polo fields', 'FREE!', '', 'Casa de Campo Polo: 809-523-8951, polo@ccampo.com.do', '');
-INSERT INTO `fields_event` VALUES(312, '2012-04-07 20:00:00', '0000-00-00 00:00:00', 'This coming &ldquo;S&aacute;bado Santo&rdquo; (Saturday Aril the 7th), Luis Fonsi returns to the Dominican Republic, this time with his &ldquo;Terra Firma Tour&rdquo; at will perform at our gorgeous Altos de Chavon amphitheater! &nbsp;<br />\n<br />\nAs part of a series of concerts to be held this year by &ldquo;Presidente Live&rdquo; (from the Dominican Republic&rsquo;s most famous beer &ldquo;Presidente&rdquo;) Luis Fonsi , after 25 succesful concerts in countries such as Argentina and Chile, will finally make his stop in the Dominican Republic with his &ldquo;Tierra Firme Tour&rdquo;, an occasion which will see thousands of &nbsp;fans from all over the Dominican Republic flock to this historic outdoor music venue (this year celebrating it&rsquo;s 30th anniversary) to dance and sing to his great music!<br />\n<br />\n<br />\n', 195, 172, 'Altos de Chavón amphitheater', '• General: RD$1,800 • VIP: RD$2,500 • Special Guest: RD$5,000 ', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(312, '2012-04-07 20:00:00', '0000-00-00 00:00:00', 'This coming &ldquo;S&aacute;bado Santo&rdquo; (Saturday Aril the 7th), Luis Fonsi returns to the Dominican Republic, this time with his &ldquo;Terra Firma Tour&rdquo; at will perform at our gorgeous Altos de Chavon amphitheater! &nbsp;<br />\n<br />\nAs part of a series of concerts to be held this year by &ldquo;Presidente Live&rdquo; (from the Dominican Republic&rsquo;s most famous beer &ldquo;Presidente&rdquo;) Luis Fonsi , after 25 succesful concerts in countries such as Argentina and Chile, will finally make his stop in the Dominican Republic with his &ldquo;Tierra Firme Tour&rdquo;, an occasion which will see thousands of &nbsp;fans from all over the Dominican Republic flock to this historic outdoor music venue (this year celebrating it&rsquo;s 30th anniversary) to dance and sing to his great music!<br />\n<br />\n<br />\n', 371, 172, 'Altos de Chavón amphitheater', '• General: RD$1,800\n• VIP: RD$2,500 \n• Special Guest: RD$5,000 ', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
 INSERT INTO `fields_event` VALUES(313, '2012-04-14 08:00:00', '0000-00-00 00:00:00', 'Golf tournament organized by the American Chamber of Commerce in the Dominican Republic to be played on the Teeth of the Dog golf course. Funds raised will be donated to various community projects &nbsp;across different areas of the Dominican Republic.&nbsp;', 178, 172, 'Campo de golf "Teeth of the Dog"', '', '', '809-332-7233, mlinares@amcham.org.do', '');
-INSERT INTO `fields_event` VALUES(314, '2012-04-18 00:00:00', '2012-03-22 00:00:00', 'The &quot;2012 Spring Shootout&quot;&nbsp;golf tournament will be played on the Links, Dye Fore and the Teeth of the Dog.', 178, 169, '', '', '', 'Casa de Campo Golf: 809-523-8115, golf@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(314, '2012-04-18 00:00:00', '2012-04-22 00:00:00', 'The &quot;2012 Spring Shootout&quot;&nbsp;golf tournament will be played on the Links, Dye Fore and the Teeth of the Dog.', 178, 169, '', '', '', 'Casa de Campo Golf: 809-523-8115, golf@ccampo.com.do', '');
 INSERT INTO `fields_event` VALUES(319, '2012-05-05 00:00:00', '2012-05-06 00:00:00', '', 72, 13, '', '', '', '(809) 338-1004, administracion@fedogolfrd.com', '');
 INSERT INTO `fields_event` VALUES(322, '2012-05-05 13:00:00', '0000-00-00 00:00:00', 'Golf tournament to benefit the &quot;Buen Samaritano&quot; hospital in La Romana.&nbsp;', 256, 174, '"Dye Fore" golf course', 'US$200', '', '829-259-8037, e.valdez@hsamaritano.org', '');
+INSERT INTO `fields_event` VALUES(323, '2012-03-29 00:00:00', '2012-04-07 00:00:00', 'El VII Semana Santa Torneo de Polo ser&aacute;&nbsp;jugado en los campos de polo de Casa de Campo desde&nbsp;el 28 de marzo hasta&nbsp;el 7 de abril con juegos&nbsp;en el siguiente&nbsp;horario:<br />\n<br />\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Jueves 29 de marzo</strong><br />\n	&bull; 3:00 pm Chamuscada vs La Carbuccia Dewers 12<br />\n	&bull; 5:00 pm Office Depot vs Propagas</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Sabado 31&nbsp;<strong>de marzo</strong></strong><br />\n	&bull; 3:00 pm Office Depot vs Chamuscada<br />\n	&bull; 5:00 pm La Carbuccia Dewers 12 vs Propagas</p>\n<div style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Domingo 1</strong>&nbsp;&nbsp;<strong>de abril</strong><br />\n	&bull; 3:00 pm La Lopera vs Broncos<br />\n	&bull; 5:00 pm Code Make-up vs Hyundai Cabrera PT</div>\n<div style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<p>\n		<strong>Lunes 2</strong>&nbsp;<strong>de abril</strong><br />\n		&bull; 3:00 pm Broncos vs Hyundai Cabrera PT<br />\n		&bull; 5:00 pm La Lopera vs Code Make-up</p>\n</div>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Martes 3&nbsp;<strong>de abril</strong></strong><br />\n	&bull; 3:00 pm Chamuscada vs Propagas<br />\n	&bull; 5:00 pm Office Depot vs La Carbuccia Dewers 12</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Jueves 5</strong>&nbsp;<strong>de abril</strong><br />\n	&bull; 3:00 pm Broncos vs Code Make-up<br />\n	&bull; 5:00 pm La Lopera vs Hyundai Cabrera PT</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Sabado 7&nbsp;<strong>de abril</strong></strong><br />\n	&bull; 3:00 pm y 5:00 pm LOS FINALES</p>\n<br />\n', 72, 13, 'Los campos de polo', '', '', 'Casa de Campo Polo: 809-523-8951', '');
+INSERT INTO `fields_event` VALUES(324, '2012-03-28 00:00:00', '2012-04-07 00:00:00', 'The 7th annual Semana Santa Polo Tournament will be played on the Casa de Campo polo fields, with games taking place at the following times:<br />\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Thursday March 29&nbsp;</strong><br />\n	&bull; 3:00 pm Chamuscada vs La Carbuccia Dewers 12<br />\n	&bull; 5:00 pm Office Depot vs Propagas</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Saturday March 31</strong><br />\n	&bull; 3:00 pm Office Depot vs Chamuscada<br />\n	&bull; 5:00 pm La Carbuccia Dewers 12 vs Propagas</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Sunday April 1</strong><br />\n	&bull; 3:00 pm La Lopera vs Broncos<br />\n	&bull; 5:00 pm Code Make-up vs Hyundai Cabrera PT</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Monday April 2</strong><br />\n	&bull; 3:00 pm Broncos vs Hyundai Cabrera PT<br />\n	&bull; 5:00 pm La Lopera vs Code Make-up</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Tuesday April 3</strong><br />\n	&bull; 3:00 pm Chamuscada vs Propagas<br />\n	&bull; 5:00 pm Office Depot vs La Carbuccia Dewers 12</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Thursday April 4</strong><br />\n	&bull; 3:00 pm Broncos vs Code Make-up<br />\n	&bull; 5:00 pm La Lopera vs Hyundai Cabrera PT</p>\n<p style="color: rgb(0, 0, 0); font-family: Georgia, ''Times New Roman'', ''Bitstream Charter'', Times, serif; font-size: 13px; line-height: 19px; ">\n	<strong>Saturday April 7&nbsp;</strong><br />\n	&bull; 3:00 pm and 5:00 pm FINALS</p>\n', 177, 169, 'polo fields', '', '', 'Casa de Campo Polo: 809-523-8951', '');
+INSERT INTO `fields_event` VALUES(325, '2012-04-06 00:00:00', '0000-00-00 00:00:00', '<div>\n	On Friday April 6th, the Beach Club by Le Cirque restaurant is offering a special live oysters menu for all Casa de Campo residents, guests and villa owners for only $ 55!</div>\n<div>\n	&nbsp;</div>\n<div>\n	The menu includes fresh oysters on half of the shell with mignonnette sauce, stuffed with spinach and cripsy breadcrumb crust, desserts and much more!! Definitely a special menu for all tastes!</div>\n<br />\n', 35, 144, 'Beach Club by Le Cirque, Minitas Beach', 'Set menu - US$55', '', 'Beach Club by Le Cirque: Ext 5146', '');
+INSERT INTO `fields_event` VALUES(326, '2012-04-06 00:00:00', '0000-00-00 00:00:00', '<div>\n	&nbsp;</div>\nEl pr&oacute;ximo viernes 6 de abril, el restaurante Beach Club by Le Cirque estar&aacute; ofreciendo un men&uacute; especial de ostras vivas para todos los residentes, hu&eacute;spedes y due&ntilde;os de villa de Casa de Campo por s&oacute;lo US$55!<br />\n<br />\nEl men&uacute; incluye desde ostras con salsa mignonnette, hasta aquellas rellenas de espinaca y crosta de pan, platos fuertes y una exquisita isla flotante como postre - sin duda especial para todos los gustos!', 35, 144, 'Beach Club by Le Cirque, Playa Minitas \n', 'US$55', '', 'Beach Club by Le Cirque: Ext 5146', '');
+INSERT INTO `fields_event` VALUES(327, '2012-04-02 00:00:00', '2012-04-08 00:00:00', 'The Beach BBQ will be available every day on Minitas&nbsp;beach throughout &quot;Semana Santa&quot;&nbsp;(Easter week 2nd &ndash; 8th of April),&nbsp;which includes hotdogs, burgers, sausages, kebabs, pizzas as well as a beer-shrimp combo, all of which can be eaten at the &ldquo;Coco Mar&rdquo; beach bar or even from the comfort of your sun lounger.<br />\n<br />\nAnd to enjoy with your meal some special beach cocktails will be available for US$12 as well as the beach speciality &ldquo;Pina Colada&rdquo; served in a whole pineapple for US$14.', 228, 169, 'Minitas Beach', '', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(328, '2012-04-02 00:00:00', '2012-04-08 00:00:00', '<span style="font-family: arial, sans-serif; font-size: 13px; ">El BBQ playero estar&aacute; disponible todos los d&iacute;as en la playa Minitas a trav&eacute;s de &quot;Semana Santa&quot;, que incluye perros calientes, hamburguesas, salchichas, kebabs, pizzas, as&iacute; como un combo de cervezas y camarones, todo lo cual&nbsp;se puede comer en el &quot;Coco Mar&quot; bar de la playa o incluso desde la comodidad de su chaise lounge.&nbsp;</span><br style="font-family: arial, sans-serif; font-size: 13px; " />\n<br style="font-family: arial, sans-serif; font-size: 13px; " />\n<span style="font-family: arial, sans-serif; font-size: 13px; ">Y para disfrutar con la comida algunos c&oacute;cteles especiales de playa estar&aacute; disponible para&nbsp;US$12, as&iacute; como &quot;Pi&ntilde;a Colada&quot;, servido en una pi&ntilde;a entera para US$14.</span>', 36, 144, 'Playa Minitas', '', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(329, '2012-05-12 00:00:00', '2012-03-13 00:00:00', 'The annual &quot;Copa Orange&quot; unites the best golfers in the Dominican Republic for a 4 day tournament, this year to be played on the Teeth of the Dog and Dye Fore golf courses in Casa de Campo.', 178, 169, 'Dye Fore and Teeth of the Dog', '', '', '', '');
+INSERT INTO `fields_event` VALUES(330, '2012-05-24 00:00:00', '2012-05-26 00:00:00', 'This 17th annual Golf Tournament organized by the Casa de Campo golf department will be played on Casa de Campo&#39;s principal&nbsp;golf courses; the Dye Fore, the Teeth of the Dog and the newly renovated&nbsp;Links.&nbsp;<br />\n<br />\n', 178, 169, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(332, '2012-06-08 00:00:00', '2012-06-09 00:00:00', 'A fun golf tournament organized by Dewars 12, played on the Teeth of the Dog and hosted by 12 beautiful ladies (who in the past have been PlayBoy bunnies and Maxim models). The golf tournament is also celebrated with 2 equally fun parties!&nbsp;<br />\n<br />\n', 331, 172, 'El campo de golf "Teeth of the Dog"', '', '', '', '');
+INSERT INTO `fields_event` VALUES(334, '2012-08-01 00:00:00', '2012-08-04 00:00:00', 'This new event for Cubans and their guests will be played over 3 days on the Links, Teeth of the Dog and Dye Fore golf courses.&nbsp;<br />\n<br />\n', 178, 169, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(335, '2012-08-30 00:00:00', '2012-09-02 00:00:00', '', 261, 172, 'La Terraza Tennis Club', 'US$100', '', '809-523-5940, teniscasa@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(336, '2012-09-12 00:00:00', '2012-09-16 00:00:00', '', 178, 169, '', '', '', '809-523-8115, golf@ccampo.com.do', '');
+INSERT INTO `fields_event` VALUES(337, '2012-08-10 00:00:00', '0000-00-00 00:00:00', 'An event in aid of the Fundaci&oacute;n&nbsp;MIR Charity.&nbsp;<br />\n<br />\nIncludes: golf and tennis tournaments and a dinner-gala', 293, 169, '', '', '', '809-523-8270, info@fundacionmir.org', '');
+INSERT INTO `fields_event` VALUES(338, '2012-03-08 00:00:00', '2012-04-09 00:00:00', 'Open daily: 9am - 6pm<br />\nClosed Tuesdays', 176, 172, 'Art gallery', 'Free', '', '', '');
+INSERT INTO `fields_event` VALUES(339, '2012-03-08 00:00:00', '2012-04-09 00:00:00', 'Horario: 9am - 6pm<br />\nCerrado los martes', 108, 13, 'Galería de arte', 'Gratuito', '', '', '');
+INSERT INTO `fields_event` VALUES(340, '2012-03-22 00:00:00', '2012-04-23 00:00:00', 'Open daily: 9am - 6pm<br />\nClosed Tuesdays', 176, 172, 'art gallery', 'Free', '', '', '');
+INSERT INTO `fields_event` VALUES(341, '2012-03-22 00:00:00', '2012-04-23 00:00:00', 'Horario: 9am - 6pm<br />\nCerrado los martes', 108, 13, 'galería de arte', 'Gratuito', '', '', '');
+INSERT INTO `fields_event` VALUES(343, '2012-04-30 00:00:00', '0000-00-00 00:00:00', 'A national holiday (day off) in the Dominican Republic.<br />\n<br />\n<br />\n', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(345, '2012-04-30 00:00:00', '0000-00-00 00:00:00', '<br />\n<br />\n<br />\n', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(346, '2012-05-20 00:00:00', '0000-00-00 00:00:00', '', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(347, '2012-05-20 00:00:00', '0000-00-00 00:00:00', '', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(348, '2012-05-27 00:00:00', '0000-00-00 00:00:00', 'El &uacute;ltimo domingo de mayo est&aacute; reservado para los seres m&aacute;s especiales; las madres! Este se convierte en un d&iacute;a de uni&oacute;n familiar, en donde es tradici&oacute;n que todos los miembros de la familia se re&uacute;nan, por lo general, en casa de los abuelos.', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(349, '2012-05-27 00:00:00', '0000-00-00 00:00:00', '<br />\n', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(350, '2012-06-07 00:00:00', '0000-00-00 00:00:00', 'The celebration takes place on the Thursday that follows the 8th Sunday after the &lsquo;Sunday of Resurrection&rsquo;, in other words, 60 days after this event. And what is it that we celebrate? &ldquo;Corpus Christi&rdquo;, which means Christ&rsquo;s Body, is a religious celebration held by the Catholic church, where those who go to church on this date, &nbsp;commemorate Jesus&rsquo; last supper.', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(351, '2012-06-07 00:00:00', '0000-00-00 00:00:00', '<div>\n	La celebraci&oacute;n se realiza el siguiente jueves al octavo domingo despu&eacute;s del Domingo de Resurecci&oacute;n o 60 d&iacute;as despu&eacute;s de este.</div>\n<div>\n	&nbsp;</div>\n<div>\n	Qu&eacute; ocurre este d&iacute;a? &ldquo;Corpus Christi&rdquo;, que significa el Cuerpo de Cristo es la fiesta cat&oacute;lica destinada a celebrar la Eucarist&iacute;a, es decir la Santa Cena, que se realiza en conmemoraci&oacute;n del Se&ntilde;or, uno de los principales ritos cristianos.</div>\n<div>\n	&nbsp;</div>\n<div>\n	Los dominicanos, en su mayor&iacute;a cat&oacute;licos, acuden a la Iglesia para esta celebraci&oacute;n.</div>\n', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(352, '2012-07-29 00:00:00', '0000-00-00 00:00:00', '', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(353, '2012-07-29 00:00:00', '0000-00-00 00:00:00', '', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(354, '2012-08-16 00:00:00', '0000-00-00 00:00:00', '<div>\n	17 years after regaining Independence in 1844, Pedro Santana, then President of the Dominican Republic decided that it was easier to hand the country over to Spain instead of rule himself. So for a short period of time we were, again, under Spain&rsquo;s power, until one of the Dominican Republic&rsquo;s original liberators, Gregorio Luper&oacute;n hung the Dominican Flag at the &ldquo;Cerro de Capotillo&rdquo; (Capotillo Hill), an action known as the &ldquo;Grito de Capotillo&rdquo;, thus declaring the start of the Restoration War fought from 1863 through 1865 between nationalist Dominicans and Spain.</div>\n<div>\n	&nbsp;</div>\n<div>\n	The result: On the 16th of August 1863, Spanish forces finally left and the Dominicans claimed their Independence once again, a day remembered every year on August 16th as el d&iacute;a de la Restauraci&oacute;n Dominicana&rsquo; (the Day of the Dominican Restoration). On this day every year, the President makes a speech on his performance througout the year, highlighting the progress of the country. Or every 4 years, when there is a newly elected President, this is the day in which he (or she) takes power.</div>\n', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(355, '2012-08-16 00:00:00', '0000-00-00 00:00:00', '<div>\n	17 a&ntilde;os despu&eacute;s de la Independencia Nacional de la Rep&uacute;blica Dominicana, Pedro Santana, quien arrebat&oacute; el mando de Buenaventura B&aacute;ez, anex&oacute; el pa&iacute;s a Espa&ntilde;a. Bajo el liderazgo de Gregorio Luper&oacute;n quien levant&oacute; la bandera dominicana en el cerro de Capotillo, conocido como el Grito de Capotillo, se produjo as&iacute; de 1863 a 1865, la guerra de la Restauraci&oacute;n entre los dominicanos nacionalistas y Espa&ntilde;a.&nbsp;</div>\n<div>\n	&nbsp;</div>\n<div>\n	El resultado, por supuesto, fue la retirada de las fuerzas espa&ntilde;olas ante la innegable victoria de los dominicanos! Hoy por hoy, el 16 de agosto de 1863 es conmemorado como el d&iacute;a de la Restauraci&oacute;n Dominicana, fecha en que el presidente de la Rep&uacute;blica realiza el discurso y memoria de su desempe&ntilde;o en el Poder, adem&aacute;s de ser el d&iacute;a en que (en cada a&ntilde;o electoral) se realiza la toma de posesi&oacute;n del nuevo presidente de la Rep&uacute;blica Dominicana.</div>\n', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(356, '2012-09-24 00:00:00', '0000-00-00 00:00:00', 'This celebration is also a devotion to the Virgin Mary, however the name &ldquo;Mercedes&rdquo; was given with the founding of the new religious order of mercenaries on August 10, 1218 in Spain. Saint Pedro Nolasco and his brothers, being very devoted to the Virgin Mary, took her as their &lsquo;patrona&lsquo; and guide and it was when she was honored as Mother of Mercy or the Virgin Redeemer.<br />\n<br />\nThe Virgen de las Mercedes was declared &ldquo;Patroness of the Dominican Republic&rdquo; in 1844, the year of Dominican Independence. Her sanctuary is located in the &lsquo;Santo Cerro&rsquo; (Holy Hill), a small hill on which stood the ancient city of La Concepci&oacute;n de La Vega. As spiritual guide for many cities in the country, Mercedes day, a national holiday is celebrated with great devotion on the 24th of September mostly in the towns of Cabrera, Constanza, Hato Mayor, Imbert, Pimentel and Sabana Grande de Palenque.', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(357, '2012-09-24 00:00:00', '0000-00-00 00:00:00', '<div>\n	Esta celebraci&oacute;n y t&iacute;tulo de la Merced, comienza a partir de la fundaci&oacute;n de la nueva Orden religiosa de mercenarios el 10 de agosto de 1218 en Espa&ntilde;a. San Pedro Nolasco y sus frailes, siendo muy devotos de la Virgen Mar&iacute;a, la tomaron como patrona y gu&iacute;a, momento en que la honraron como Madre de la Merced o Virgen Redentora.</div>\n<div>\n	&nbsp;</div>\n<div>\n	Dato de inter&eacute;s: En la Rep&uacute;blica Dominicana, con la Independencia Nacional de 1844, La Virgen de las Mercedes fue declarada como Patrona de la Rep&uacute;blica Dominicana, teniendo su santuario en el Santo Cerro, un peque&ntilde;o cerro en el que se encontraba la antigua ciudad de La Concepci&oacute;n de La Vega. Siendo patrona espiritual de muchas ciudades del pa&iacute;s, su d&iacute;a se celebra con mucha devoci&oacute;n el 24 de septiembre en Cabrera, Constanza, Hato Mayor, Imbert, Pimentel y Sabana Grande de Palenque.</div>\n', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(358, '2012-10-12 00:00:00', '0000-00-00 00:00:00', 'Nada como nuestra identidad, bien seamos norteamericanos, mexicanos, espa&ntilde;oles, puertorique&ntilde;os, ingleses, argentinos&hellip;. la identidad nos define como poblaci&oacute;n, como personas! En el caso de nosotros los dominicanos, a partir del descubrimiento de Am&eacute;rica realizado por Crist&oacute;bal Col&oacute;n, el 12 de octubre 1492 fecha de su llegada a esta isla que llam&oacute; Quisqueya, &nbsp;conmemoramos este encuentro de varias culturas abor&iacute;genes, espa&ntilde;olas, africanas y francesas, que hoy conforman la identidad dominicana.', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(359, '2012-10-12 00:00:00', '0000-00-00 00:00:00', 'There is nothing like our own identity, it doesn&rsquo;t matter if we are Spanish, French, Germans, Mexican, English, Puerto Rican or Dominican, our identity defines us as groups of people with different beliefs and culture. In our case (Dominicans) it all started with Christopher Columbus&rsquo; arrival on the 12th of October in 1492, when he named our land &lsquo;Quisqueya&rsquo;. Dominican Identity or Race Day is celebrated on this day because this was when native Tainos (the original people living in the Dominican Republic) first met people of other countries and cultures; from Africa, Spain and France, an event which has made Dominicans a marvelous mixture of 4 races.', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(360, '2012-11-06 00:00:00', '0000-00-00 00:00:00', 'On the 6th of November in the year 1844, the same year in which the Dominican Republic was proclaimed an independent nation (Feb 27th), the first Constitution was signed in San Crist&oacute;bal, a town nearby Santo Domingo, where it was (naturally) influenced by the laws of the Spanish, French and North-Americans.', 342, 320, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(361, '2012-11-06 00:00:00', '0000-00-00 00:00:00', 'Un d&iacute;a como el 6 de noviembre, fue firmada en la ciudad de San Crist&oacute;bal el 6 de noviembre de 1844, la primera Constituci&oacute;n de la Rep&uacute;blica Dominicana que tambi&eacute;n se conoce como la Carta Magna, aquella que contiene todas las leyes que, hasta el d&iacute;a de hoy, y claro, con muchas reformas, rigen al pa&iacute;s. Siendo los principales miembros de la Asamblea de San Crist&oacute;bal conocedores de los ideales de Juan Pablo Duarte, adem&aacute;s de las constituciones de distintos pa&iacute;ses como, Espa&ntilde;a, Estados Unidos y Francia, estos, naturalmente influyeron en la nuestra, creando as&iacute; una conciencia de Naci&oacute;n Libre.', 344, 321, '', '', '', '', '');
+INSERT INTO `fields_event` VALUES(362, '2012-04-07 23:00:00', '0000-00-00 00:00:00', '<div>\n	MUSIC BY DJ GANDHI, AJ, MARIO CABRAL &amp; LOOIE G</div>\n<div>\n	&nbsp;</div>\n<div>\n	LUIS FONSI CONCERT OFFICIAL AFTER PARTY</div>\n', 175, 169, 'Minitas Beach', 'RD$2,000', '', 'Casa de Campo Villa Owners Club: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(363, '2012-04-07 23:00:00', '0000-00-00 00:00:00', '<br />\n', 147, 144, 'Playa Minitas', 'RD$2,000', '', 'Casa de Campo Club de Dueños: 809-523-2161', '');
+INSERT INTO `fields_event` VALUES(364, '2012-04-04 00:00:00', '2012-04-06 00:00:00', '<div>\n	***WEDNESDAY, APRIL 4TH***</div>\n<div>\n	&nbsp;</div>\n<div>\n	***THURSDAY, APRIL 5TH***</div>\n<div>\n	&nbsp;</div>\n<div>\n	***FRIDAY, APRIL 6TH***</div>\n<div>\n	&nbsp;</div>\n<div>\n	MUSIC BY MARIO CABRAL, LOOIE G &amp; OMAR ANDINO!</div>\n', 17, 171, 'Café Juanita, Plaza Portofino', '', '', '', '');
+INSERT INTO `fields_event` VALUES(366, '2012-04-04 00:00:00', '2012-04-06 00:00:00', '<div>\n	***MIERCOLES, ABRIL&nbsp;4***</div>\n<div>\n	&nbsp;</div>\n<div>\n	***JUEVES, ABRIL 5***</div>\n<div>\n	&nbsp;</div>\n<div>\n	***VIERNES, ABRIL 6***</div>\n<div>\n	&nbsp;</div>\n<div>\n	MUSICA POR MARIO CABRAL, LOOIE G &amp; OMAR ANDINO!</div>\n', 365, 14, 'Café Juanita, Plaza Portofino', '', '', '809-523-2382 ', '');
+INSERT INTO `fields_event` VALUES(367, '2012-04-07 00:00:00', '0000-00-00 00:00:00', 'Donde el paraiso y la tierra se encuentran,donde el impossible se hace possible,bailando sobre el agua en una plataforma gigante como su propia isla,esta sera la semana santa mas divertida y diferente,eso va a ser algo nunca visto en Republica Dominicana.', 369, 321, 'Palmilla', '', '', '', '');
+INSERT INTO `fields_event` VALUES(370, '2012-04-07 00:00:00', '0000-00-00 00:00:00', '<br />\n', 368, 172, 'Palmilla', '', '', '', '');
+INSERT INTO `fields_event` VALUES(382, '2012-04-02 00:00:00', '2012-04-04 00:00:00', 'The class which is being taught by Simon Naut will teach participants a brief history of floral design, the flowers, the seasons, &nbsp;as well as the proper care that they require according to their characteristics. In addition, practical work will include learning the basics of design with flowers considering the composition, unity, proportion, emphasis, balance, harmony and rhythm.&nbsp;', 381, 172, '', 'RD$6,000', '', '809-563-2802', '');
+INSERT INTO `fields_event` VALUES(384, '2012-06-25 00:00:00', '2012-08-17 00:00:00', 'Verano Internacional ofrece cursos a estudiantes y profesionales dominicanos y extranjeros en dise&ntilde;o de modas, dise&ntilde;o de interiores, dise&ntilde;o gr&aacute;fico y dise&ntilde;o digital. Participantes de este programa tienen la oportunidad de compartir con profesionales que provienen de diferentes partes del mundo dedicados a la excelencia acad&eacute;mica en el campo del arte y el dise&ntilde;o.', 383, 144, 'Altos de Chavón', '', '', '(809) 523-8172, specialprograms@altosdechavon.com', '');
+INSERT INTO `fields_event` VALUES(385, '2012-06-25 00:00:00', '2012-08-17 00:00:00', '&quot;Verano 2012&quot; offers courses to students and professionals, Dominicans and foreigners in fashion design, interior design, graphic design and digital design.<br />\n<br />\nParticipants in this program will have the opportunity to share with professionals from around the world dedicated to academic excellence in the field of art and design.', 381, 172, '', '', '', '(809) 523-8172, specialprograms@altosdechavon.com', '');
 
 -- --------------------------------------------------------
 
@@ -478,7 +541,7 @@ INSERT INTO `fields_event` VALUES(322, '2012-05-05 13:00:00', '0000-00-00 00:00:
 CREATE TABLE `fields_location` (
   `node_id` int(11) NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`node_id`)
+  PRIMARY KEY (`node_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -516,7 +579,7 @@ CREATE TABLE `fields_special` (
   `business` int(11) NOT NULL,
   `original_price` varchar(20) NOT NULL,
   `special_price` varchar(20) NOT NULL,
-  PRIMARY KEY  (`node_id`),
+  PRIMARY KEY (`node_id`),
   KEY `node_id` (`node_id`,`startdate`,`enddate`,`business`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -534,7 +597,7 @@ CREATE TABLE `fields_special` (
 CREATE TABLE `languages` (
   `language_name` varchar(100) NOT NULL,
   `language_code` varchar(5) NOT NULL,
-  PRIMARY KEY  (`language_code`)
+  PRIMARY KEY (`language_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -570,7 +633,7 @@ INSERT INTO `likes` VALUES(140, 1);
 --
 
 CREATE TABLE `node` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `type` varchar(100) NOT NULL,
   `language` varchar(2) NOT NULL,
@@ -578,8 +641,8 @@ CREATE TABLE `node` (
   `updated` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=323 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=386 ;
 
 --
 -- Dumping data for table `node`
@@ -595,7 +658,7 @@ INSERT INTO `node` VALUES(13, 'Altos de Chavon', 'location', 'es', 0, 0, 0, 0);
 INSERT INTO `node` VALUES(14, 'Marina Casa de Campo', 'location', 'es', 0, 0, 0, 0);
 INSERT INTO `node` VALUES(15, 'Azimut Café', 'business', 'es', 0, 1332340134, 0, 0);
 INSERT INTO `node` VALUES(16, 'Block & Barrel', 'business', 'en', 0, 1332389143, 0, 0);
-INSERT INTO `node` VALUES(17, 'Café Juanita Gastropub', 'business', 'en', 0, 0, 0, 0);
+INSERT INTO `node` VALUES(17, 'Café Juanita Gastropub', 'business', 'en', 0, 1333120023, 0, 0);
 INSERT INTO `node` VALUES(18, 'Chinois Restaurant', 'business', 'es', 0, 1332342960, 0, 0);
 INSERT INTO `node` VALUES(19, 'La Enoteca', 'business', 'en', 0, 0, 0, 0);
 INSERT INTO `node` VALUES(20, 'Il Limoncello', 'business', 'es', 0, 1332341969, 0, 0);
@@ -709,28 +772,27 @@ INSERT INTO `node` VALUES(138, 'Semana de Francia: Concierto de Percusión por e
 INSERT INTO `node` VALUES(139, 'Semana de Francia: Vuelo Inaugural Air Caraibes', 'event', 'es', 1332117170, 1332367875, 1, 1);
 INSERT INTO `node` VALUES(140, 'Semana de Francia: Feria y Animaciones en la Plaza Chavón', 'event', 'es', 1332117403, 1332303685, 1, 1);
 INSERT INTO `node` VALUES(141, 'Exhibición de arte: “La acción del caballo de polo”', 'event', 'es', 1332123353, 1332194968, 1, 1);
-INSERT INTO `node` VALUES(142, 'Torneo de Polo "Copa Semana Santa"', 'event', 'es', 1332123588, 1332340518, 1, 1);
 INSERT INTO `node` VALUES(143, 'Links “Torneo de apertura”', 'event', 'es', 1332193616, 1332360642, 1, 1);
 INSERT INTO `node` VALUES(144, 'Casa de Campo', 'location', 'es', 1332194561, 1332194561, 1, 1);
 INSERT INTO `node` VALUES(147, 'Praia', 'business', 'es', 1332195585, 1332348800, 1, 1);
 INSERT INTO `node` VALUES(148, 'MIR Bazaar ', 'event', 'es', 1332197094, 1332372534, 1, 1);
-INSERT INTO `node` VALUES(149, 'Torneo de Pesca "Fundación Ferries del Caribe" ', 'event', 'es', 1332197505, 1332372172, 1, 1);
+INSERT INTO `node` VALUES(149, 'Torneo de Pesca "Fundación Ferries del Caribe" ', 'event', 'es', 1332197505, 1333063198, 1, 1);
 INSERT INTO `node` VALUES(150, 'Central Romana', 'location', 'es', 1332201238, 1332287746, 1, 1);
 INSERT INTO `node` VALUES(151, 'Torneo de golf "The Capital One Ultimate Charity Golf Challenge in aid of Reach for the Rainbow" ', 'event', 'es', 1332201510, 1332372764, 1, 1);
 INSERT INTO `node` VALUES(152, 'Torneo de Golf "Cajuiles"', 'event', 'es', 1332201849, 1332201849, 1, 1);
 INSERT INTO `node` VALUES(153, 'El final del torneo de polo "Copa Semana Santa"', 'event', 'es', 1332202411, 1332373007, 1, 1);
-INSERT INTO `node` VALUES(154, 'Luis Fonsi en concierto', 'event', 'es', 1332202962, 1332210351, 1, 1);
+INSERT INTO `node` VALUES(154, 'Luis Fonsi en concierto', 'event', 'es', 1332202962, 1333124469, 1, 1);
 INSERT INTO `node` VALUES(155, 'Café de la Leche', 'event', 'es', 1332203420, 1332373712, 1, 1);
 INSERT INTO `node` VALUES(156, 'Torneo de golf "AMCHAMDR Ambassadors Cup"', 'event', 'es', 1332204003, 1332374122, 1, 1);
 INSERT INTO `node` VALUES(157, 'Torneo de golf "2012 Spring Shootout"', 'event', 'es', 1332208771, 1332374357, 1, 1);
 INSERT INTO `node` VALUES(158, 'Torneo de golf "Buen Samaritano"', 'event', 'es', 1332209179, 1332390791, 1, 1);
 INSERT INTO `node` VALUES(159, 'Torneo de Golf "FEDOGOLF National Juniors"', 'event', 'es', 1332211088, 1332381629, 1, 1);
 INSERT INTO `node` VALUES(160, '"Copa Orange" Torneo Nacional de Golf', 'event', 'es', 1332211372, 1332381642, 1, 1);
-INSERT INTO `node` VALUES(161, 'Torneo de golf "17th Caribbean Golf Classic', 'event', 'es', 1332211704, 1332381651, 1, 1);
-INSERT INTO `node` VALUES(162, 'Torneo de golf "Dewars 12 Invitational"', 'event', 'es', 1332211876, 1332211876, 1, 1);
+INSERT INTO `node` VALUES(161, 'Torneo de golf "17th Caribbean Golf Classic"', 'event', 'es', 1332211704, 1333054670, 1, 1);
+INSERT INTO `node` VALUES(162, 'Torneo de golf "Dewars 12 Invitational"', 'event', 'es', 1332211876, 1333054906, 1, 1);
 INSERT INTO `node` VALUES(163, 'Torneo de golf: 1er anual "Cuban Invitational"', 'event', 'es', 1332212224, 1332212224, 1, 1);
-INSERT INTO `node` VALUES(164, 'Fundación MIR Fin de Semana Familiar', 'event', 'es', 1332212639, 1332212639, 1, 1);
-INSERT INTO `node` VALUES(165, 'Copa de Tenis Proseguros-Casa de Campo', 'event', 'es', 1332213019, 1332213019, 1, 1);
+INSERT INTO `node` VALUES(164, 'Fundación MIR Fin de Semana Familiar', 'event', 'es', 1332212639, 1333056495, 1, 1);
+INSERT INTO `node` VALUES(165, 'Copa de Tenis Proseguros-Casa de Campo', 'event', 'es', 1332213019, 1333378452, 1, 1);
 INSERT INTO `node` VALUES(166, 'Torneo de golf "Casa de Campo Open"', 'event', 'es', 1332213148, 1332213148, 1, 1);
 INSERT INTO `node` VALUES(168, 'Central Romana', 'location', 'en', 1332272433, 1332272433, 1, 1);
 INSERT INTO `node` VALUES(169, 'Casa de Campo', 'location', 'en', 1332272443, 1332272443, 1, 1);
@@ -823,7 +885,6 @@ INSERT INTO `node` VALUES(258, 'Tina Fanjul Associates', 'business', 'es', 13322
 INSERT INTO `node` VALUES(259, 'Semana de Francia', 'event', 'en', 1332297782, 1332298852, 1, 1);
 INSERT INTO `node` VALUES(260, 'Semana de Francia: Gastronomic, artistic and technological fair with street entertainers!', 'event', 'en', 1332298232, 1332303703, 1, 1);
 INSERT INTO `node` VALUES(261, 'Casa de Campo ', 'business', 'en', 1332298736, 1332298736, 1, 1);
-INSERT INTO `node` VALUES(262, 'Polo Tournament "Copa Semana Santa"', 'event', 'en', 1332298793, 1332368047, 1, 1);
 INSERT INTO `node` VALUES(263, 'Semana de Francia: "Claude Terrail" Polo Tournament - Game 1', 'event', 'en', 1332299429, 1332303965, 1, 1);
 INSERT INTO `node` VALUES(264, 'Semana de Francia: Inauguration ceremony', 'event', 'en', 1332300254, 1332434236, 1, 1);
 INSERT INTO `node` VALUES(265, 'Semana de Francia: Inauguration cocktail of new art exhibit "Soleils" ', 'event', 'en', 1332300866, 1332440991, 1, 1);
@@ -842,7 +903,7 @@ INSERT INTO `node` VALUES(277, 'Links Opening Day Golf Tournament', 'event', 'en
 INSERT INTO `node` VALUES(278, 'Semana de Francia: Tennis Tournament “Copa de las Cámaras de Comercio”', 'event', 'en', 1332305290, 1332305290, 1, 1);
 INSERT INTO `node` VALUES(279, 'Chinois "Todo lo que te puedas comer" ', 'event', 'es', 1332340742, 1332346056, 1, 1);
 INSERT INTO `node` VALUES(280, 'Chinois "All you can eat" ', 'event', 'en', 1332340818, 1332345792, 1, 1);
-INSERT INTO `node` VALUES(282, 'Semana de Francia: Conferencia CERI', 'event', 'en', 1332359303, 1332359303, 1, 1);
+INSERT INTO `node` VALUES(282, 'Semana de Francia: Conferencia CERI', 'event', 'en', 1332359303, 1333566241, 1, 1);
 INSERT INTO `node` VALUES(283, 'Semana de Francia: Gastronomic Dictation', 'event', 'en', 1332359452, 1332359452, 1, 1);
 INSERT INTO `node` VALUES(284, 'Semana de Francia: Petanque Tournament', 'event', 'en', 1332359619, 1332359619, 1, 1);
 INSERT INTO `node` VALUES(285, 'Semana de Francia: Theatrical presentation of “Le Petit Prince” ', 'event', 'en', 1332360068, 1332360068, 1, 1);
@@ -866,21 +927,82 @@ INSERT INTO `node` VALUES(302, 'Air Caraibes', 'business', 'es', 1332367301, 133
 INSERT INTO `node` VALUES(303, 'Air Caraibes', 'business', 'en', 1332367759, 1332367759, 1, 1);
 INSERT INTO `node` VALUES(304, 'Semana de Francia: Inaugural Air Caraibes flight', 'event', 'en', 1332367769, 1332367782, 1, 1);
 INSERT INTO `node` VALUES(305, 'Café de la Leche', 'event', 'en', 1332368896, 1332368896, 1, 1);
-INSERT INTO `node` VALUES(306, 'Fishing Tournament "Fundación Ferries del Caribe" ', 'event', 'en', 1332371243, 1332372150, 1, 1);
+INSERT INTO `node` VALUES(306, 'Fishing Tournament "Fundación Ferries del Caribe" ', 'event', 'en', 1332371243, 1333063080, 1, 1);
 INSERT INTO `node` VALUES(307, 'Fundación Ferries del Caribe', 'business', 'es', 1332371357, 1332371932, 1, 1);
 INSERT INTO `node` VALUES(308, 'Fundación Ferries del Caribe', 'business', 'en', 1332371989, 1332371989, 1, 1);
 INSERT INTO `node` VALUES(309, 'The MIR Bazaar', 'event', 'en', 1332372634, 1332372634, 1, 1);
 INSERT INTO `node` VALUES(310, 'Golf Tournament "The Capital One Ultimate Charity Golf Challenge in aid of Reach for the Rainbow" ', 'event', 'en', 1332372887, 1332372887, 1, 1);
 INSERT INTO `node` VALUES(311, 'The final of the "Copa Semana Santa" polo tournament and party!', 'event', 'en', 1332373109, 1332373109, 1, 1);
-INSERT INTO `node` VALUES(312, 'Luis Fonsi concert', 'event', 'en', 1332373621, 1332373621, 1, 1);
+INSERT INTO `node` VALUES(312, 'Luis Fonsi concert', 'event', 'en', 1332373621, 1333124450, 1, 1);
 INSERT INTO `node` VALUES(313, 'Golf Tournament "AMCHAMDR Ambassadors Cup"', 'event', 'en', 1332374268, 1332374268, 1, 1);
-INSERT INTO `node` VALUES(314, 'Golf Tournament: "2012 Spring Shootout"', 'event', 'en', 1332374410, 1332374410, 1, 1);
+INSERT INTO `node` VALUES(314, 'Golf Tournament: "2012 Spring Shootout"', 'event', 'en', 1332374410, 1332782049, 1, 1);
 INSERT INTO `node` VALUES(317, 'FEDOGOLF', 'business', 'es', 1332380501, 1332380501, 1, 1);
 INSERT INTO `node` VALUES(318, 'FEDOGOLF', 'business', 'en', 1332380536, 1332389599, 1, 1);
 INSERT INTO `node` VALUES(319, 'Golf Tournament "FEDOGOLF National Juniors"', 'event', 'en', 1332380592, 1332381661, 1, 1);
 INSERT INTO `node` VALUES(320, 'Other', 'location', 'en', 1332387678, 1332387678, 1, 1);
 INSERT INTO `node` VALUES(321, 'Otro', 'location', 'es', 1332387685, 1332387685, 1, 1);
 INSERT INTO `node` VALUES(322, 'Golf Tournament "Buen Samaritano"', 'event', 'en', 1332390698, 1332390753, 1, 1);
+INSERT INTO `node` VALUES(323, 'Torneo de Polo "Copa Semana Santa"', 'event', 'es', 1332945149, 1333038829, 1, 1);
+INSERT INTO `node` VALUES(324, 'Torneo de Polo "Copa Semana Santa"', 'event', 'en', 1332945393, 1333039394, 1, 1);
+INSERT INTO `node` VALUES(325, 'Live Oysters Special at the Beach Club by Le Cirque', 'event', 'en', 1332945757, 1332945757, 1, 1);
+INSERT INTO `node` VALUES(326, 'Menú Especial de Ostras Vivas en el Beach Club by Le Cirque', 'event', 'es', 1332945921, 1332945935, 1, 1);
+INSERT INTO `node` VALUES(327, 'Semana Santa Specials at Minitas Beach (Easter week 2nd – 8th of April)', 'event', 'en', 1332961256, 1332961271, 1, 1);
+INSERT INTO `node` VALUES(328, 'Especiales de Semana Santa en Minitas Beach', 'event', 'es', 1332961457, 1332961457, 1, 1);
+INSERT INTO `node` VALUES(329, '"Copa Orange" National Golf Tournament', 'event', 'en', 1333054460, 1333054625, 1, 1);
+INSERT INTO `node` VALUES(330, 'Golf Tournament "17th Caribbean Golf Classic"', 'event', 'en', 1333054809, 1333054848, 1, 1);
+INSERT INTO `node` VALUES(331, 'Bacardi RD', 'business', 'en', 1333055041, 1333055041, 1, 1);
+INSERT INTO `node` VALUES(332, 'Golf Tournament "Dewars 12 Invitational"', 'event', 'en', 1333055393, 1333055401, 1, 1);
+INSERT INTO `node` VALUES(333, 'Bacardi RD', 'business', 'es', 1333055469, 1333055469, 1, 1);
+INSERT INTO `node` VALUES(334, 'Golf tournament: 1st annual "Cuban Invitational"', 'event', 'en', 1333055905, 1333380596, 1, 1);
+INSERT INTO `node` VALUES(335, 'Copa de Tenis Proseguros-Casa de Campo', 'event', 'en', 1333056227, 1333378438, 1, 1);
+INSERT INTO `node` VALUES(336, 'Golf Tournament: "Casa de Campo Open"', 'event', 'en', 1333056462, 1333056877, 1, 1);
+INSERT INTO `node` VALUES(337, 'The Fundación MIR "Family Weekend for Life"', 'event', 'en', 1333056579, 1333056579, 1, 1);
+INSERT INTO `node` VALUES(338, '"La acción del caballo de Polo” Art Exhibit by Rachel White ', 'event', 'en', 1333057147, 1333057147, 1, 1);
+INSERT INTO `node` VALUES(339, '"La acción del caballo de Polo” Exhibición de arte por Rachel White ', 'event', 'es', 1333057214, 1333057360, 1, 1);
+INSERT INTO `node` VALUES(340, '"Soleils" art exhibit by Michel Bizet', 'event', 'en', 1333057583, 1333057591, 1, 1);
+INSERT INTO `node` VALUES(341, '"Soleils" exhibición de arte por Michel Bizet', 'event', 'es', 1333057652, 1333057652, 1, 1);
+INSERT INTO `node` VALUES(342, 'Dominican National Holidays 2012', 'business', 'en', 1333058440, 1333059242, 1, 1);
+INSERT INTO `node` VALUES(343, 'Dominican National Holiday: Labour Day', 'event', 'en', 1333059012, 1333116666, 1, 1);
+INSERT INTO `node` VALUES(344, 'Días Feriados de la República Dominicana 2012', 'business', 'es', 1333059164, 1333059164, 1, 1);
+INSERT INTO `node` VALUES(345, 'Día Feriado: Celebración del día del trabajo', 'event', 'es', 1333059441, 1333117162, 1, 1);
+INSERT INTO `node` VALUES(346, 'Dominican National Holiday: National Elections Day', 'event', 'en', 1333059522, 1333116253, 1, 1);
+INSERT INTO `node` VALUES(347, 'Día Feriado: Elecciones Nacionales', 'event', 'es', 1333059558, 1333116271, 1, 1);
+INSERT INTO `node` VALUES(348, 'Día feriado: Día de las Madres', 'event', 'es', 1333059648, 1333382076, 1, 1);
+INSERT INTO `node` VALUES(349, 'Dominican National Holiday: Mother''s Day ', 'event', 'en', 1333060829, 1333379945, 1, 1);
+INSERT INTO `node` VALUES(350, 'Dominican National Holiday: Corpus Christi', 'event', 'en', 1333060915, 1333116326, 1, 1);
+INSERT INTO `node` VALUES(351, 'Día feriado: Corpus Christi', 'event', 'es', 1333061283, 1333116310, 1, 1);
+INSERT INTO `node` VALUES(352, 'Dominican National Holiday: Father''s Day', 'event', 'en', 1333116399, 1333116399, 1, 1);
+INSERT INTO `node` VALUES(353, 'Día feriado: Día de los padres', 'event', 'es', 1333116490, 1333116490, 1, 1);
+INSERT INTO `node` VALUES(354, 'Dominican National Holiday: Día de la Restauración Dominicana', 'event', 'en', 1333116625, 1333117171, 1, 1);
+INSERT INTO `node` VALUES(355, 'Día feriado: Día de la Restauración Dominicana', 'event', 'es', 1333117235, 1333117235, 1, 1);
+INSERT INTO `node` VALUES(356, 'Dominican National Holiday: Día de las Mercedes', 'event', 'en', 1333117324, 1333117349, 1, 1);
+INSERT INTO `node` VALUES(357, 'Día feriado: Día de las Mercedes', 'event', 'es', 1333117438, 1333117438, 1, 1);
+INSERT INTO `node` VALUES(358, 'Día feriado: Día de la raza e identidad dominicana', 'event', 'es', 1333117529, 1333117529, 1, 1);
+INSERT INTO `node` VALUES(359, 'Dominican National Holiday: Dominican Identity/Race Day', 'event', 'en', 1333117583, 1333117583, 1, 1);
+INSERT INTO `node` VALUES(360, 'Dominican National Holiday: Dominican Constitution Day', 'event', 'en', 1333117686, 1333117686, 1, 1);
+INSERT INTO `node` VALUES(361, 'Día feriado: La Constitución Dominicana', 'event', 'es', 1333117801, 1333117801, 1, 1);
+INSERT INTO `node` VALUES(362, 'Spring Break Party 2012', 'event', 'en', 1333118179, 1333118301, 1, 1);
+INSERT INTO `node` VALUES(363, 'Spring Break Party 2012', 'event', 'es', 1333118276, 1333118276, 1, 1);
+INSERT INTO `node` VALUES(364, '"Semana Santa 2012"', 'event', 'en', 1333118567, 1333118567, 1, 1);
+INSERT INTO `node` VALUES(365, 'Café Juanita Gastropub', 'business', 'es', 1333119168, 1333119168, 1, 1);
+INSERT INTO `node` VALUES(366, '"Semana Santa 2012"', 'event', 'es', 1333119171, 1333119202, 1, 1);
+INSERT INTO `node` VALUES(367, 'Paradizia Palmilla', 'event', 'es', 1333120302, 1333120432, 1, 1);
+INSERT INTO `node` VALUES(368, 'Other', 'business', 'en', 1333120357, 1333120357, 1, 1);
+INSERT INTO `node` VALUES(369, 'Otro', 'business', 'es', 1333120371, 1333120371, 1, 1);
+INSERT INTO `node` VALUES(370, 'Paradizia Palmilla', 'event', 'en', 1333120379, 1333120445, 1, 1);
+INSERT INTO `node` VALUES(371, 'Presidente Live', 'business', 'en', 1333124212, 1333124290, 1, 1);
+INSERT INTO `node` VALUES(372, 'Presidente Live', 'business', 'es', 1333124422, 1333124422, 1, 1);
+INSERT INTO `node` VALUES(373, 'Scotiabank', 'business', 'en', 1333128113, 1333128402, 1, 1);
+INSERT INTO `node` VALUES(374, 'Scotiabank', 'business', 'es', 1333128267, 1333128496, 1, 1);
+INSERT INTO `node` VALUES(377, 'Banco Lopez de Haro', 'business', 'en', 1333128632, 1333133634, 1, 1);
+INSERT INTO `node` VALUES(378, 'Banco Lopez de Haro', 'business', 'es', 1333128720, 1333133622, 1, 1);
+INSERT INTO `node` VALUES(379, 'Banco Popular', 'business', 'en', 1333128939, 1333128939, 1, 1);
+INSERT INTO `node` VALUES(380, 'Banco Popular', 'business', 'es', 1333133564, 1333133564, 1, 1);
+INSERT INTO `node` VALUES(381, 'Altos de Chavón School of Art and Design ', 'business', 'en', 1333139245, 1333139245, 1, 1);
+INSERT INTO `node` VALUES(382, 'Contemporary Floral Design workshop', 'event', 'en', 1333139412, 1333139438, 1, 1);
+INSERT INTO `node` VALUES(383, 'Altos de Chavón School of Art and Design ', 'business', 'es', 1333139467, 1333139467, 1, 1);
+INSERT INTO `node` VALUES(384, 'Verano 2012 - clases de arte y diseño', 'event', 'es', 1333140067, 1333140584, 1, 1);
+INSERT INTO `node` VALUES(385, 'Verano 2012 - art and design courses', 'event', 'en', 1333140421, 1333140421, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -935,15 +1057,7 @@ INSERT INTO `node_category` VALUES(152, 14, 'event-type');
 INSERT INTO `node_category` VALUES(87, 12, 'business-type');
 INSERT INTO `node_category` VALUES(94, 3, 'business-type');
 INSERT INTO `node_category` VALUES(92, 3, 'business-type');
-INSERT INTO `node_category` VALUES(154, 19, 'event-type');
-INSERT INTO `node_category` VALUES(162, 1, 'event-type');
-INSERT INTO `node_category` VALUES(162, 14, 'event-type');
 INSERT INTO `node_category` VALUES(163, 14, 'event-type');
-INSERT INTO `node_category` VALUES(164, 1, 'event-type');
-INSERT INTO `node_category` VALUES(164, 16, 'event-type');
-INSERT INTO `node_category` VALUES(164, 20, 'event-type');
-INSERT INTO `node_category` VALUES(164, 21, 'event-type');
-INSERT INTO `node_category` VALUES(165, 20, 'event-type');
 INSERT INTO `node_category` VALUES(166, 14, 'event-type');
 INSERT INTO `node_category` VALUES(108, 12, 'business-type');
 INSERT INTO `node_category` VALUES(178, 28, 'business-type');
@@ -1090,7 +1204,6 @@ INSERT INTO `node_category` VALUES(85, 11, 'business-type');
 INSERT INTO `node_category` VALUES(147, 2, 'business-type');
 INSERT INTO `node_category` VALUES(121, 1, 'event-type');
 INSERT INTO `node_category` VALUES(281, 44, 'event-type');
-INSERT INTO `node_category` VALUES(282, 44, 'event-type');
 INSERT INTO `node_category` VALUES(283, 37, 'event-type');
 INSERT INTO `node_category` VALUES(122, 23, 'event-type');
 INSERT INTO `node_category` VALUES(124, 20, 'event-type');
@@ -1131,27 +1244,22 @@ INSERT INTO `node_category` VALUES(262, 39, 'event-type');
 INSERT INTO `node_category` VALUES(305, 38, 'event-type');
 INSERT INTO `node_category` VALUES(307, 13, 'business-type');
 INSERT INTO `node_category` VALUES(308, 47, 'business-type');
-INSERT INTO `node_category` VALUES(306, 39, 'event-type');
-INSERT INTO `node_category` VALUES(149, 20, 'event-type');
 INSERT INTO `node_category` VALUES(148, 16, 'event-type');
 INSERT INTO `node_category` VALUES(309, 38, 'event-type');
 INSERT INTO `node_category` VALUES(151, 14, 'event-type');
 INSERT INTO `node_category` VALUES(310, 37, 'event-type');
 INSERT INTO `node_category` VALUES(153, 20, 'event-type');
 INSERT INTO `node_category` VALUES(311, 39, 'event-type');
-INSERT INTO `node_category` VALUES(312, 40, 'event-type');
 INSERT INTO `node_category` VALUES(155, 16, 'event-type');
 INSERT INTO `node_category` VALUES(156, 14, 'event-type');
 INSERT INTO `node_category` VALUES(313, 37, 'event-type');
 INSERT INTO `node_category` VALUES(157, 14, 'event-type');
-INSERT INTO `node_category` VALUES(314, 37, 'event-type');
 INSERT INTO `node_category` VALUES(131, 16, 'event-type');
 INSERT INTO `node_category` VALUES(292, 37, 'event-type');
 INSERT INTO `node_category` VALUES(175, 26, 'business-type');
 INSERT INTO `node_category` VALUES(317, 4, 'business-type');
 INSERT INTO `node_category` VALUES(159, 14, 'event-type');
 INSERT INTO `node_category` VALUES(160, 14, 'event-type');
-INSERT INTO `node_category` VALUES(161, 14, 'event-type');
 INSERT INTO `node_category` VALUES(319, 1, 'event-type');
 INSERT INTO `node_category` VALUES(250, 37, 'event-type');
 INSERT INTO `node_category` VALUES(276, 37, 'event-type');
@@ -1168,6 +1276,86 @@ INSERT INTO `node_category` VALUES(190, 30, 'business-type');
 INSERT INTO `node_category` VALUES(66, 6, 'business-type');
 INSERT INTO `node_category` VALUES(256, 47, 'business-type');
 INSERT INTO `node_category` VALUES(265, 43, 'event-type');
+INSERT INTO `node_category` VALUES(314, 37, 'event-type');
+INSERT INTO `node_category` VALUES(325, 23, 'event-type');
+INSERT INTO `node_category` VALUES(326, 23, 'event-type');
+INSERT INTO `node_category` VALUES(327, 42, 'event-type');
+INSERT INTO `node_category` VALUES(328, 23, 'event-type');
+INSERT INTO `node_category` VALUES(323, 16, 'event-type');
+INSERT INTO `node_category` VALUES(324, 39, 'event-type');
+INSERT INTO `node_category` VALUES(329, 37, 'event-type');
+INSERT INTO `node_category` VALUES(161, 14, 'event-type');
+INSERT INTO `node_category` VALUES(330, 37, 'event-type');
+INSERT INTO `node_category` VALUES(162, 14, 'event-type');
+INSERT INTO `node_category` VALUES(331, 36, 'business-type');
+INSERT INTO `node_category` VALUES(332, 37, 'event-type');
+INSERT INTO `node_category` VALUES(333, 12, 'business-type');
+INSERT INTO `node_category` VALUES(164, 16, 'event-type');
+INSERT INTO `node_category` VALUES(337, 38, 'event-type');
+INSERT INTO `node_category` VALUES(336, 37, 'event-type');
+INSERT INTO `node_category` VALUES(338, 44, 'event-type');
+INSERT INTO `node_category` VALUES(339, 25, 'event-type');
+INSERT INTO `node_category` VALUES(340, 44, 'event-type');
+INSERT INTO `node_category` VALUES(341, 20, 'event-type');
+INSERT INTO `node_category` VALUES(344, 12, 'business-type');
+INSERT INTO `node_category` VALUES(342, 36, 'business-type');
+INSERT INTO `node_category` VALUES(306, 39, 'event-type');
+INSERT INTO `node_category` VALUES(149, 20, 'event-type');
+INSERT INTO `node_category` VALUES(346, 44, 'event-type');
+INSERT INTO `node_category` VALUES(347, 25, 'event-type');
+INSERT INTO `node_category` VALUES(351, 25, 'event-type');
+INSERT INTO `node_category` VALUES(350, 44, 'event-type');
+INSERT INTO `node_category` VALUES(352, 44, 'event-type');
+INSERT INTO `node_category` VALUES(353, 25, 'event-type');
+INSERT INTO `node_category` VALUES(343, 44, 'event-type');
+INSERT INTO `node_category` VALUES(345, 25, 'event-type');
+INSERT INTO `node_category` VALUES(354, 44, 'event-type');
+INSERT INTO `node_category` VALUES(355, 25, 'event-type');
+INSERT INTO `node_category` VALUES(356, 44, 'event-type');
+INSERT INTO `node_category` VALUES(357, 25, 'event-type');
+INSERT INTO `node_category` VALUES(358, 25, 'event-type');
+INSERT INTO `node_category` VALUES(359, 44, 'event-type');
+INSERT INTO `node_category` VALUES(360, 44, 'event-type');
+INSERT INTO `node_category` VALUES(361, 25, 'event-type');
+INSERT INTO `node_category` VALUES(363, 1, 'event-type');
+INSERT INTO `node_category` VALUES(362, 38, 'event-type');
+INSERT INTO `node_category` VALUES(364, 48, 'event-type');
+INSERT INTO `node_category` VALUES(365, 2, 'business-type');
+INSERT INTO `node_category` VALUES(366, 1, 'event-type');
+INSERT INTO `node_category` VALUES(17, 26, 'business-type');
+INSERT INTO `node_category` VALUES(368, 12, 'business-type');
+INSERT INTO `node_category` VALUES(369, 12, 'business-type');
+INSERT INTO `node_category` VALUES(367, 1, 'event-type');
+INSERT INTO `node_category` VALUES(370, 48, 'event-type');
+INSERT INTO `node_category` VALUES(371, 36, 'business-type');
+INSERT INTO `node_category` VALUES(372, 12, 'business-type');
+INSERT INTO `node_category` VALUES(312, 40, 'event-type');
+INSERT INTO `node_category` VALUES(154, 19, 'event-type');
+INSERT INTO `node_category` VALUES(375, 29, 'business-type');
+INSERT INTO `node_category` VALUES(373, 29, 'business-type');
+INSERT INTO `node_category` VALUES(374, 5, 'business-type');
+INSERT INTO `node_category` VALUES(376, 5, 'business-type');
+INSERT INTO `node_category` VALUES(379, 29, 'business-type');
+INSERT INTO `node_category` VALUES(380, 5, 'business-type');
+INSERT INTO `node_category` VALUES(378, 5, 'business-type');
+INSERT INTO `node_category` VALUES(377, 29, 'business-type');
+INSERT INTO `node_category` VALUES(381, 47, 'business-type');
+INSERT INTO `node_category` VALUES(382, 38, 'event-type');
+INSERT INTO `node_category` VALUES(383, 13, 'business-type');
+INSERT INTO `node_category` VALUES(385, 44, 'event-type');
+INSERT INTO `node_category` VALUES(384, 25, 'event-type');
+INSERT INTO `node_category` VALUES(335, 39, 'event-type');
+INSERT INTO `node_category` VALUES(165, 20, 'event-type');
+INSERT INTO `node_category` VALUES(349, 44, 'event-type');
+INSERT INTO `node_category` VALUES(334, 37, 'event-type');
+INSERT INTO `node_category` VALUES(348, 25, 'event-type');
+INSERT INTO `node_category` VALUES(386, 38, 'event-type');
+INSERT INTO `node_category` VALUES(387, 38, 'event-type');
+INSERT INTO `node_category` VALUES(388, 3, 'event-type');
+INSERT INTO `node_category` VALUES(389, 0, 'event-type');
+INSERT INTO `node_category` VALUES(390, 0, 'event-type');
+INSERT INTO `node_category` VALUES(391, 0, 'event-type');
+INSERT INTO `node_category` VALUES(282, 3, 'event-type');
 
 -- --------------------------------------------------------
 
@@ -1176,7 +1364,7 @@ INSERT INTO `node_category` VALUES(265, 43, 'event-type');
 --
 
 CREATE TABLE `pictures` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `entity_type` varchar(45) NOT NULL,
   `entity_id` int(10) unsigned NOT NULL,
   `filename` varchar(100) NOT NULL,
@@ -1184,8 +1372,8 @@ CREATE TABLE `pictures` (
   `created_at` int(10) unsigned NOT NULL,
   `active` tinyint(3) unsigned NOT NULL,
   `cover` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=267 ;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=305 ;
 
 --
 -- Dumping data for table `pictures`
@@ -1454,6 +1642,63 @@ INSERT INTO `pictures` VALUES(263, 'business-logo', 315, 'fedogolf.jpg', '0', 13
 INSERT INTO `pictures` VALUES(264, 'business-cover', 315, 'casa-de-campo-shoot-out-golf-tournament-casa-de-campo-living.jpg', '0', 1332379316, 1, 0);
 INSERT INTO `pictures` VALUES(265, 'business-logo', 317, 'fedogolf.jpg', '0', 1332380508, 1, 0);
 INSERT INTO `pictures` VALUES(266, 'business-cover', 317, 'casa-de-campo-shoot-out-golf-tournament-casa-de-campo-living.jpg', '0', 1332380515, 1, 0);
+INSERT INTO `pictures` VALUES(267, 'event-logo', 323, 'semana_de_francia_polo.jpg', '0', 1332945174, 1, 0);
+INSERT INTO `pictures` VALUES(268, 'event-logo', 325, 'ostras_vivas.jpg', '0', 1332945769, 1, 0);
+INSERT INTO `pictures` VALUES(269, 'event-logo', 327, 'cocktails_minitas_beach.jpg', '0', 1332961288, 1, 0);
+INSERT INTO `pictures` VALUES(270, 'event-logo', 327, 'cocktails_minitas_beach1.jpg', '0', 1332961308, 1, 0);
+INSERT INTO `pictures` VALUES(271, 'event-logo', 162, 'Dewars_12_golf_invitational_casa_de_campo11.jpg', '0', 1333055627, 1, 0);
+INSERT INTO `pictures` VALUES(272, 'business-logo', 331, 'bacardi.jpg', '0', 1333055750, 1, 0);
+INSERT INTO `pictures` VALUES(273, 'business-cover', 331, 'bacardi.jpg', '0', 1333055792, 1, 0);
+INSERT INTO `pictures` VALUES(274, 'event-logo', 338, 'rachel_white_arte.jpg', '0', 1333057158, 1, 0);
+INSERT INTO `pictures` VALUES(275, 'event-logo', 339, 'rachel_white_arte.jpg', '0', 1333057278, 1, 0);
+INSERT INTO `pictures` VALUES(276, 'event-logo', 339, 'rachel_white_arte1.jpg', '0', 1333057289, 1, 0);
+INSERT INTO `pictures` VALUES(277, 'event-logo', 339, 'rachel_white_arte2.jpg', '0', 1333057326, 1, 0);
+INSERT INTO `pictures` VALUES(278, 'event-logo', 338, 'rachel_white_arte1.jpg', '0', 1333057425, 1, 0);
+INSERT INTO `pictures` VALUES(279, 'event-logo', 340, 'michel_bizet_art.jpg', '0', 1333057602, 1, 0);
+INSERT INTO `pictures` VALUES(280, 'business-cover', 342, 'independencia_republica_dominicana.jpg', '0', 1333059211, 1, 0);
+INSERT INTO `pictures` VALUES(281, 'event-logo', 343, 'independencia_republica_dominicana.jpg', '0', 1333059321, 1, 0);
+INSERT INTO `pictures` VALUES(282, 'event-logo', 346, 'independencia_republica_dominicana.jpg', '0', 1333059532, 1, 0);
+INSERT INTO `pictures` VALUES(283, 'event-logo', 348, 'mothers_day.jpg', '0', 1333060789, 1, 0);
+INSERT INTO `pictures` VALUES(284, 'event-logo', 350, 'independencia_republica_dominicana.jpg', '0', 1333061221, 1, 0);
+INSERT INTO `pictures` VALUES(285, 'event-logo', 352, 'bayahibe_sunset_casa_de_campo.jpg', '0', 1333116454, 1, 0);
+INSERT INTO `pictures` VALUES(286, 'event-logo', 354, 'independencia_republica_dominicana.jpg', '0', 1333117188, 1, 0);
+INSERT INTO `pictures` VALUES(287, 'event-logo', 356, 'independencia_republica_dominicana.jpg', '0', 1333117358, 1, 0);
+INSERT INTO `pictures` VALUES(288, 'event-logo', 358, 'independencia_republica_dominicana.jpg', '0', 1333117539, 1, 0);
+INSERT INTO `pictures` VALUES(289, 'event-logo', 360, 'independencia_republica_dominicana.jpg', '0', 1333117752, 1, 0);
+INSERT INTO `pictures` VALUES(290, 'event-logo', 362, 'praia.jpg', '0', 1333118195, 1, 0);
+INSERT INTO `pictures` VALUES(291, 'event-logo', 364, 'semana_santa.jpg', '0', 1333118741, 1, 0);
+INSERT INTO `pictures` VALUES(292, 'business-logo', 17, 'juanita.jpg', '0', 1333119257, 1, 0);
+INSERT INTO `pictures` VALUES(293, 'business-logo', 365, 'juanita.jpg', '0', 1333120041, 1, 0);
+INSERT INTO `pictures` VALUES(294, 'business-cover', 365, 'juanita.jpg', '0', 1333120086, 1, 0);
+INSERT INTO `pictures` VALUES(295, 'business-cover', 17, 'juanita.jpg', '0', 1333120113, 1, 0);
+INSERT INTO `pictures` VALUES(296, 'event-logo', 367, 'palmilla.jpg', '0', 1333120315, 1, 0);
+INSERT INTO `pictures` VALUES(297, 'business-cover', 371, 'presidente.jpg', '0', 1333124404, 1, 0);
+INSERT INTO `pictures` VALUES(298, 'business-cover', 373, 'scotiabank_casadecampo__marina_casa_de_campo_la_romana1.jpg', '0', 1333128215, 1, 0);
+INSERT INTO `pictures` VALUES(299, 'business-cover', 375, 'progreso.jpg', '0', 1333128507, 1, 0);
+INSERT INTO `pictures` VALUES(300, 'business-cover', 377, 'banco.jpg', '0', 1333128698, 1, 0);
+INSERT INTO `pictures` VALUES(301, 'business-cover', 377, 'banco1.jpg', '0', 1333128779, 1, 0);
+INSERT INTO `pictures` VALUES(302, 'business-cover', 379, 'Popular-1.jpg', '0', 1333133535, 1, 0);
+INSERT INTO `pictures` VALUES(303, 'event-logo', 382, 'flowers_altos_de_chavon.jpg', '0', 1333139451, 1, 0);
+INSERT INTO `pictures` VALUES(304, 'event-logo', 384, 'verano2012_altos_de_chavon.jpg', '0', 1333140222, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `senders`
+--
+
+CREATE TABLE `senders` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(200) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `node_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `senders`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1471,14 +1716,15 @@ CREATE TABLE `slides` (
 -- Dumping data for table `slides`
 --
 
-INSERT INTO `slides` VALUES(106, 'es');
-INSERT INTO `slides` VALUES(124, 'es');
-INSERT INTO `slides` VALUES(130, 'es');
-INSERT INTO `slides` VALUES(140, 'es');
-INSERT INTO `slides` VALUES(260, 'en');
-INSERT INTO `slides` VALUES(263, 'en');
-INSERT INTO `slides` VALUES(284, 'en');
-INSERT INTO `slides` VALUES(289, 'en');
+INSERT INTO `slides` VALUES(148, 'es');
+INSERT INTO `slides` VALUES(153, 'es');
+INSERT INTO `slides` VALUES(154, 'es');
+INSERT INTO `slides` VALUES(158, 'es');
+INSERT INTO `slides` VALUES(309, 'en');
+INSERT INTO `slides` VALUES(311, 'en');
+INSERT INTO `slides` VALUES(312, 'en');
+INSERT INTO `slides` VALUES(322, 'en');
+INSERT INTO `slides` VALUES(323, 'es');
 
 -- --------------------------------------------------------
 
@@ -1490,7 +1736,7 @@ CREATE TABLE `translations` (
   `original_id` int(11) unsigned NOT NULL,
   `translation_id` int(11) NOT NULL,
   `translation_language` varchar(12) NOT NULL,
-  PRIMARY KEY  (`original_id`,`translation_id`)
+  PRIMARY KEY (`original_id`,`translation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1506,6 +1752,7 @@ INSERT INTO `translations` VALUES(11, 246, 'en');
 INSERT INTO `translations` VALUES(13, 172, 'en');
 INSERT INTO `translations` VALUES(14, 171, 'en');
 INSERT INTO `translations` VALUES(15, 245, 'en');
+INSERT INTO `translations` VALUES(17, 365, 'es');
 INSERT INTO `translations` VALUES(18, 244, 'en');
 INSERT INTO `translations` VALUES(20, 243, 'en');
 INSERT INTO `translations` VALUES(22, 242, 'en');
@@ -1621,6 +1868,13 @@ INSERT INTO `translations` VALUES(156, 313, 'en');
 INSERT INTO `translations` VALUES(157, 314, 'en');
 INSERT INTO `translations` VALUES(158, 322, 'en');
 INSERT INTO `translations` VALUES(159, 319, 'en');
+INSERT INTO `translations` VALUES(160, 329, 'en');
+INSERT INTO `translations` VALUES(161, 330, 'en');
+INSERT INTO `translations` VALUES(162, 332, 'en');
+INSERT INTO `translations` VALUES(163, 334, 'en');
+INSERT INTO `translations` VALUES(164, 337, 'en');
+INSERT INTO `translations` VALUES(165, 335, 'en');
+INSERT INTO `translations` VALUES(166, 336, 'en');
 INSERT INTO `translations` VALUES(167, 250, 'en');
 INSERT INTO `translations` VALUES(249, 251, 'en');
 INSERT INTO `translations` VALUES(252, 293, 'en');
@@ -1637,6 +1891,33 @@ INSERT INTO `translations` VALUES(307, 308, 'en');
 INSERT INTO `translations` VALUES(315, 316, 'en');
 INSERT INTO `translations` VALUES(317, 318, 'en');
 INSERT INTO `translations` VALUES(320, 321, 'es');
+INSERT INTO `translations` VALUES(323, 324, 'en');
+INSERT INTO `translations` VALUES(325, 326, 'es');
+INSERT INTO `translations` VALUES(327, 328, 'es');
+INSERT INTO `translations` VALUES(331, 333, 'es');
+INSERT INTO `translations` VALUES(338, 339, 'es');
+INSERT INTO `translations` VALUES(340, 341, 'es');
+INSERT INTO `translations` VALUES(342, 344, 'es');
+INSERT INTO `translations` VALUES(343, 345, 'es');
+INSERT INTO `translations` VALUES(346, 347, 'es');
+INSERT INTO `translations` VALUES(348, 349, 'en');
+INSERT INTO `translations` VALUES(350, 351, 'es');
+INSERT INTO `translations` VALUES(352, 353, 'es');
+INSERT INTO `translations` VALUES(354, 355, 'es');
+INSERT INTO `translations` VALUES(356, 357, 'es');
+INSERT INTO `translations` VALUES(358, 359, 'en');
+INSERT INTO `translations` VALUES(360, 361, 'es');
+INSERT INTO `translations` VALUES(362, 363, 'es');
+INSERT INTO `translations` VALUES(364, 366, 'es');
+INSERT INTO `translations` VALUES(367, 370, 'en');
+INSERT INTO `translations` VALUES(368, 369, 'es');
+INSERT INTO `translations` VALUES(371, 372, 'es');
+INSERT INTO `translations` VALUES(373, 374, 'es');
+INSERT INTO `translations` VALUES(375, 376, 'es');
+INSERT INTO `translations` VALUES(377, 378, 'es');
+INSERT INTO `translations` VALUES(379, 380, 'es');
+INSERT INTO `translations` VALUES(381, 383, 'es');
+INSERT INTO `translations` VALUES(384, 385, 'en');
 
 -- --------------------------------------------------------
 
@@ -1645,17 +1926,22 @@ INSERT INTO `translations` VALUES(320, 321, 'es');
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL auto_increment,
-  `username` varchar(45) default NULL,
-  `passw` varchar(45) default NULL,
-  `email` varchar(75) default NULL,
-  `display_name` varchar(100) default NULL,
-  `status` tinyint(4) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) DEFAULT NULL,
+  `passw` varchar(45) DEFAULT NULL,
+  `email` varchar(75) DEFAULT NULL,
+  `display_name` varchar(100) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `user_type` varchar(20) NOT NULL,
+  `oauth_provider` varchar(100) DEFAULT NULL,
+  `oauth_id` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` VALUES(1, 'wilbur', '2a9aa6d77bbd5f3b02b6b196a17782d874db591f', 'wsuero@silgon.net', 'Wilbur Suero', 1);
+INSERT INTO `users` VALUES(1, 'wilbur', '2a9aa6d77bbd5f3b02b6b196a17782d874db591f', 'wsuero@silgon.net', 'Wilbur Suero', 1, 'admin', NULL, NULL);
+INSERT INTO `users` VALUES(2, 'eddy', '95e0ef4bc7adf73cd0a7c3484ef3bd6ba0af017f', 'eddy@gmail.com', NULL, 1, 'registered', NULL, NULL);
+INSERT INTO `users` VALUES(3, 'wilburhimself', NULL, 'wilbur.himself@gmail.com', 'Wilbur Suero', 1, '', 'facebook', '586951100');
