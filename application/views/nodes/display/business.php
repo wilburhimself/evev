@@ -22,7 +22,7 @@
 
             <dl>
                 <dt><?= lang('address') ?></dt>
-                <dd><?= nl2br($node->address) ?>, <?= node_load($node->location)->title; ?></dd>
+                <dd><?= nl2br($node->address) ?>, <?php $location = node_load($node->location); if ($location) print $location->title; ?></dd>
                 <dt><?= lang('phone') ?></dt>
                 <dd><?= $node->phone ?><br />
                 <?= $node->secondary_phone ?></dd>
@@ -54,7 +54,7 @@
                         'num' => 3,
                         'conditions' => array(
                             'f.business='.$node->id,
-                            'DAY(f.startdate) >= DAY(NOW())'
+                            'f.startdate > NOW()',
                         ),
                         'order' => array(
                             'f.startdate' => 'ASC',

@@ -22,3 +22,5 @@
 
     <?= form_submit('', lang('create_account')) ?>
 <?= form_close() ?>
+
+<a href="<?= site_url('login_facebook') ?>">Register using facebook</a>

@@ -20,15 +20,6 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
         $data['page_title'] = 'Homepage';
-        $data['events'] = search(array(
-                           'type' => 'event',
-                           'conditions' => array(
-                              'f.startdate> "'.date('Y-m-d').'"',
-                           ),
-                           'order' => array(
-                               'f.startdate' => 'ASC'
-                           )
-                      ));
         $data['yield'] = 'homepage';
         $this->load->vars($data);
     	$this->load->view('base');

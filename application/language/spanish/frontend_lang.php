@@ -77,3 +77,13 @@ $lang['node_type'] = 'Tipo de nodo';
 $lang['submit'] = 'Someter';
 $lang['your_personal_info'] = 'Sus datos personales';
 $lang['feedback_intro'] = "Nos está haciendo falta algo? Estamos abiertos a sus sugerencias! Si conoce de un evento, negocio o hasta de una oferta especial que no esté incluido aquí - por favor, infórmenos llenando el formulario a continuación!";
+
+$lang['register'] = 'Registrarse';
+$lang['login'] = 'Iniciar Sesión';
+$lang['username'] = 'Nombre de usuario';
+$lang['password'] = 'Contraseña';
+$lang['display_name'] = 'Nombre Completo';
+$lang['create_account'] = 'Crear cuenta';
+$lang['website'] = 'Website';
+$lang['opening_times'] = 'Horarios';
+$lang['logout'] = 'Salir';

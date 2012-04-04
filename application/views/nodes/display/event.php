@@ -58,7 +58,7 @@
                 <?php endif; ?>
                 <?php if ($node->location > 0): ?>
                 <dt><?= lang('place') ?></dt>
-                <dd><?php if ($node->address): ?><?= $node->address ?>, <?php endif; ?><?= node_load($node->location)->title; ?><?php endif; ?>
+                <dd><?php if ($node->address): ?><?= $node->address ?>, <?php endif; ?><?php $location = node_load($node->location); if ($location) print $location->title; ?><?php endif; ?>
                 </dd>
                 <?php if ($node->cost): ?>
                     <dt><?= lang('price') ?></dt>
@@ -95,7 +95,7 @@
                         'conditions' => array(
                             'f.business='.$node->business,
                             'n.id<>'.$node->id,
-                            'DAY(f.startdate) >= DAY(NOW())'
+                            'f.startdate > NOW()'
                         ),
                         'order' => array(
                             'f.startdate' => 'ASC',

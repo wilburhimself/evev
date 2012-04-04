@@ -50,9 +50,9 @@
 
                         <div class="user-control">
                             <?php if (is_logged_in()): ?>
-                                <?= $this->logged_user->username; ?> | <?= anchor('logout', 'Salir'); ?>
+                                <?= $this->logged_user->username; ?> | <?= anchor('logout', lang('logout')); ?>
                             <?php else: ?>
-                                <p><?= anchor('sessions', 'Iniciar sesión') ?> o <?= anchor('register', 'Registrarse') ?></p>
+                                <p><?= anchor('sessions', lang('login')) ?> | <?= anchor('register', lang('register')) ?></p>
                             <?php endif; ?>
                         </div>
 

@@ -55,7 +55,7 @@ class User extends CI_Model {
         return $authenticated_user->num_rows() == 1 ? true : false;
     }
 
-    private function save_session_userdata($user) {
+    public function save_session_userdata($user) {
         $this->session->set_userdata('user_id', $user->id);
         $this->session->set_userdata('logged', 1);
         $this->session->set_userdata('login_time', time());

@@ -11,13 +11,13 @@ class node {
     }
 
     public function load_node($id) {
-        //$this->pre_query();
         $this->db->where('id', $id);
-
-        $n = $this->db->get($this->tablename)->row();
-
+        $n = $this->db->get($this->tablename);
+        if ($n->num_rows() == 0) {
+            return false;
+        }
+        $n = $n->row();
         $n->fields = $this->_load_fields($n);
-
         return new NodeResult($n);
     }
 
@@ -39,8 +39,6 @@ class node {
         foreach($order as $k => $v) {
             $this->db->order_by($k, $v);
         }
-
-        $this->db->limit(1000);
 
         $result = $this->db->get($this->tablename)->result();
 

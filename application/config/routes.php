@@ -43,6 +43,8 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
 $route['^(en|es)/login'] = 'sessions';
+$route['^(en|es)/login_facebook'] = 'sessions/login_facebook';
+$route['^(en|es)/facebook_callback'] = 'sessions/facebook_callback';
 $route['^(en|es)/logout'] = 'sessions/destroy';
 $route['^(en|es)/register'] = 'sessions/register';
 $route['^(en|es)/u/(:any)'] = 'sessions/profile/$2';

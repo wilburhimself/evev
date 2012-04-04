@@ -83,9 +83,11 @@ $lang['your_personal_info'] = 'Your personal information';
 $lang['feedback_intro'] = "Are we missing something? We're open to your suggestions! If you know of an event, business or even a special offer that is not included here - please let us know the details by filling out the form below!";
 
 $lang['register'] = 'Register';
+$lang['login'] = 'Login';
 $lang['username'] = 'Username';
 $lang['password'] = 'Password';
 $lang['display_name'] = 'Display Name';
 $lang['create_account'] = 'Create Account';
 $lang['website'] = 'Website';
 $lang['opening_times'] = 'Opening Times';
+$lang['logout'] = 'Logout';

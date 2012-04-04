@@ -4,3 +4,7 @@
 <p><?php print form_password('password'); ?></p>
 <?php print form_submit('', 'Login'); ?>
 <?php print form_close(); ?>
+
+<div>
+    <a href="<?= site_url('login_facebook') ?>">Login with facebook</a>
+</div>
