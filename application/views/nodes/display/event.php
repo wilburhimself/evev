@@ -1,5 +1,6 @@
 <?php
     $business = node_load($node->business);
+    //print_r($business);
     if (is_translation($business->id)) {
         $original = get_original($business->id);
         $original_id = $original->id;
@@ -74,7 +75,15 @@
                 <dd><?= anchor($business->language.'/node/'.$business->id, $business->title) ?></dd>
             </dl>
 
-
+            <?php $photos = get_pictures('business-gallery', $node_id);
+                  if (sizeof($photos) > 0): ?>
+                <section class="business-pictures">
+                    <h3><?= lang('photos') ?></h3>
+                    <?php foreach ($photos as $photo): ?>
+                        <a href="<?= site_url(picture_path($photo)) ?>"><?= thumbnail($photo, 100, 100) ?></a>
+                    <?php endforeach; ?>
+                </section>
+            <?php endif; ?>
 
             <?php if (is_logged_in()): ?>
             <div class="comments">
@@ -128,7 +137,6 @@
                     <span class="day-number">
                         <em class="in-name"><?= ucwords(htmlentities(strftime('%B', strtotime($node->enddate)))) ?></em>
                         <?= date('d', strtotime($node->enddate)) ?></span>
-
                 </p>
                  
             <?php else: ?>

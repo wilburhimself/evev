@@ -34,6 +34,10 @@
                     <dt>Email</dt>
                     <dd><?= $node->email ?></dd>
                 <?php endif; ?>
+                <?php if($node->hours): ?>
+                    <dt><?= lang('opening_times') ?></dt>
+                    <dd><?= $node->hours ?></dd>
+                <?php endif; ?>
             </dl>
 
 

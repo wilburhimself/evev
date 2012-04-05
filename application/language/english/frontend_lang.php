@@ -91,3 +91,7 @@ $lang['create_account'] = 'Create Account';
 $lang['website'] = 'Website';
 $lang['opening_times'] = 'Opening Times';
 $lang['logout'] = 'Logout';
+
+$lang['users'] = 'Users';
+$lang['promote'] = 'Promote to administrator';
+$lang['demote'] = 'Remove administrator privileges';

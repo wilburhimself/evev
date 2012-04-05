@@ -37,7 +37,7 @@ function node_dropdown($type) {
     foreach ($nodes as $node) {
         $output[$node->id] = $node->title;
     }
-    array_unshift($output, '');
+    //array_unshift($output, '');
     return $output;
 }
 

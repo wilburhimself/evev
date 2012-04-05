@@ -55,5 +55,26 @@ function owns_node($user, $node) {
         return true;
     }
     return false;
-    
+}
+
+function get_active_users($num=null, $offset=null) {
+    $ci =& get_instance();
+    $ci->db->where('status', 1);
+    $users = $ci->db->get('users', $num, $offset)->result();
+    return $users;
+}
+
+function change_promotion_status($user) {
+    switch($user->user_type) {
+        case 'admin':
+            $data['user_type'] = 'registered';
+            break;
+        case 'registered':
+            $data['user_type'] = 'admin';
+            break;
+        default:
+            $data['user_type'] = 'registered';
+    }
+    $ci =& get_instance();
+    $ci->db->where('id', $user->id)->update('users', $data);
 }

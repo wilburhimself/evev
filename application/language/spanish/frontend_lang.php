@@ -87,3 +87,7 @@ $lang['create_account'] = 'Crear cuenta';
 $lang['website'] = 'Website';
 $lang['opening_times'] = 'Horarios';
 $lang['logout'] = 'Salir';
+
+$lang['users'] = 'Usuarios';
+$lang['promote'] = 'Promover a administrador';
+$lang['demote'] = 'Remover administrador';

@@ -55,9 +55,11 @@ class Category extends CI_Model {
         $ids = $this->db->query("SELECT n.title, c.node_id, c.category_id FROM node n, node_category c WHERE
         c.node_id = n.id
         AND c.category_id = {$category_id}
-
+        AND n.status = 1
         group by n.id
         order by n.title")->result();
+
+        print $this->db->last_query();
 
         $output = array();
         foreach ($ids as $id) {

@@ -62,7 +62,7 @@ class node {
         $this->db->where('node_id', $id);
         $this->db->delete($table);
 
-        $relations_table = 'node_categories';
+        $relations_table = 'node_category';
         $this->db->where('node_id', $id);
         $this->db->delete($relations_table);
     }
@@ -124,6 +124,8 @@ class node {
             }
         }
         $this->db->where('n.id', 'f.node_id', FALSE);
+        $this->db->where('n.status', 1, FALSE);
+
 
         $order = !empty($options['order']) ? $options['order'] : array('n.id' => 'DESC');
         foreach($order as $k => $v) {

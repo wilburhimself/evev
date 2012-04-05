@@ -26,7 +26,7 @@ class Feedback extends CI_Controller {
         Email: \t\t {$comment['email']} \n
         message: \n {$comment['comment']}";
 
-        mail('wsuero@silgon.net', $subject, $message);
+        mail('philip@silgon.net', $subject, $message);
         message('Your comment has been sent, thank you!');
         redirect_back_or_default();
     }

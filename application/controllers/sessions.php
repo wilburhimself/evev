@@ -22,18 +22,7 @@ class Sessions extends CI_Controller {
 
     public function destroy() {
         logout();
-        $config = array(
-            'appId' => '355837437786493',
-            'secret' => 'c29cfe522eaf8358049e114ec0f78ec5',
-        );
-        $this->load->library('Facebook', $config);
-        $user = $this->facebook->getUser();
-        if ($user) {
-            $logout_url = $this->facebook->getLogoutUrl(array('next' => site_url('logout')));
-            redirect($logout_url);
-        }
         redirect();
-
     }
 
     public function register() {
@@ -92,7 +81,7 @@ class Sessions extends CI_Controller {
         $config = array(
             'appId'  => '355837437786493',
             'secret' => '51c10d4a7c6af28fe453350faaba4695',
-            'domain' => 'todo.mac',
+            'cookie' => true,
         );
 
         try {
@@ -102,7 +91,7 @@ class Sessions extends CI_Controller {
         }
 
         $user = $this->facebook->getUser();
-        
+        $access = $this->facebook->getAccessToken();
         $login_url = $this->facebook->getLoginUrl(array(
                         'scope' => 'email,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown',
                       ));
@@ -123,7 +112,6 @@ class Sessions extends CI_Controller {
                     $data['status'] = 1;
                     $this->db->insert('users', $data);
                 }
-
                 $this->db->where('oauth_provider', 'facebook')
                     ->where('oauth_id', $user);
                 $result = $this->db->get('users');
@@ -136,8 +124,23 @@ class Sessions extends CI_Controller {
                 redirect($login_url);
             }
         } else {
-            
-            print '<a href="'.$login_url.'">login</a>';
+            redirect($login_url);
         }
+    }
+
+    public function users() {
+        login_required();
+        $data['users'] = get_active_users();
+        $data['yield'] = 'sessions/users';
+        $data['page_title'] = 'Users';
+        $data['title'] = 'Users';
+        $this->load->vars($data);
+        $this->load->view('base');
+    }
+
+    public function promote($user_id) {
+        $user = get_user($user_id);
+        change_promotion_status($user);
+        redirect_back_or_default();
     }
 }

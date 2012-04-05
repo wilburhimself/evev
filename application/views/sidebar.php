@@ -7,6 +7,7 @@
             <li><?= anchor('nodes/manage/location', lang('locations'));  ?></li>
             <li><?= anchor('nodes/manage/business', lang('businesses')); ?></li>
             <li><?= anchor('nodes/manage/special', lang('specials')) ?></li>
+            <li><?= anchor('sessions/users', lang('users')) ?></li>
             <li><?= anchor('nodes/submits', 'Submitted by users') ?></li>
         </ul>
     </div>
